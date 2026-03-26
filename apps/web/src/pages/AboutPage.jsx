@@ -9,23 +9,23 @@ const AboutPage = () => {
   const highlights = [
     {
       icon: Code2,
-      title: 'Technical Excellence',
-      description: 'Deep expertise in blockchain architecture, smart contract development, and AI/ML systems with a focus on scalable, production-ready solutions.',
+      title: 'Creative Development',
+      description: 'Combines narrative thinking with practical engineering to launch products with strong user engagement.',
     },
     {
       icon: Rocket,
-      title: 'Innovation Driven',
-      description: 'Passionate about exploring emerging technologies and implementing cutting-edge solutions that solve real-world problems in decentralized ecosystems.',
+      title: 'Product Focused',
+      description: 'Aligns technical choices with business goals and works iteratively toward measurable results.',
     },
     {
       icon: Users,
-      title: 'Collaborative Approach',
-      description: 'Strong believer in open-source development and knowledge sharing. Active contributor to blockchain and AI communities.',
+      title: 'Team Leadership',
+      description: 'Mentors teams in modern frontend and backend practices, boosting productivity and code quality.',
     },
     {
       icon: Award,
-      title: 'Proven Track Record',
-      description: 'Successfully delivered multiple high-impact projects in DeFi, NFT platforms, and AI-powered applications for startups and enterprises.',
+      title: 'Outcome Oriented',
+      description: 'Delivered successful web applications, mobile-first experiences, and marketing platforms under tight deadlines.',
     },
   ];
 
@@ -37,8 +37,8 @@ const AboutPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>About - Aaron Dukes</title>
-        <meta name="description" content="Learn about Aaron Dukes, a Full Stack Developer specializing in blockchain and AI technologies with expertise in Layer 1 systems and decentralized applications." />
+        <title>About - Juan Silva | zuzudev</title>
+        <meta name="description" content="Conoce a Juan Silva (zuzudev), desarrollador full-stack con enfoque en productos digitales, UX y tecnologías web modernas." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">
@@ -67,22 +67,17 @@ const AboutPage = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="space-y-6"
               >
-                <h2 className="text-3xl font-bold text-slate-100 mb-4">My Journey</h2>
+                <h2 className="text-3xl font-bold text-slate-100 mb-4">Mi Trayectoria</h2>
                 <p className="text-slate-300 leading-relaxed">
-                  My journey into technology began with a fascination for how systems work at their core. 
-                  This curiosity led me to explore blockchain technology and artificial intelligence, 
-                  where I discovered the potential to revolutionize how we build and interact with digital systems.
+                  Comencé mi carrera en tecnología en Buenos Aires creando contenidos digitales y sitios web interactivos. 
+                  Esta mezcla de comunicación y código me llevó naturalmente a especializarme en experiencias de usuario.
                 </p>
                 <p className="text-slate-300 leading-relaxed">
-                  Over the years, I've specialized in developing Layer 1 blockchain protocols, implementing 
-                  complex smart contract systems, and orchestrating multi-LLM AI architectures. My work spans 
-                  from building high-performance DeFi protocols to creating AI-powered tools that enhance 
-                  developer productivity.
+                  Hoy soy desarrollador full-stack con foco en productos que resuelven problemas reales para pymes y startups. 
+                  Disfruto idear soluciones claras, implementar arquitectura escalable y mejorar métricas de conversión.
                 </p>
                 <p className="text-slate-300 leading-relaxed">
-                  I'm particularly passionate about the intersection of blockchain and AI, where I see 
-                  tremendous potential for creating more intelligent, autonomous, and trustless systems 
-                  that can transform industries.
+                  Me apasiona aprender nuevas tecnologías y llevarlas a proyectos prácticos: desde diseño de interfaces hasta despliegue y automatización de infraestructura.
                 </p>
               </motion.div>
 
@@ -92,22 +87,15 @@ const AboutPage = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="space-y-6"
               >
-                <h2 className="text-3xl font-bold text-slate-100 mb-4">Beyond Code</h2>
+                <h2 className="text-3xl font-bold text-slate-100 mb-4">Más allá del Código</h2>
                 <p className="text-slate-300 leading-relaxed">
-                  When I'm not architecting blockchain systems or training AI models, you'll find me 
-                  contributing to open-source projects, writing technical articles, or mentoring aspiring 
-                  developers in the Web3 space.
+                  Fuera del teclado, lidero comunidades de desarrolladores y colaboro con equipos creativos para generar contenido educativo.
                 </p>
                 <p className="text-slate-300 leading-relaxed">
-                  I'm an active participant in blockchain hackathons and AI research communities, 
-                  constantly learning and sharing knowledge with fellow developers. I believe in the 
-                  power of community-driven innovation and the importance of making advanced technologies 
-                  accessible to everyone.
+                  Me interesa el diseño estratégico de producto, la comunicación asertiva y las propuestas con impacto social.
                 </p>
                 <p className="text-slate-300 leading-relaxed">
-                  Outside of technology, I enjoy exploring new places, reading about emerging tech trends, 
-                  and experimenting with new programming languages and frameworks. I'm always looking for 
-                  the next challenge that pushes my skills to new heights.
+                  En mi tiempo libre, exploro nuevas herramientas, escribo artículos y trabajo en proyectos personales como `zuzudev.com`.
                 </p>
               </motion.div>
             </div>

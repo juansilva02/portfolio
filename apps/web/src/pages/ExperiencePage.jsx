@@ -8,51 +8,38 @@ import ExperienceCard from '@/components/ExperienceCard.jsx';
 const ExperiencePage = () => {
   const experiences = [
     {
-      company: 'Quantum Dynamics',
-      role: 'Lead Blockchain Architect',
-      duration: 'Jan 2024 - Present',
-      location: 'Remote, US',
-      achievements: [
-        'Architected and deployed a Layer 1 blockchain protocol handling 50,000+ transactions per second with sub-second finality',
-        'Led a team of 8 engineers in developing a cross-chain bridge protocol that facilitated $2.3B in total value locked',
-        'Implemented advanced consensus mechanisms using Rust, improving network security and reducing energy consumption by 47%',
-        'Designed and deployed smart contract infrastructure for a DeFi lending protocol with $180M TVL',
-      ],
-    },
-    {
-      company: 'Meridian Labs',
+      company: 'ZuzuDev Studio',
       role: 'Senior Full Stack Developer',
-      duration: 'Mar 2022 - Dec 2023',
-      location: 'San Francisco, CA',
+      duration: 'Feb 2023 - Present',
+      location: 'Buenos Aires, Argentina',
       achievements: [
-        'Built and scaled an AI-powered trading bot using Python and TensorFlow that achieved 23% higher returns than market average',
-        'Developed a multi-LLM orchestration system for automated code review and documentation generation',
-        'Created a real-time analytics dashboard using React and GraphQL serving 100,000+ daily active users',
-        'Optimized database queries and implemented caching strategies, reducing API response times by 68%',
+        'Desarrollo de la plataforma principal de zuzudev.com usando React, Vite y Tailwind.',
+        'Implementación de un sistema de blog CMS headless con Astro y Netlify (o vercel).',
+        'Diseño e integración de procesos de CI/CD con GitHub Actions para despliegues automáticos.',
+        'Optimización de rendimiento web alcanzando Core Web Vitals A en todos los proyectos.',
       ],
     },
     {
-      company: 'Nexus Protocol',
-      role: 'Blockchain Developer',
-      duration: 'Jun 2020 - Feb 2022',
-      location: 'Austin, TX',
-      achievements: [
-        'Developed and audited 15+ smart contracts for NFT marketplaces and DeFi applications on Ethereum',
-        'Implemented automated testing frameworks that caught 94% of potential vulnerabilities before deployment',
-        'Built a decentralized identity verification system using zero-knowledge proofs',
-        'Contributed to open-source Web3 libraries with over 12,000 GitHub stars',
-      ],
-    },
-    {
-      company: 'TechVentures Inc',
+      company: 'MediaLab AR',
       role: 'Full Stack Developer',
-      duration: 'Aug 2018 - May 2020',
-      location: 'Boston, MA',
+      duration: 'Jun 2021 - Ene 2023',
+      location: 'Buenos Aires, Argentina',
       achievements: [
-        'Developed microservices architecture using Node.js and Docker, improving system reliability to 99.9% uptime',
-        'Built RESTful APIs serving 500,000+ requests per day with sub-100ms response times',
-        'Implemented CI/CD pipelines using Jenkins and Kubernetes, reducing deployment time by 75%',
-        'Mentored 5 junior developers in best practices for scalable application development',
+        'Construcción de una aplicación de gestión de contenidos para marketing digital basada en Node.js y React.',
+        'Integración de Stripe para pagos recurrentes y creación de panel de administración con métricas en tiempo real.',
+        'Coordinación con equipos de diseño para mejorar la experiencia de usuario y reducir tasa de rebote en 25%.',
+        'Migración de backend a arquitectura serverless en AWS Lambda y API Gateway.',
+      ],
+    },
+    {
+      company: 'Universidad de Buenos Aires (UBA)',
+      role: 'Pasante en Desarrollo Web',
+      duration: 'Mar 2020 - Mayo 2021',
+      location: 'Buenos Aires, Argentina',
+      achievements: [
+        'Participación en proyectos universitarios de plataformas educativas con React y Firebase.',
+        'Automatización de tareas de social media y reportes con scripts en Python.',
+        'Asistencia en talleres de programación y mentoría a estudiantes de Comunicación.',
       ],
     },
   ];
@@ -65,8 +52,8 @@ const ExperiencePage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Experience - Aaron Dukes</title>
-        <meta name="description" content="Professional experience and career journey of Aaron Dukes in blockchain development, AI/ML, and full-stack engineering." />
+        <title>Experiencia - Juan Silva | zuzudev</title>
+        <meta name="description" content="Experiencia profesional de Juan Silva en desarrollo web, productos digitales y soluciones full-stack." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">

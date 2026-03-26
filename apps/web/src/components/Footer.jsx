@@ -12,11 +12,10 @@ const Footer = () => {
   ];
 
   const socials = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com' },
-    { icon: Twitter, label: 'Twitter', href: 'https://twitter.com' },
-    { icon: MessageCircle, label: 'Discord', href: 'https://discord.com' },
-    { icon: Mail, label: 'Email', href: 'mailto:aaron@example.com' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/juansilva02' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/juan-bautista-silva/' },
+    { icon: Mail, label: 'Email', href: 'mailto:juanbautistasilva02@gmail.com' },
+    { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/541136952045' },
   ];
 
   return (
@@ -25,10 +24,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <span className="text-2xl font-bold text-slate-100">
-              <span className="text-slate-400">{'{AD}'}</span>
+              <span className="text-slate-400">zuzudev</span>
             </span>
             <p className="mt-4 text-slate-400 text-sm leading-relaxed max-w-prose">
-              Full Stack Developer specializing in blockchain and AI technologies. Building the future of decentralized systems.
+              Full Stack Developer & Automation Specialist. JavaScript, n8n, Astro, Machine Learning, and data-driven web applications.
             </p>
           </div>
 
@@ -68,7 +67,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © 2026 Aaron Dukes. All rights reserved.
+            © 2026 Juan Silva (zuzudev). All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm">
             <Link to="/privacy" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">

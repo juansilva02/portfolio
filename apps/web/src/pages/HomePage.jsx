@@ -50,8 +50,8 @@ const HomePage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Aaron Dukes - Full Stack Developer | Blockchain & AI Specialist</title>
-        <meta name="description" content="Full Stack Developer specializing in blockchain and AI technologies. Expert in Layer 1 systems, multi-LLM orchestration, Go, Rust, Python, Solidity, Web3, DeFi, and AI/ML." />
+        <title>Juan Silva - Full Stack Developer | Full Stack Developer & Automation Specialist | zuzudev</title>
+        <meta name="description" content="Full Stack Developer & Automation Specialist. Administrative experience across diverse projects with expertise in automation, web development, and AI/ML." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">
@@ -87,7 +87,7 @@ const HomePage = () => {
                       className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-100 leading-tight"
                       style={{ letterSpacing: '-0.02em' }}
                     >
-                      Aaron <span className="text-slate-400">Dukes</span>
+                      Juan <span className="text-slate-400">Silva</span>
                     </motion.h1>
                     
                     <motion.p

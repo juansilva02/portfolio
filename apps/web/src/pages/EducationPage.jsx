@@ -8,27 +8,27 @@ import EducationCard from '@/components/EducationCard.jsx';
 const EducationPage = () => {
   const education = [
     {
-      institution: 'Massachusetts Institute of Technology',
-      degree: 'Master of Science in Computer Science',
-      field: 'Specialization in Distributed Systems and Cryptography',
-      graduationDate: 'May 2018',
-      gpa: '3.9',
+      institution: 'Universidad de Buenos Aires (UBA)',
+      degree: 'Licenciatura en Ciencias de la Comunicación',
+      field: 'Medios digitales, narrativa transmedia y comunicación estratégica',
+      graduationDate: 'Diciembre 2022',
+      gpa: '8.7',
     },
     {
-      institution: 'University of California, Berkeley',
-      degree: 'Bachelor of Science in Computer Science',
-      field: 'Minor in Mathematics',
-      graduationDate: 'May 2016',
-      gpa: '3.8',
+      institution: 'Instituto Tecnológico de Buenos Aires (ITBA)',
+      degree: 'Curso de Desarrollo Web Full Stack',
+      field: 'React, Node.js, bases de datos y despliegue',
+      graduationDate: 'Junio 2021',
+      gpa: '9.0',
     },
   ];
 
   const achievements = [
-    'Published research paper on consensus mechanisms in distributed ledger systems',
-    'Dean\'s List for 6 consecutive semesters',
-    'Winner of MIT Blockchain Hackathon 2017',
-    'Teaching Assistant for Advanced Algorithms course',
-    'Member of ACM and IEEE Computer Society',
+    'Integrante del equipo ganador del Hackathon UBA 2022 con un proyecto de experiencia de usuario móvil',
+    'Desarrollo de contenidos digitales para campañas de sensibilización y branding corporativo',
+    'Participación en seminarios de comunicación digital y storytelling para marcas tecnológicas',
+    'Coordinador de proyecto final de grado sobre comunicación y UX',
+    'Colaboración con ONG locales para soluciones de alcance comunitario',
   ];
 
   return (
@@ -39,8 +39,8 @@ const EducationPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Education - Aaron Dukes</title>
-        <meta name="description" content="Educational background and academic achievements of Aaron Dukes in Computer Science with specialization in distributed systems and cryptography." />
+        <title>Educación - Juan Silva | zuzudev</title>
+        <meta name="description" content="Formación académica de Juan Silva (zuzudev), con estudios en Ciencias de la Comunicación y desarrollo web full-stack." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">

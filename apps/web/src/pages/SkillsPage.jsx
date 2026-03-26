@@ -10,53 +10,45 @@ const SkillsPage = () => {
     {
       category: 'Languages',
       skills: [
-        { name: 'Go', proficiency: 92 },
-        { name: 'Rust', proficiency: 88 },
-        { name: 'Python', proficiency: 95 },
-        { name: 'Solidity', proficiency: 90 },
-        { name: 'TypeScript', proficiency: 87 },
-        { name: 'JavaScript', proficiency: 93 },
+        { name: 'JavaScript' },
+        { name: 'TypeScript' },
+        { name: 'Python' },
+        { name: 'Go' },
+        { name: 'HTML & CSS' },
       ],
     },
     {
-      category: 'Blockchain & Web3',
+      category: 'Frontend',
       skills: [
-        { name: 'Ethereum', proficiency: 94 },
-        { name: 'Smart Contracts', proficiency: 91 },
-        { name: 'DeFi Protocols', proficiency: 89 },
-        { name: 'Layer 1 Development', proficiency: 86 },
-        { name: 'Web3.js / Ethers.js', proficiency: 92 },
-        { name: 'IPFS', proficiency: 83 },
+        { name: 'React' },
+        { name: 'Tailwind CSS' },
+        { name: 'Vite' },
+        { name: 'Next.js' },
       ],
     },
     {
-      category: 'AI & Machine Learning',
+      category: 'Backend',
       skills: [
-        { name: 'LLM Orchestration', proficiency: 88 },
-        { name: 'TensorFlow', proficiency: 85 },
-        { name: 'PyTorch', proficiency: 87 },
-        { name: 'Natural Language Processing', proficiency: 84 },
-        { name: 'Computer Vision', proficiency: 81 },
-      ],
-    },
-    {
-      category: 'Frameworks & Tools',
-      skills: [
-        { name: 'React', proficiency: 91 },
-        { name: 'Node.js', proficiency: 93 },
-        { name: 'Docker', proficiency: 89 },
-        { name: 'Kubernetes', proficiency: 85 },
-        { name: 'GraphQL', proficiency: 87 },
-        { name: 'Redis', proficiency: 84 },
+        { name: 'Node.js' },
+        { name: 'Express' },
+        { name: 'FastAPI' },
+        { name: 'GraphQL' },
       ],
     },
     {
       category: 'Databases',
       skills: [
-        { name: 'PostgreSQL', proficiency: 90 },
-        { name: 'MongoDB', proficiency: 88 },
-        { name: 'Redis', proficiency: 86 },
-        { name: 'Cassandra', proficiency: 82 },
+        { name: 'PostgreSQL' },
+        { name: 'MongoDB' },
+        { name: 'Redis' },
+      ],
+    },
+    {
+      category: 'DevOps',
+      skills: [
+        { name: 'Docker' },
+        { name: 'GitHub Actions' },
+        { name: 'CI/CD' },
       ],
     },
   ];
@@ -69,8 +61,8 @@ const SkillsPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Skills - Aaron Dukes</title>
-        <meta name="description" content="Technical skills and expertise of Aaron Dukes including blockchain development, AI/ML, and full-stack technologies." />
+        <title>Skills - Juan Silva | zuzudev</title>
+        <meta name="description" content="Technical skills and expertise of Juan Silva, focusing on modern web development, full-stack engineering, and product-oriented solutions." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">
@@ -88,7 +80,7 @@ const SkillsPage = () => {
                 Technical <span className="text-slate-400">Skills</span>
               </h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                A comprehensive overview of my technical expertise across blockchain, AI, and full-stack development
+                A comprehensive overview of my technical skills in modern web and application engineering.
               </p>
             </motion.div>
 

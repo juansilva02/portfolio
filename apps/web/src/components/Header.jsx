@@ -42,7 +42,7 @@ const Header = () => {
             to="/"
             className="text-2xl font-bold text-slate-100 hover:text-slate-300 transition-colors duration-200"
           >
-            <span className="text-slate-400">{'{AD}'}</span>
+            <span className="text-slate-400">{'{zuzudev}'}</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
