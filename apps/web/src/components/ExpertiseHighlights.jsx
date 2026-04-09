@@ -6,33 +6,33 @@ const ExpertiseHighlights = () => {
   const expertise = [
     {
       icon: Blocks,
-      title: 'Blockchain Architecture',
-      description: 'Designing scalable Layer 1 protocols and cross-chain bridges with high throughput and security.',
+      title: 'Arquitectura Frontend',
+      description: 'Diseno interfaces escalables con componentes reutilizables, estructura clara y foco en experiencia de usuario.',
     },
     {
       icon: BrainCircuit,
-      title: 'AI & LLM Integration',
-      description: 'Orchestrating multi-LLM systems and developing AI-powered tools for automated workflows.',
+      title: 'Automatizacion e IA',
+      description: 'Integro herramientas y flujos automatizados para reducir tareas repetitivas y mejorar procesos reales.',
     },
     {
       icon: Code,
-      title: 'Full Stack Development',
-      description: 'Building responsive, high-performance web applications using modern React and Node.js ecosystems.',
+      title: 'Desarrollo Full Stack',
+      description: 'Construyo aplicaciones web responsive con React, Node.js y una base pensada para evolucionar sin friccion.',
     },
     {
       icon: FileCode2,
-      title: 'Smart Contracts',
-      description: 'Developing and auditing secure Solidity and Rust smart contracts for DeFi and NFT platforms.',
+      title: 'Interfaces orientadas a negocio',
+      description: 'Transformo necesidades comerciales en pantallas claras, flujos utiles y experiencias digitales faciles de usar.',
     },
     {
       icon: Server,
-      title: 'DevOps & Infrastructure',
-      description: 'Implementing robust CI/CD pipelines and managing scalable Kubernetes clusters.',
+      title: 'Deploy e infraestructura',
+      description: 'Configuro despliegues modernos, optimizacion tecnica y buenas practicas para publicar con confianza.',
     },
     {
       icon: Users,
-      title: 'Technical Leadership',
-      description: 'Mentoring engineering teams and driving technical strategy from conception to deployment.',
+      title: 'Colaboracion tecnica',
+      description: 'Trabajo codo a codo con clientes y equipos para convertir ideas en productos digitales bien resueltos.',
     },
   ];
 
@@ -59,8 +59,8 @@ const ExpertiseHighlights = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Core <span className="text-slate-400">Expertise</span></h2>
-          <p className="text-slate-300 max-w-2xl mx-auto">Specialized skills bridging the gap between decentralized systems and artificial intelligence.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Lo que <span className="text-slate-400">hago</span></h2>
+          <p className="text-slate-300 max-w-2xl mx-auto">Capacidades con las que ayudo a construir productos web mas claros, utiles y alineados a la marca.</p>
         </motion.div>
 
         <motion.div

@@ -20,25 +20,25 @@ import NewsletterCTA from '@/components/NewsletterCTA.jsx';
 const HomePage = () => {
   const articles = [
     {
-      title: 'Building Scalable DeFi Infrastructure',
-      category: 'DeFi',
-      readTime: '8 min',
-      date: 'Oct 12, 2025',
-      excerpt: 'An in-depth look at architecting high-throughput decentralized finance protocols using Rust and Solana.'
+      title: 'Como diseno sitios web que convierten mejor',
+      category: 'UI',
+      readTime: '6 min',
+      date: '12 Oct 2025',
+      excerpt: 'Una mirada practica al equilibrio entre estructura, claridad visual y llamados a la accion pensados para marcas y negocios.'
     },
     {
-      title: 'Multi-LLM Orchestration',
-      category: 'AI',
-      readTime: '12 min',
-      date: 'Sep 28, 2025',
-      excerpt: 'Strategies for routing queries to optimal language models based on task requirements and cost constraints.'
+      title: 'Automatizaciones reales para equipos pequenos',
+      category: 'Automatizacion',
+      readTime: '7 min',
+      date: '28 Sep 2025',
+      excerpt: 'Ideas concretas para ahorrar tiempo con flujos automatizados en procesos comerciales, operativos y de contenido.'
     },
     {
-      title: 'Cross-Chain Messaging',
-      category: 'Blockchain',
-      readTime: '10 min',
-      date: 'Sep 15, 2025',
-      excerpt: 'Exploring the security implications and implementation details of modern cross-chain bridge protocols.'
+      title: 'Desarrollo web con foco en marca y performance',
+      category: 'Desarrollo',
+      readTime: '5 min',
+      date: '15 Sep 2025',
+      excerpt: 'Buenas practicas para construir experiencias web rapidas, mantenibles y alineadas con la identidad visual de cada proyecto.'
     }
   ];
 
@@ -50,8 +50,8 @@ const HomePage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Juan Silva - Full Stack Developer | Full Stack Developer & Automation Specialist | zuzudev</title>
-        <meta name="description" content="Full Stack Developer & Automation Specialist. Administrative experience across diverse projects with expertise in automation, web development, and AI/ML." />
+        <title>Juan Silva | Desarrollador Full Stack y UI | zuzudev</title>
+        <meta name="description" content="Portfolio de zuzudev. Desarrollo software, interfaces web y automatizaciones para marcas, profesionales y negocios que necesitan una presencia digital clara y efectiva." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">
@@ -77,7 +77,7 @@ const HomePage = () => {
                       transition={{ delay: 0.2 }}
                       className="text-slate-400 text-lg font-medium"
                     >
-                      Hi, I am
+                      Hola, soy
                     </motion.p>
                     
                     <motion.h1
@@ -96,7 +96,7 @@ const HomePage = () => {
                       transition={{ delay: 0.4 }}
                       className="text-2xl md:text-3xl font-semibold text-slate-300"
                     >
-                      Full Stack Dev
+                      Desarrollador Full Stack y UI
                     </motion.p>
                     
                     <motion.p
@@ -105,7 +105,7 @@ const HomePage = () => {
                       transition={{ delay: 0.5 }}
                       className="text-slate-500 text-lg"
                     >
-                      Based in the US.
+                      Construyo experiencias digitales desde Argentina.
                     </motion.p>
                   </div>
 
@@ -115,9 +115,8 @@ const HomePage = () => {
                     transition={{ delay: 0.6 }}
                     className="text-slate-300 text-lg leading-relaxed max-w-prose"
                   >
-                    I architect cutting-edge solutions at the intersection of blockchain and artificial intelligence. 
-                    Specializing in Layer 1 systems, multi-LLM orchestration, and decentralized applications. 
-                    Proficient in Go, Rust, Python, and Solidity.
+                    En zuzudev combino desarrollo web, criterio visual y automatizacion para crear productos digitales
+                    que se ven bien, comunican mejor y ayudan a que cada marca crezca con una presencia online solida.
                   </motion.p>
 
                   <motion.div
@@ -133,12 +132,12 @@ const HomePage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
                     className="flex flex-wrap items-center gap-4"
-                  >
-                    <Link
-                      to="/projects"
-                      className="group flex items-center gap-2 bg-slate-300 text-slate-900 px-6 py-3 rounded-lg font-medium hover:bg-slate-200 transition-all duration-200 active:scale-95"
                     >
-                      <span>View Projects</span>
+                      <Link
+                        to="/projects"
+                        className="group flex items-center gap-2 bg-slate-300 text-slate-900 px-6 py-3 rounded-lg font-medium hover:bg-slate-200 transition-all duration-200 active:scale-95"
+                      >
+                      <span>Ver proyectos</span>
                       <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
                     </Link>
                     
@@ -148,7 +147,7 @@ const HomePage = () => {
                       className="flex items-center gap-2 border border-slate-500 text-slate-300 px-6 py-3 rounded-lg font-medium hover:bg-slate-800 transition-all duration-200 active:scale-95"
                     >
                       <Download className="w-5 h-5" />
-                      <span>Resume</span>
+                      <span>CV</span>
                     </a>
                   </motion.div>
                 </motion.div>
@@ -175,8 +174,8 @@ const HomePage = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Latest <span className="text-slate-400">Insights</span></h2>
-                  <p className="text-slate-300 max-w-2xl">Thoughts and tutorials on building modern decentralized systems.</p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Ultimos <span className="text-slate-400">articulos</span></h2>
+                  <p className="text-slate-300 max-w-2xl">Ideas, procesos y aprendizajes sobre desarrollo web, UI y automatizacion aplicada.</p>
                 </motion.div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

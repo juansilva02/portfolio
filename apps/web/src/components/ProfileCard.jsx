@@ -34,7 +34,7 @@ const ProfileCard = () => {
         
         <div className="absolute top-4 right-4 flex items-center gap-2 bg-slate-900/50 backdrop-blur-sm px-3 py-1.5 rounded-full border border-slate-600/50">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          <span className="text-xs font-medium text-slate-300">Open to Work</span>
+          <span className="text-xs font-medium text-slate-300">Disponible para proyectos</span>
         </div>
         
         <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-slate-500/30 rounded-tl-2xl" />

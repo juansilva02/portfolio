@@ -8,7 +8,7 @@ import SkillCard from '@/components/SkillCard.jsx';
 const SkillsPage = () => {
   const skillCategories = [
     {
-      category: 'Languages',
+      category: 'Lenguajes',
       skills: [
         { name: 'JavaScript' },
         { name: 'TypeScript' },
@@ -21,6 +21,7 @@ const SkillsPage = () => {
       category: 'Frontend',
       skills: [
         { name: 'React' },
+        { name: 'Astro' },
         { name: 'Tailwind CSS' },
         { name: 'Vite' },
         { name: 'Next.js' },
@@ -61,8 +62,8 @@ const SkillsPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Skills - Juan Silva | zuzudev</title>
-        <meta name="description" content="Technical skills and expertise of Juan Silva, focusing on modern web development, full-stack engineering, and product-oriented solutions." />
+        <title>Skills | Juan Silva | zuzudev</title>
+        <meta name="description" content="Stack técnico y habilidades de Juan Silva en desarrollo web moderno, interfaces, automatización y soluciones orientadas a producto." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">
@@ -77,10 +78,10 @@ const SkillsPage = () => {
               className="text-center mb-16"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance" style={{ letterSpacing: '-0.02em' }}>
-                Technical <span className="text-slate-400">Skills</span>
+                Stack y <span className="text-slate-400">skills</span>
               </h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                A comprehensive overview of my technical skills in modern web and application engineering.
+                Una vista clara de las tecnologías con las que construyo productos web, interfaces y automatizaciones.
               </p>
             </motion.div>
 
@@ -119,12 +120,11 @@ const SkillsPage = () => {
               transition={{ duration: 0.6 }}
               className="mt-16 bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50"
             >
-              <h3 className="text-2xl font-bold text-slate-100 mb-4">Continuous Learning</h3>
+              <h3 className="text-2xl font-bold text-slate-100 mb-4">Aprendizaje continuo</h3>
               <p className="text-slate-300 leading-relaxed max-w-prose">
-                Technology evolves rapidly, and I'm committed to staying at the forefront. I regularly 
-                explore new frameworks, contribute to open-source projects, and participate in hackathons 
-                to sharpen my skills and learn from the community. Currently diving deeper into zero-knowledge 
-                proofs, advanced consensus mechanisms, and transformer architectures for AI applications.
+                La tecnología cambia rápido. Mantengo el stack actualizado explorando nuevas herramientas,
+                mejorando criterios de arquitectura y probando enfoques que eleven la calidad visual, técnica
+                y operativa de cada proyecto.
               </p>
             </motion.div>
           </div>

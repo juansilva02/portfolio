@@ -12,6 +12,7 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -21,13 +22,12 @@ const Header = () => {
   }, [location.pathname]);
 
   const navItems = [
-    { name: 'About', path: '/about' },
+    { name: 'Sobre mi', path: '/about' },
     { name: 'Skills', path: '/skills' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Education', path: '/education' },
-    { name: 'Certifications', path: '/certifications' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Experiencia', path: '/experience' },
+    { name: 'Proyectos', path: '/projects' },
+    { name: 'Educacion', path: '/education' },
+    { name: 'Contacto', path: '/contact' },
   ];
 
   return (
@@ -72,13 +72,13 @@ const Header = () => {
             to="/contact"
             className="hidden lg:block bg-slate-300 text-slate-900 px-6 py-2 rounded-lg font-medium hover:bg-slate-200 transition-all duration-200 active:scale-95"
           >
-            Get in Touch
+            Hablemos
           </Link>
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden text-slate-100 hover:text-slate-300 transition-colors duration-200"
-            aria-label="Toggle menu"
+            aria-label="Abrir menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -112,7 +112,7 @@ const Header = () => {
                 to="/contact"
                 className="mt-2 bg-slate-300 text-slate-900 px-4 py-3 rounded-lg font-medium text-center hover:bg-slate-200 transition-all duration-200 active:scale-95"
               >
-                Get in Touch
+                Hablemos
               </Link>
             </nav>
           </motion.div>

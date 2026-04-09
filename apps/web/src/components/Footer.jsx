@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, MessageCircle, Mail } from 'lucide-react';
+import { Github, Linkedin, MessageCircle, Mail } from 'lucide-react';
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'About', path: '/about' },
+    { name: 'Sobre mi', path: '/about' },
     { name: 'Skills', path: '/skills' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Experiencia', path: '/experience' },
+    { name: 'Proyectos', path: '/projects' },
+    { name: 'Contacto', path: '/contact' },
   ];
 
   const socials = [
@@ -27,12 +27,12 @@ const Footer = () => {
               <span className="text-slate-400">zuzudev</span>
             </span>
             <p className="mt-4 text-slate-400 text-sm leading-relaxed max-w-prose">
-              Full Stack Developer & Automation Specialist. JavaScript, n8n, Astro, Machine Learning, and data-driven web applications.
+              Desarrollo web, UI y automatizacion para marcas, profesionales y negocios que quieren una presencia digital clara y moderna.
             </p>
           </div>
 
           <div>
-            <span className="text-slate-100 font-semibold mb-4 block">Quick Links</span>
+            <span className="text-slate-100 font-semibold mb-4 block">Accesos rapidos</span>
             <nav className="flex flex-col gap-2">
               {quickLinks.map((link) => (
                 <Link
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <span className="text-slate-100 font-semibold mb-4 block">Connect</span>
+            <span className="text-slate-100 font-semibold mb-4 block">Conecta conmigo</span>
             <div className="flex items-center gap-3">
               {socials.map((social) => (
                 <a
@@ -71,10 +71,10 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-6 text-sm">
             <Link to="/privacy" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
-              Privacy Policy
+              Politica de privacidad
             </Link>
             <Link to="/terms" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
-              Terms of Service
+              Terminos de servicio
             </Link>
           </div>
         </div>

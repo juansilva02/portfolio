@@ -31,10 +31,10 @@ const StatCounter = ({ value, suffix = "+" }) => {
 
 const KeyStatistics = () => {
   const stats = [
-    { icon: Calendar, value: 8, label: 'Years Experience' },
-    { icon: Briefcase, value: 50, label: 'Projects Delivered' },
-    { icon: FileCode, value: 20, label: 'Smart Contracts' },
-    { icon: Users, value: 100, label: 'Team Members Led' },
+    { icon: Calendar, value: 4, label: 'Anos creando soluciones digitales' },
+    { icon: Briefcase, value: 20, label: 'Proyectos web y de automatizacion' },
+    { icon: FileCode, value: 12, label: 'Interfaces y sistemas publicados' },
+    { icon: Users, value: 15, label: 'Clientes y equipos acompanados' },
   ];
 
   return (

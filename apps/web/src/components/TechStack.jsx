@@ -5,36 +5,38 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 const TechStack = () => {
   const categories = [
     {
-      title: 'Languages',
+      title: 'Lenguajes',
       techs: [
-        { name: 'Go', desc: 'High-performance backend services' },
-        { name: 'Rust', desc: 'Memory-safe systems & smart contracts' },
-        { name: 'Python', desc: 'AI/ML & data processing' },
-        { name: 'Solidity', desc: 'EVM smart contract development' },
+        { name: 'JavaScript', desc: 'Logica para frontend, interacciones y aplicaciones web' },
+        { name: 'TypeScript', desc: 'Codigo mas seguro y mantenible para proyectos en crecimiento' },
+        { name: 'Python', desc: 'Automatizacion, integraciones y procesamiento de datos' },
+        { name: 'SQL', desc: 'Consulta y modelado de datos para productos y operaciones' },
       ]
     },
     {
       title: 'Frameworks',
       techs: [
-        { name: 'React', desc: 'Frontend UI development' },
-        { name: 'Next.js', desc: 'Full-stack React applications' },
-        { name: 'Node.js', desc: 'Scalable network applications' },
+        { name: 'React', desc: 'Interfaces dinamicas y componentes reutilizables' },
+        { name: 'Next.js', desc: 'Aplicaciones web modernas con enfoque full stack' },
+        { name: 'Astro', desc: 'Sitios rapidos, livianos y orientados a contenido' },
+        { name: 'Node.js', desc: 'APIs, servicios y logica de servidor' },
       ]
     },
     {
-      title: 'Blockchain',
+      title: 'UI y estilos',
       techs: [
-        { name: 'Ethereum', desc: 'Layer 1 protocol development' },
-        { name: 'Polygon', desc: 'Layer 2 scaling solutions' },
-        { name: 'Solana', desc: 'High-throughput dApps' },
+        { name: 'Tailwind', desc: 'Sistemas visuales agiles y consistentes' },
+        { name: 'Framer Motion', desc: 'Animaciones con criterio y mejor percepcion de interfaz' },
+        { name: 'CSS', desc: 'Control fino del look and feel de cada pantalla' },
       ]
     },
     {
-      title: 'AI & ML',
+      title: 'Herramientas',
       techs: [
-        { name: 'OpenAI', desc: 'LLM integration & fine-tuning' },
-        { name: 'Claude', desc: 'Advanced reasoning models' },
-        { name: 'TensorFlow', desc: 'Custom model training' },
+        { name: 'n8n', desc: 'Automatizacion de tareas y procesos conectando servicios' },
+        { name: 'GitHub', desc: 'Versionado, colaboracion y despliegue de codigo' },
+        { name: 'Vercel', desc: 'Publicacion veloz para sitios y aplicaciones modernas' },
+        { name: 'Figma', desc: 'Apoyo visual para definir estructura y decisiones de UI' },
       ]
     }
   ];
@@ -48,8 +50,8 @@ const TechStack = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Technology <span className="text-slate-400">Stack</span></h2>
-          <p className="text-slate-300 max-w-2xl mx-auto">Modern tools and frameworks I use to build scalable solutions.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Stack <span className="text-slate-400">tecnologico</span></h2>
+          <p className="text-slate-300 max-w-2xl mx-auto">Herramientas y tecnologias que uso para construir productos web claros, rapidos y mantenibles.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

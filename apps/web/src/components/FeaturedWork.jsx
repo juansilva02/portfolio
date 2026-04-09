@@ -6,22 +6,26 @@ import { Link } from 'react-router-dom';
 const FeaturedWork = () => {
   const projects = [
     {
-      title: 'DeFi Liquidity Protocol',
-      description: 'A decentralized liquidity aggregation protocol optimizing trading routes across multiple DEXs. Achieved $180M TVL.',
-      tech: ['Solidity', 'Rust', 'React', 'Web3.js'],
+      title: 'Stutt Ingenieria',
+      description: 'Sitio corporativo pensado para comunicar servicios, transmitir confianza y reforzar la presencia digital de la marca.',
+      tech: ['React', 'Vite', 'Tailwind', 'Responsive UI'],
       image: 'https://images.unsplash.com/photo-1639762681485-074b7f4ec8ce?auto=format&fit=crop&q=80&w=800',
+      demoUrl: 'https://www.stuttingenieria.com/',
+      repoUrl: 'https://github.com/juansilva02/stuttgart',
     },
     {
-      title: 'AI Trading Orchestrator',
-      description: 'Machine learning-powered trading bot analyzing market sentiment and on-chain data for automated execution.',
-      tech: ['Python', 'TensorFlow', 'FastAPI', 'Redis'],
+      title: 'Landing para marca personal',
+      description: 'Pagina de presentacion enfocada en servicios, autoridad profesional y conversion desde mobile y desktop.',
+      tech: ['React', 'Tailwind', 'EmailJS', 'SEO'],
       image: 'https://images.unsplash.com/photo-1620825937374-87fc7d62828e?auto=format&fit=crop&q=80&w=800',
+      demoUrl: '/projects',
     },
     {
-      title: 'Cross-Chain Bridge',
-      description: 'Secure bridge enabling asset transfers between Ethereum and Polygon using advanced cryptographic proofs.',
-      tech: ['Go', 'Node.js', 'PostgreSQL', 'Docker'],
+      title: 'Micrositio para lanzamiento',
+      description: 'Experiencia visual de una sola pagina con narrativa clara, secciones rapidas y llamados a la accion bien definidos.',
+      tech: ['Astro', 'CSS', 'JavaScript', 'UI Copy'],
       image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800',
+      demoUrl: '/projects',
     }
   ];
 
@@ -34,8 +38,8 @@ const FeaturedWork = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Featured <span className="text-slate-400">Work</span></h2>
-            <p className="text-slate-300 max-w-2xl">Highlighting recent projects at the intersection of Web3 and AI.</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Trabajo <span className="text-slate-400">destacado</span></h2>
+            <p className="text-slate-300 max-w-2xl">Una seleccion de proyectos recientes donde combino desarrollo web, UI y criterio de marca.</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -43,7 +47,7 @@ const FeaturedWork = () => {
             viewport={{ once: true }}
           >
             <Link to="/projects" className="group flex items-center gap-2 text-slate-300 hover:text-slate-100 transition-colors">
-              View all projects
+              Ver todos los proyectos
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -80,12 +84,26 @@ const FeaturedWork = () => {
                 </div>
                 
                 <div className="flex items-center gap-4 mt-auto pt-4 border-t border-slate-700/50">
-                  <button className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-slate-100 transition-colors">
-                    <ExternalLink className="w-4 h-4" /> Demo
-                  </button>
-                  <button className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-slate-100 transition-colors">
-                    <Github className="w-4 h-4" /> Code
-                  </button>
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target={project.demoUrl.startsWith('http') ? '_blank' : undefined}
+                      rel={project.demoUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-slate-100 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4" /> Ver sitio
+                    </a>
+                  )}
+                  {project.repoUrl && (
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-slate-100 transition-colors"
+                    >
+                      <Github className="w-4 h-4" /> Ver codigo
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

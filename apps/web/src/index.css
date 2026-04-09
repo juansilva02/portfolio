@@ -103,10 +103,52 @@ html {
   50% { opacity: 0.8; box-shadow: 0 0 40px rgba(148, 163, 184, 0.4); }
 }
 
+@keyframes hex-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-1.5%, 1.2%, 0) scale(1.02); }
+  100% { transform: translate3d(1.5%, -1%, 0) scale(1); }
+}
+
+@keyframes network-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+}
+
 .animate-float {
   animation: float 8s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-hex-drift {
+  animation: hex-drift 22s ease-in-out infinite;
+}
+
+.animate-network-pulse {
+  animation: network-pulse 7s ease-in-out infinite;
+}
+
+@keyframes skill-sheen {
+  0% { transform: translateX(-65%) skewX(-18deg); opacity: 0; }
+  18% { opacity: 0.18; }
+  50% { opacity: 0.32; }
+  82% { opacity: 0.14; }
+  100% { transform: translateX(165%) skewX(-18deg); opacity: 0; }
+}
+
+.skill-sheen {
+  animation: skill-sheen 6.5s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes orbit-glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.orbit-glow {
+  animation: orbit-glow 13s linear infinite;
+  transform-origin: center;
 }

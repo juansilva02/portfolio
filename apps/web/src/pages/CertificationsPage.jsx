@@ -6,54 +6,62 @@ import Footer from '@/components/Footer.jsx';
 import CertificationCard from '@/components/CertificationCard.jsx';
 
 const CertificationsPage = () => {
-  const certifications = [
+  const websites = [
     {
-      name: 'Certified Blockchain Developer',
-      issuer: 'Blockchain Council',
-      issueDate: 'Mar 2023',
-      credentialId: 'BC-DEV-2023-4782',
+      title: 'Stutt Ingenieria',
+      category: 'Sitio corporativo',
+      summary: 'Sitio institucional para una empresa de ingenieria, con una interfaz clara, estructura profesional y presencia digital alineada a una marca tecnica y confiable.',
+      stack: ['React', 'Vite', 'Tailwind', 'UI Responsive'],
+      year: '2026',
+      siteUrl: 'https://www.stuttingenieria.com/',
+      repoUrl: 'https://github.com/juansilva02/stuttgart',
     },
     {
-      name: 'AWS Certified Solutions Architect - Professional',
-      issuer: 'Amazon Web Services',
-      issueDate: 'Jan 2023',
-      credentialId: 'AWS-SAP-2023-1247',
+      title: 'Web corporativa para consultora tecnológica',
+      category: 'Sitio institucional',
+      summary: 'Arquitectura clara de contenidos, diseño UI sobrio y bloques pensados para transmitir confianza, procesos y casos de éxito.',
+      stack: ['React', 'Vite', 'CSS Modules'],
+      year: '2026',
+      siteUrl: 'https://example.com',
     },
     {
-      name: 'Certified Ethereum Developer',
-      issuer: 'Ethereum Foundation',
-      issueDate: 'Nov 2022',
-      credentialId: 'ETH-DEV-2022-8934',
+      title: 'Portfolio profesional para creador digital',
+      category: 'Portfolio personal',
+      summary: 'Identidad visual personalizada, narrativa de marca y estructura flexible para destacar proyectos, servicios y contacto.',
+      stack: ['React', 'Tailwind', 'EmailJS'],
+      year: '2025',
+      siteUrl: 'https://example.com',
     },
     {
-      name: 'TensorFlow Developer Certificate',
-      issuer: 'Google',
-      issueDate: 'Aug 2022',
-      credentialId: 'TF-DEV-2022-5621',
+      title: 'One page para lanzamiento de producto',
+      category: 'Campaña digital',
+      summary: 'Página de alto impacto para validar una propuesta de valor con llamados a la acción claros y carga rápida en mobile.',
+      stack: ['HTML', 'CSS', 'JavaScript'],
+      year: '2025',
+      siteUrl: 'https://example.com',
     },
     {
-      name: 'Certified Kubernetes Administrator',
-      issuer: 'Cloud Native Computing Foundation',
-      issueDate: 'Jun 2022',
-      credentialId: 'CKA-2022-3456',
+      title: 'Plataforma web para reservas y servicios',
+      category: 'Producto web',
+      summary: 'Interfaz enfocada en usabilidad, flujo de reservas simple y una base escalable para seguir sumando funcionalidades.',
+      stack: ['React', 'Node.js', 'MongoDB'],
+      year: '2025',
+      siteUrl: 'https://example.com',
     },
     {
-      name: 'Solidity Smart Contract Security',
-      issuer: 'ConsenSys Academy',
-      issueDate: 'Apr 2022',
-      credentialId: 'CS-SEC-2022-7891',
+      title: 'Micrositio para evento y registro',
+      category: 'Evento online',
+      summary: 'Diseño centrado en claridad y urgencia, con información clave, agenda y registro integrados en una sola experiencia.',
+      stack: ['Next.js', 'Tailwind', 'Forms'],
+      year: '2025',
+      siteUrl: 'https://example.com',
     },
     {
-      name: 'Professional Scrum Master I',
-      issuer: 'Scrum.org',
-      issueDate: 'Feb 2022',
-      credentialId: 'PSM-I-2022-2345',
-    },
-    {
-      name: 'MongoDB Certified Developer',
-      issuer: 'MongoDB University',
-      issueDate: 'Dec 2021',
-      credentialId: 'MDB-DEV-2021-6789',
+      title: 'Sitio de servicios para marca personal',
+      category: 'Marca personal',
+      summary: 'Página pensada para posicionar expertise, comunicar una propuesta profesional sólida y facilitar el contacto comercial.',
+      stack: ['React', 'SEO', 'Responsive UI'],
+      year: '2024',
     },
   ];
 
@@ -65,8 +73,8 @@ const CertificationsPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Certifications - Aaron Dukes</title>
-        <meta name="description" content="Professional certifications and credentials of Aaron Dukes in blockchain development, cloud architecture, AI/ML, and software engineering." />
+        <title>Sitios Web | zuzudev</title>
+        <meta name="description" content="Selección de sitios web creados por zuzudev, con foco en desarrollo de software, UI cuidada y experiencias digitales pensadas para marcas y negocios." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">
@@ -81,21 +89,26 @@ const CertificationsPage = () => {
               className="text-center mb-16"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance" style={{ letterSpacing: '-0.02em' }}>
-                Professional <span className="text-slate-400">Certifications</span>
+                Sitios web creados por <span className="text-slate-400">zuzudev</span>
               </h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Industry-recognized credentials validating expertise across blockchain, cloud, and AI technologies
+                Una vitrina de experiencias digitales donde combino desarrollo de software, criterio visual y UI enfocada en resultados.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certifications.map((cert, index) => (
+              {websites.map((site, index) => (
                 <CertificationCard
-                  key={cert.credentialId}
-                  name={cert.name}
-                  issuer={cert.issuer}
-                  issueDate={cert.issueDate}
-                  credentialId={cert.credentialId}
+                  key={`${site.title}-${index}`}
+                  title={site.title}
+                  category={site.category}
+                  summary={site.summary}
+                  stack={site.stack}
+                  year={site.year}
+                  siteUrl={site.siteUrl}
+                  repoUrl={site.repoUrl}
+                  ctaLabel="Ver sitio"
+                  repoLabel="Ver codigo"
                   index={index}
                 />
               ))}
@@ -108,24 +121,23 @@ const CertificationsPage = () => {
               transition={{ duration: 0.6 }}
               className="mt-16 bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50"
             >
-              <h3 className="text-2xl font-bold text-slate-100 mb-4">Commitment to Excellence</h3>
+              <h3 className="text-2xl font-bold text-slate-100 mb-4">Diseño y desarrollo con enfoque de marca</h3>
               <p className="text-slate-300 leading-relaxed max-w-prose mb-6">
-                I believe in continuous professional development and staying current with industry standards. 
-                These certifications represent my commitment to mastering the technologies I work with and 
-                delivering solutions that meet the highest quality standards.
+                En zuzudev cada proyecto busca algo más que verse bien: comunicar con claridad, cargar rápido,
+                funcionar bien en distintos dispositivos y sostener una identidad visual coherente con la marca.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-slate-400 mb-2">8</div>
-                  <div className="text-slate-300 text-sm">Active Certifications</div>
+                  <div className="text-3xl font-bold text-slate-400 mb-2">7</div>
+                  <div className="text-slate-300 text-sm">Sitios listos para mostrar</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-slate-400 mb-2">5</div>
-                  <div className="text-slate-300 text-sm">Technology Domains</div>
+                  <div className="text-3xl font-bold text-slate-400 mb-2">100%</div>
+                  <div className="text-slate-300 text-sm">Enfoque en español y marca propia</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-slate-400 mb-2">2026</div>
-                  <div className="text-slate-300 text-sm">Latest Renewal</div>
+                  <div className="text-3xl font-bold text-slate-400 mb-2">UI + Dev</div>
+                  <div className="text-slate-300 text-sm">Propuesta de valor de zuzudev</div>
                 </div>
               </div>
             </motion.div>

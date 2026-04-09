@@ -4,8 +4,8 @@ import { ArrowRight } from 'lucide-react';
 
 const TrustedPartnerGrid = () => {
   const partners = [
-    'Meridian Labs', 'Quantum Dynamics', 'Nexus Protocol', 
-    'Kaspa.com', 'OpenAI', 'Polygon', 'Ethereum Foundation'
+    'Stutt Ingenieria', 'Estudio Croma', 'Roldan Consulting',
+    'zuzudev', 'React', 'Vercel', 'n8n'
   ];
 
   return (
@@ -17,7 +17,7 @@ const TrustedPartnerGrid = () => {
           viewport={{ once: true }}
           className="text-sm font-medium text-slate-400 uppercase tracking-widest mb-8"
         >
-          Trusted by innovative teams worldwide
+          Marcas, equipos y proyectos con los que conecto
         </motion.p>
         
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-12">
@@ -43,7 +43,7 @@ const TrustedPartnerGrid = () => {
           transition={{ delay: 0.4 }}
         >
           <button className="inline-flex items-center gap-2 text-slate-300 hover:text-slate-100 font-medium transition-colors group">
-            View Case Studies
+            Ver casos y proyectos
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </motion.div>

@@ -1,67 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Calendar, Briefcase, FileCode, Users } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
-const StatCounter = ({ value, suffix = "+" }) => {
-  const [count, setCount] = useState(0);
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  useEffect(() => {
-    if (isInView) {
-      let start = 0;
-      const duration = 2000;
-      const increment = value / (duration / 16);
-      
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= value) {
-          setCount(value);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
-      return () => clearInterval(timer);
-    }
-  }, [isInView, value]);
-
-  return <span ref={ref}>{count}{suffix}</span>;
-};
-
-const KeyStatistics = () => {
-  const stats = [
-    { icon: Calendar, value: 8, label: 'Years Experience' },
-    { icon: Briefcase, value: 50, label: 'Projects Delivered' },
-    { icon: FileCode, value: 20, label: 'Smart Contracts' },
-    { icon: Users, value: 100, label: 'Team Members Led' },
-  ];
-
+const NewsletterCTA = () => {
   return (
-    <section className="py-16 border-y border-slate-700/50 bg-slate-900/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50 hover:border-slate-500/50 transition-colors relative overflow-hidden group"
+    <section className="py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="rounded-3xl border border-slate-700/50 bg-slate-800/40 p-8 md:p-12 text-center"
+        >
+          <span className="inline-flex items-center rounded-full border border-slate-600/50 bg-slate-900/50 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
+            zuzudev
+          </span>
+          <h2 className="mt-6 text-3xl md:text-4xl font-bold text-slate-100">
+            Necesitas una web clara, moderna y pensada para tu marca?
+          </h2>
+          <p className="mt-4 text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Puedo ayudarte a transformar una idea, servicio o negocio en una experiencia digital bien resuelta, con foco en UI, desarrollo y resultados.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-slate-300 px-6 py-3 font-medium text-slate-900 transition-all duration-200 hover:bg-slate-200 active:scale-95"
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-slate-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <stat.icon className="w-8 h-8 text-slate-400 mb-4 group-hover:text-slate-300 transition-colors animate-pulse-glow" />
-              <h3 className="text-4xl font-bold text-slate-100 mb-2 font-variant-numeric tabular-nums">
-                <StatCounter value={stat.value} />
-              </h3>
-              <p className="text-slate-400 font-medium">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
+              Hablemos de tu proyecto
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 py-3 font-medium text-slate-300 transition-all duration-200 hover:bg-slate-800 active:scale-95"
+            >
+              Ver mas trabajos
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-export default KeyStatistics;
+export default NewsletterCTA;

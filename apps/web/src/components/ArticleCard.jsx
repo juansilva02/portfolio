@@ -32,7 +32,7 @@ const ArticleCard = ({ title, category, readTime, date, excerpt, index = 0 }) =>
       <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-700/50">
         <span className="text-slate-500 text-xs">{date}</span>
         <button className="flex items-center gap-1.5 text-sm font-medium text-slate-300 group-hover:text-slate-100 transition-colors">
-          Read More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          Leer mas <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
     </motion.article>

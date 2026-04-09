@@ -6,22 +6,22 @@ import TestimonialCard from './TestimonialCard';
 const TestimonialCarousel = () => {
   const testimonials = [
     {
-      quote: "Aaron's ability to architect complex multi-LLM systems while maintaining robust security protocols is unmatched. He transformed our AI infrastructure.",
-      author: "Sarah Chen",
-      title: "CTO",
-      company: "Meridian Labs"
+      quote: "Trabajar con Juan fue un proceso claro y muy ordenado. Logro convertir ideas sueltas en una web profesional, rapida y alineada con nuestra marca.",
+      author: "Carla Medina",
+      title: "Directora",
+      company: "Estudio Croma"
     },
     {
-      quote: "Working with Aaron on our Layer 1 protocol was a game-changer. His deep understanding of consensus mechanisms saved us months of development time.",
-      author: "Marcus Rodriguez",
-      title: "Lead Engineer",
-      company: "Quantum Dynamics"
-    },
-    {
-      quote: "The smart contracts Aaron audited and optimized for our DeFi platform have processed millions without a single vulnerability. True professional.",
-      author: "Elena Volkov",
+      quote: "No solo resolvio la parte tecnica: tambien mejoro la estructura del contenido y la experiencia general del sitio. Se nota el criterio de UI.",
+      author: "Matias Roldan",
       title: "Founder",
-      company: "Nexus Protocol"
+      company: "Roldan Consulting"
+    },
+    {
+      quote: "La comunicacion fue excelente y cada entrega tuvo sentido de negocio. El resultado final nos dio una presencia mucho mas solida online.",
+      author: "Lucia Ferreyra",
+      title: "Marketing Lead",
+      company: "Stutt Ingenieria"
     }
   ];
 
@@ -64,7 +64,7 @@ const TestimonialCarousel = () => {
     <section className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Client <span className="text-slate-400">Testimonials</span></h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Lo que dicen <span className="text-slate-400">mis clientes</span></h2>
         </div>
 
         <div className="relative h-[300px] md:h-[250px] flex items-center justify-center">
@@ -97,14 +97,14 @@ const TestimonialCarousel = () => {
           <button
             className="absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center text-slate-300 hover:bg-slate-700 hover:text-slate-100 transition-colors z-10"
             onClick={() => paginate(-1)}
-            aria-label="Previous testimonial"
+            aria-label="Testimonio anterior"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             className="absolute right-0 md:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center text-slate-300 hover:bg-slate-700 hover:text-slate-100 transition-colors z-10"
             onClick={() => paginate(1)}
-            aria-label="Next testimonial"
+            aria-label="Siguiente testimonio"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -121,7 +121,7 @@ const TestimonialCarousel = () => {
               className={`w-2.5 h-2.5 rounded-full transition-colors ${
                 idx === currentIndex ? 'bg-slate-400' : 'bg-slate-700 hover:bg-slate-500'
               }`}
-              aria-label={`Go to slide ${idx + 1}`}
+              aria-label={`Ir al testimonio ${idx + 1}`}
             />
           ))}
         </div>

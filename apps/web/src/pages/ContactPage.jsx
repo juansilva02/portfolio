@@ -33,23 +33,44 @@ const ContactPage = () => {
     
     if (!formData.name || !formData.email || !formData.message) {
       toast({
-        title: 'Missing fields',
-        description: 'Please fill in all required fields.',
+        title: 'Faltan campos',
+        description: 'Completá los campos obligatorios antes de enviar.',
         variant: 'destructive',
       });
       return;
     }
 
     setIsSubmitting(true);
-    
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'No se pudo enviar el mensaje.');
+      }
+
       toast({
-        title: 'Message sent',
-        description: 'Thank you for reaching out. I\'ll get back to you soon.',
+        title: 'Mensaje enviado',
+        description: 'Tu mensaje se guardó correctamente. Te responderé pronto.',
       });
       setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      toast({
+        title: 'No se pudo enviar',
+        description: error.message || 'Hubo un problema al guardar tu mensaje.',
+        variant: 'destructive',
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -60,8 +81,8 @@ const ContactPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Contact - Aaron Dukes</title>
-        <meta name="description" content="Get in touch with Aaron Dukes for blockchain development, AI/ML projects, or collaboration opportunities." />
+        <title>Contacto | zuzudev</title>
+        <meta name="description" content="Contactá a zuzudev para proyectos de desarrollo web, UI y automatización. Ubicado en Buenos Aires, Argentina." />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">
@@ -76,10 +97,10 @@ const ContactPage = () => {
               className="text-center mb-16"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance" style={{ letterSpacing: '-0.02em' }}>
-                Get in <span className="text-slate-400">Touch</span>
+                Pongamos tu proyecto en <span className="text-slate-400">marcha</span>
               </h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Let's discuss your next blockchain or AI project
+                Si tenés una idea, una marca o un negocio que necesita una mejor presencia digital, escribime y lo conversamos.
               </p>
             </motion.div>
 
@@ -90,11 +111,11 @@ const ContactPage = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50"
               >
-                <h2 className="text-2xl font-bold text-slate-100 mb-6">Send a Message</h2>
+                <h2 className="text-2xl font-bold text-slate-100 mb-6">Enviame un mensaje</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <Label htmlFor="name" className="text-slate-300 mb-2 block">
-                      Name *
+                      Nombre *
                     </Label>
                     <Input
                       id="name"
@@ -104,7 +125,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       className="bg-slate-900 border-slate-600 text-slate-100 placeholder:text-slate-500 focus:border-slate-400"
-                      placeholder="Your name"
+                      placeholder="Tu nombre"
                     />
                   </div>
 
@@ -120,13 +141,13 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       className="bg-slate-900 border-slate-600 text-slate-100 placeholder:text-slate-500 focus:border-slate-400"
-                      placeholder="your.email@example.com"
+                      placeholder="tuemail@ejemplo.com"
                     />
                   </div>
 
                   <div>
                     <Label htmlFor="subject" className="text-slate-300 mb-2 block">
-                      Subject
+                      Asunto
                     </Label>
                     <Input
                       id="subject"
@@ -135,13 +156,13 @@ const ContactPage = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       className="bg-slate-900 border-slate-600 text-slate-100 placeholder:text-slate-500 focus:border-slate-400"
-                      placeholder="What's this about?"
+                      placeholder="De qué se trata?"
                     />
                   </div>
 
                   <div>
                     <Label htmlFor="message" className="text-slate-300 mb-2 block">
-                      Message *
+                      Mensaje *
                     </Label>
                     <Textarea
                       id="message"
@@ -151,7 +172,7 @@ const ContactPage = () => {
                       required
                       rows={6}
                       className="bg-slate-900 border-slate-600 text-slate-100 placeholder:text-slate-500 focus:border-slate-400 resize-none"
-                      placeholder="Tell me about your project..."
+                      placeholder="Contame sobre tu proyecto..."
                     />
                   </div>
 
@@ -161,11 +182,11 @@ const ContactPage = () => {
                     className="w-full bg-slate-300 text-slate-900 hover:bg-slate-200 transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
-                      'Sending...'
+                      'Enviando...'
                     ) : (
                       <>
                         <Send className="w-4 h-4 mr-2" />
-                        Send Message
+                        Enviar mensaje
                       </>
                     )}
                   </Button>
@@ -179,7 +200,7 @@ const ContactPage = () => {
                 className="space-y-8"
               >
                 <div className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50">
-                  <h2 className="text-2xl font-bold text-slate-100 mb-6">Contact Information</h2>
+                  <h2 className="text-2xl font-bold text-slate-100 mb-6">Información de contacto</h2>
                   
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
@@ -187,12 +208,12 @@ const ContactPage = () => {
                         <Mail className="w-6 h-6 text-slate-300" />
                       </div>
                       <div>
-                        <h3 className="text-slate-100 font-semibold mb-1">Email</h3>
+                        <h3 className="text-slate-100 font-semibold mb-1">Correo</h3>
                         <a
-                          href="mailto:aaron@example.com"
+                          href="mailto:juanbautistasilva02@gmail.com"
                           className="text-slate-300 hover:text-slate-100 transition-colors duration-200"
                         >
-                          aaron@example.com
+                          juanbautistasilva02@gmail.com
                         </a>
                       </div>
                     </div>
@@ -202,28 +223,27 @@ const ContactPage = () => {
                         <MapPin className="w-6 h-6 text-slate-300" />
                       </div>
                       <div>
-                        <h3 className="text-slate-100 font-semibold mb-1">Location</h3>
-                        <p className="text-slate-300">United States</p>
-                        <p className="text-slate-400 text-sm">Available for remote work worldwide</p>
+                        <h3 className="text-slate-100 font-semibold mb-1">Ubicación</h3>
+                        <p className="text-slate-300">Buenos Aires, Argentina</p>
+                        <p className="text-slate-400 text-sm">Disponible para proyectos remotos y colaboraciones.</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50">
-                  <h2 className="text-2xl font-bold text-slate-100 mb-6">Connect on Social</h2>
+                  <h2 className="text-2xl font-bold text-slate-100 mb-6">Redes y canales</h2>
                   <SocialLinks />
                 </div>
 
                 <div className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50">
-                  <h2 className="text-2xl font-bold text-slate-100 mb-4">Availability</h2>
+                  <h2 className="text-2xl font-bold text-slate-100 mb-4">Disponibilidad</h2>
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-green-400 font-medium">Open to Work</span>
+                    <span className="text-green-400 font-medium">Disponible para trabajar</span>
                   </div>
                   <p className="text-slate-300 leading-relaxed">
-                    Currently available for freelance projects, consulting opportunities, and full-time positions 
-                    in blockchain development and AI/ML engineering.
+                    Actualmente disponible para proyectos freelance, colaboraciones con equipos y desarrollo de soluciones web con foco en UI, performance y automatización.
                   </p>
                 </div>
               </motion.div>

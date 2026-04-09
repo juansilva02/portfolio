@@ -1,15 +1,15 @@
 import React from 'react';
-import { Route, Routes, BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { Route, Routes, BrowserRouter as Router, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from '@/components/ui/sonner';
 import ScrollToTop from './components/ScrollToTop';
+import FloatingContactButton from './components/FloatingContactButton.jsx';
 import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import SkillsPage from './pages/SkillsPage.jsx';
 import ExperiencePage from './pages/ExperiencePage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 import EducationPage from './pages/EducationPage.jsx';
-import CertificationsPage from './pages/CertificationsPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 
 const AnimatedRoutes = () => {
@@ -24,7 +24,7 @@ const AnimatedRoutes = () => {
         <Route path="/experience" element={<ExperiencePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/education" element={<EducationPage />} />
-        <Route path="/certifications" element={<CertificationsPage />} />
+        <Route path="/certifications" element={<Navigate to="/projects" replace />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={
           <div className="min-h-screen bg-slate-900 flex items-center justify-center">
@@ -47,6 +47,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <AnimatedRoutes />
+      <FloatingContactButton />
       <Toaster />
     </Router>
   );
