@@ -42,7 +42,7 @@ const Header = () => {
             to="/"
             className="text-2xl font-bold text-slate-100 hover:text-slate-300 transition-colors duration-200"
           >
-            <span className="text-slate-400">{'{zuzudev}'}</span>
+            <span className="text-slate-400 brand-reflect">{'{zuzudev}'}</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -70,7 +70,7 @@ const Header = () => {
 
           <Link
             to="/contact"
-            className="hidden lg:block bg-slate-300 text-slate-900 px-6 py-2 rounded-lg font-medium hover:bg-slate-200 transition-all duration-200 active:scale-95"
+            className="hidden lg:block liquid-glass-button-blue text-slate-50 px-6 py-2 rounded-xl font-medium transition-all duration-200 active:scale-95 hover:brightness-110"
           >
             Hablemos
           </Link>
@@ -110,7 +110,7 @@ const Header = () => {
               ))}
               <Link
                 to="/contact"
-                className="mt-2 bg-slate-300 text-slate-900 px-4 py-3 rounded-lg font-medium text-center hover:bg-slate-200 transition-all duration-200 active:scale-95"
+                className="mt-2 liquid-glass-button-blue text-slate-50 px-4 py-3 rounded-xl font-medium text-center transition-all duration-200 active:scale-95 hover:brightness-110"
               >
                 Hablemos
               </Link>

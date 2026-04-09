@@ -9,7 +9,7 @@ const TestimonialCard = ({ quote, author, title, company }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50 relative h-full flex flex-col"
+      className="liquid-glass-light rounded-[1.75rem] p-8 relative h-full flex flex-col"
     >
       <Quote className="absolute top-6 right-6 w-10 h-10 text-slate-600/30 rotate-180" />
       <div className="flex-grow mb-6">

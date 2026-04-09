@@ -39,7 +39,7 @@ const ExperienceCard = ({ company, role, duration, location, achievements, index
       <div className={`absolute left-0 top-6 w-3 h-3 ${palette.dot} rounded-full ring-4 ${palette.ring} -translate-x-[5px]`} />
 
       <div
-        className="group relative ml-8 overflow-hidden rounded-[1.65rem] border bg-slate-900/28 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+        className="glass-stable group relative ml-8 overflow-hidden rounded-[1.65rem] border bg-slate-900/28 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
         style={{
           borderColor: palette.border,
           boxShadow: featured

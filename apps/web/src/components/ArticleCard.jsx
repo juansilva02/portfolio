@@ -9,7 +9,7 @@ const ArticleCard = ({ title, category, readTime, date, excerpt, index = 0 }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 hover:border-slate-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-500/10 flex flex-col h-full"
+      className="group liquid-glass-light rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col h-full"
     >
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs font-medium text-slate-300 bg-slate-700/50 px-2.5 py-1 rounded-full border border-slate-600/50">

@@ -61,7 +61,7 @@ const FeaturedWork = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15, duration: 0.6 }}
-              className="group bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-slate-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-slate-500/10 flex flex-col"
+              className="group liquid-glass-light rounded-[1.65rem] overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col"
             >
               <div className="relative h-48 overflow-hidden">
                 <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-transparent transition-colors duration-500 z-10" />

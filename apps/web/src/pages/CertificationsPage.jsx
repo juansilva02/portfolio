@@ -119,7 +119,7 @@ const CertificationsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mt-16 bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50"
+              className="mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
             >
               <h3 className="text-2xl font-bold text-slate-100 mb-4">Diseño y desarrollo con enfoque de marca</h3>
               <p className="text-slate-300 leading-relaxed max-w-prose mb-6">

@@ -201,7 +201,7 @@ const SkillCard = ({ name, category, index = 0 }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="group relative overflow-hidden rounded-[1.35rem] border bg-slate-900/28 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      className="glass-stable group relative overflow-hidden rounded-[1.35rem] border bg-slate-900/28 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
       style={{
         borderColor: palette.border,
         boxShadow: `inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02), 0 18px 38px -28px ${palette.glow}`,

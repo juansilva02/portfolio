@@ -20,7 +20,7 @@ const CertificationCard = ({
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="group bg-slate-800/40 rounded-xl p-6 border border-slate-700/50 hover:border-slate-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-slate-500/10"
+      className="group liquid-glass-light rounded-[1.4rem] p-6 transition-all duration-300 hover:shadow-lg"
     >
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center border border-slate-600/50">

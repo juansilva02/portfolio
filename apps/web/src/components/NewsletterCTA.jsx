@@ -12,7 +12,7 @@ const NewsletterCTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="rounded-3xl border border-slate-700/50 bg-slate-800/40 p-8 md:p-12 text-center"
+          className="liquid-glass-blue rounded-[2rem] p-8 md:p-12 text-center"
         >
           <span className="inline-flex items-center rounded-full border border-slate-600/50 bg-slate-900/50 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
             zuzudev

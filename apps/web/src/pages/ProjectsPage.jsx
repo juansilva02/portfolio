@@ -84,9 +84,15 @@ const ProjectsPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance" style={{ letterSpacing: '-0.02em' }}>
+              <motion.h1
+                initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Proyectos y sitios web <span className="text-slate-400">en un mismo lugar</span>
-              </h1>
+              </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Una sola vitrina para mostrar productos, landings, webs institucionales y automatizaciones con el sello visual y tecnico de zuzudev.
               </p>
@@ -98,15 +104,15 @@ const ProjectsPage = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-4"
             >
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/30 backdrop-blur-sm p-5">
+              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Enfoque</div>
                 <div className="text-slate-100 font-semibold">UI, desarrollo y marca</div>
               </div>
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/30 backdrop-blur-sm p-5">
+              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Formato</div>
                 <div className="text-slate-100 font-semibold">Sitios, productos y flujos digitales</div>
               </div>
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/30 backdrop-blur-sm p-5">
+              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Resultado</div>
                 <div className="text-slate-100 font-semibold">Experiencias claras, rapidas y solidas</div>
               </div>
@@ -142,7 +148,7 @@ const ProjectsPage = () => {
               </p>
               <a
                 href="/contact"
-                className="inline-block bg-slate-300 text-slate-900 px-8 py-3 rounded-lg font-medium hover:bg-slate-200 transition-all duration-200 active:scale-95"
+                className="inline-block liquid-glass-button-blue text-slate-50 px-8 py-3 rounded-xl font-medium transition-all duration-200 active:scale-95 hover:brightness-110"
               >
                 Hablemos
               </a>

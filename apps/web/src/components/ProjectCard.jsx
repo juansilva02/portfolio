@@ -23,10 +23,10 @@ const ProjectCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`group relative bg-slate-800/40 rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
+      className={`glass-stable group relative rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
         featured 
-          ? 'border-slate-500/50 glow-slate md:col-span-2 md:row-span-2' 
-          : 'border-slate-700/50 hover:border-slate-500/50 hover:shadow-slate-500/10'
+          ? 'liquid-glass-blue glow-slate md:col-span-2 md:row-span-2' 
+          : 'liquid-glass-light'
       }`}
     >
       {featured && (

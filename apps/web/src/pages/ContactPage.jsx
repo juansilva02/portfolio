@@ -85,10 +85,15 @@ const ContactPage = () => {
         <meta name="description" content="Contactá a zuzudev para proyectos de desarrollo web, UI y automatización. Ubicado en Buenos Aires, Argentina." />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen bg-slate-900 relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_16%,rgba(125,211,252,0.08),transparent_24%),radial-gradient(circle_at_84%_22%,rgba(226,232,240,0.06),transparent_20%),radial-gradient(circle_at_50%_84%,rgba(148,163,184,0.08),transparent_28%)]" />
+          <div className="absolute -top-24 left-[10%] h-72 w-72 rounded-full bg-sky-300/8 blur-3xl animate-float" />
+          <div className="absolute bottom-[-5rem] right-[12%] h-80 w-80 rounded-full bg-slate-200/6 blur-3xl animate-pulse-glow" />
+        </div>
         <Header />
         
-        <main className="pt-24 pb-20">
+        <main className="pt-24 pb-20 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -96,9 +101,15 @@ const ContactPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance" style={{ letterSpacing: '-0.02em' }}>
+              <motion.h1
+                initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Pongamos tu proyecto en <span className="text-slate-400">marcha</span>
-              </h1>
+              </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Si tenés una idea, una marca o un negocio que necesita una mejor presencia digital, escribime y lo conversamos.
               </p>
@@ -109,7 +120,7 @@ const ContactPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50"
+                className="liquid-glass-blue rounded-[1.75rem] p-8"
               >
                 <h2 className="text-2xl font-bold text-slate-100 mb-6">Enviame un mensaje</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -179,7 +190,7 @@ const ContactPage = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-slate-300 text-slate-900 hover:bg-slate-200 transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full liquid-glass-button-blue text-slate-50 transition-all duration-200 active:scale-95 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       'Enviando...'
@@ -199,7 +210,7 @@ const ContactPage = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="space-y-8"
               >
-                <div className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50">
+                <div className="liquid-glass-light rounded-[1.75rem] p-8">
                   <h2 className="text-2xl font-bold text-slate-100 mb-6">Información de contacto</h2>
                   
                   <div className="space-y-6">
@@ -231,12 +242,12 @@ const ContactPage = () => {
                   </div>
                 </div>
 
-                <div className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50">
+                <div className="liquid-glass-blue rounded-[1.75rem] p-8">
                   <h2 className="text-2xl font-bold text-slate-100 mb-6">Redes y canales</h2>
                   <SocialLinks />
                 </div>
 
-                <div className="bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50">
+                <div className="liquid-glass-light rounded-[1.75rem] p-8">
                   <h2 className="text-2xl font-bold text-slate-100 mb-4">Disponibilidad</h2>
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />

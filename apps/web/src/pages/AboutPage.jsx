@@ -90,7 +90,7 @@ const AboutPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative overflow-hidden space-y-6 rounded-[2rem] border p-8 backdrop-blur-2xl"
+                className="glass-stable relative overflow-hidden space-y-6 rounded-[2rem] border p-8 backdrop-blur-xl"
                 style={{
                   borderColor: 'rgba(125, 211, 252, 0.3)',
                   background:
@@ -120,7 +120,7 @@ const AboutPage = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative overflow-hidden space-y-6 rounded-[2rem] border p-8 backdrop-blur-2xl"
+                className="glass-stable relative overflow-hidden space-y-6 rounded-[2rem] border p-8 backdrop-blur-xl"
                 style={{
                   borderColor: 'rgba(226, 232, 240, 0.28)',
                   background:
@@ -162,7 +162,7 @@ const AboutPage = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.1 * index }}
-                    className="group relative overflow-hidden rounded-[1.35rem] border bg-slate-900/28 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    className="glass-stable group relative overflow-hidden rounded-[1.35rem] border bg-slate-900/28 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                     style={{
                       borderColor: card.border,
                       boxShadow: `inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02), 0 18px 38px -28px ${card.glow}`,

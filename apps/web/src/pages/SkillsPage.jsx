@@ -77,9 +77,15 @@ const SkillsPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance" style={{ letterSpacing: '-0.02em' }}>
+              <motion.h1
+                initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Stack y <span className="text-slate-400">skills</span>
-              </h1>
+              </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Una vista clara de las tecnologías con las que construyo productos web, interfaces y automatizaciones.
               </p>
@@ -118,7 +124,7 @@ const SkillsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mt-16 bg-slate-800/40 rounded-2xl p-8 border border-slate-700/50"
+              className="mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
             >
               <h3 className="text-2xl font-bold text-slate-100 mb-4">Aprendizaje continuo</h3>
               <p className="text-slate-300 leading-relaxed max-w-prose">

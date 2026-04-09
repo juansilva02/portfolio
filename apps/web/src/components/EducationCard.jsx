@@ -9,7 +9,7 @@ const EducationCard = ({ institution, degree, field, graduationDate, gpa, index 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50 hover:border-slate-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-500/10"
+      className="liquid-glass-blue rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 w-12 h-12 bg-slate-700/50 rounded-xl flex items-center justify-center border border-slate-600/50">

@@ -48,7 +48,7 @@ const KeyStatistics = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50 hover:border-slate-500/50 transition-colors relative overflow-hidden group"
+              className="liquid-glass-light flex flex-col items-center text-center p-6 rounded-[1.65rem] transition-colors relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-gradient-to-b from-slate-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <stat.icon className="w-8 h-8 text-slate-400 mb-4 group-hover:text-slate-300 transition-colors animate-pulse-glow" />
