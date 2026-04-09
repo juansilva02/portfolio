@@ -11,30 +11,33 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 
+const initialFormState = {
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+  companyWebsite: '',
+};
+
 const ContactPage = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((current) => ({
+      ...current,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: 'Faltan campos',
-        description: 'Completá los campos obligatorios antes de enviar.',
+        description: 'Completa los campos obligatorios antes de enviar.',
         variant: 'destructive',
       });
       return;
@@ -59,9 +62,12 @@ const ContactPage = () => {
 
       toast({
         title: 'Mensaje enviado',
-        description: 'Tu mensaje se guardó correctamente. Te responderé pronto.',
+        description: result.emailSent
+          ? 'Tu mensaje se guardo y se envio por email correctamente. Te respondere pronto.'
+          : 'Tu mensaje se guardo correctamente. Te respondere pronto.',
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+
+      setFormData(initialFormState);
     } catch (error) {
       toast({
         title: 'No se pudo enviar',
@@ -82,7 +88,10 @@ const ContactPage = () => {
     >
       <Helmet>
         <title>Contacto | zuzudev</title>
-        <meta name="description" content="Contactá a zuzudev para proyectos de desarrollo web, UI y automatización. Ubicado en Buenos Aires, Argentina." />
+        <meta
+          name="description"
+          content="Contacta a zuzudev para proyectos de desarrollo web, UI y automatizacion. Ubicado en Buenos Aires, Argentina."
+        />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900 relative overflow-hidden">
@@ -92,7 +101,7 @@ const ContactPage = () => {
           <div className="absolute bottom-[-5rem] right-[12%] h-80 w-80 rounded-full bg-slate-200/6 blur-3xl animate-pulse-glow" />
         </div>
         <Header />
-        
+
         <main className="pt-24 pb-20 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -111,7 +120,7 @@ const ContactPage = () => {
                 Pongamos tu proyecto en <span className="text-slate-400">marcha</span>
               </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Si tenés una idea, una marca o un negocio que necesita una mejor presencia digital, escribime y lo conversamos.
+                Si tenes una idea, una marca o un negocio que necesita una mejor presencia digital, escribime y lo conversamos.
               </p>
             </motion.div>
 
@@ -124,6 +133,16 @@ const ContactPage = () => {
               >
                 <h2 className="text-2xl font-bold text-slate-100 mb-6">Enviame un mensaje</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  <input
+                    type="text"
+                    name="companyWebsite"
+                    tabIndex="-1"
+                    autoComplete="off"
+                    className="hidden"
+                    value={formData.companyWebsite}
+                    onChange={handleChange}
+                  />
+
                   <div>
                     <Label htmlFor="name" className="text-slate-300 mb-2 block">
                       Nombre *
@@ -167,7 +186,7 @@ const ContactPage = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       className="bg-slate-900 border-slate-600 text-slate-100 placeholder:text-slate-500 focus:border-slate-400"
-                      placeholder="De qué se trata?"
+                      placeholder="De que se trata?"
                     />
                   </div>
 
@@ -211,8 +230,8 @@ const ContactPage = () => {
                 className="space-y-8"
               >
                 <div className="liquid-glass-light rounded-[1.75rem] p-8">
-                  <h2 className="text-2xl font-bold text-slate-100 mb-6">Información de contacto</h2>
-                  
+                  <h2 className="text-2xl font-bold text-slate-100 mb-6">Informacion de contacto</h2>
+
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-slate-700/50 rounded-xl flex items-center justify-center border border-slate-600/50">
@@ -234,7 +253,7 @@ const ContactPage = () => {
                         <MapPin className="w-6 h-6 text-slate-300" />
                       </div>
                       <div>
-                        <h3 className="text-slate-100 font-semibold mb-1">Ubicación</h3>
+                        <h3 className="text-slate-100 font-semibold mb-1">Ubicacion</h3>
                         <p className="text-slate-300">Buenos Aires, Argentina</p>
                         <p className="text-slate-400 text-sm">Disponible para proyectos remotos y colaboraciones.</p>
                       </div>
@@ -254,7 +273,7 @@ const ContactPage = () => {
                     <span className="text-green-400 font-medium">Disponible para trabajar</span>
                   </div>
                   <p className="text-slate-300 leading-relaxed">
-                    Actualmente disponible para proyectos freelance, colaboraciones con equipos y desarrollo de soluciones web con foco en UI, performance y automatización.
+                    Actualmente disponible para proyectos freelance, colaboraciones con equipos y desarrollo de soluciones web con foco en UI, performance y automatizacion.
                   </p>
                 </div>
               </motion.div>

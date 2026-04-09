@@ -86,8 +86,34 @@ El proyecto fue adaptado a la marca `zuzudev` y actualmente incluye:
 - CTA flotante de contacto
 - seccion de skills con brillo por tecnologia
 - formulario de contacto persistido en JSON
+- envio opcional de emails via SMTP cuando hay variables de entorno configuradas
 
 ## Notas
 
 - La ruta antigua `/certifications` redirige a `/projects`.
 - `npm run lint` existe, pero el repo no tiene una configuracion de ESLint activa en este estado.
+
+## Email del formulario
+
+El backend de contacto siempre guarda los mensajes en:
+
+```text
+apps/web/data/contact-submissions.json
+```
+
+Ademas puede reenviar cada submit por email si defines las variables de entorno de SMTP.
+Toma como referencia:
+
+```text
+apps/web/.env.example
+```
+
+Variables:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_SECURE`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `CONTACT_FROM_EMAIL`
+- `CONTACT_TO_EMAIL`
