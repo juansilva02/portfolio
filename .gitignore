@@ -5,3 +5,14 @@ dist
 .env.local
 apps/web/dist
 apps/web/node_modules
+
+# Herramientas de IA / asistentes (no versionar)
+.claude/
+.cursor/
+.aider*
+.windsurf/
+CLAUDE.md
+**/.claude/
+
+# Almacenamiento de runtime del formulario de contacto
+apps/web/data/

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
+import { fadeUp, revealOnView } from '@/lib/motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import SkillCard from '@/components/SkillCard.jsx';
@@ -92,13 +93,11 @@ const SkillsPage = () => {
             </motion.div>
 
             <div className="space-y-16">
-              {skillCategories.map((category, categoryIndex) => (
+              {skillCategories.map((category) => (
                 <motion.div
                   key={category.category}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+                  variants={fadeUp}
+                  {...revealOnView}
                 >
                   <h2 className="text-3xl font-bold text-slate-100 mb-8">
                     {category.category}
@@ -120,10 +119,8 @@ const SkillsPage = () => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              variants={fadeUp}
+              {...revealOnView}
               className="mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
             >
               <h3 className="text-2xl font-bold text-slate-100 mb-4">Aprendizaje continuo</h3>

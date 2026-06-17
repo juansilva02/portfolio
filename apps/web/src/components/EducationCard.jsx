@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar } from 'lucide-react';
+import { fadeUp, revealOnView } from '@/lib/motion';
 
 const EducationCard = ({ institution, degree, field, graduationDate, gpa, index = 0 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      variants={fadeUp}
+      {...revealOnView}
+      transition={{ delay: index * 0.1 }}
       className="liquid-glass-blue rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div className="flex items-start gap-4">

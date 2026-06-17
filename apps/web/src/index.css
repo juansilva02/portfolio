@@ -92,7 +92,7 @@ html {
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     isolation: isolate;
-    contain: paint;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -111,7 +111,7 @@ html {
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     isolation: isolate;
-    contain: paint;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -130,7 +130,7 @@ html {
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     isolation: isolate;
-    contain: paint;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -138,7 +138,7 @@ html {
 
   .glass-stable {
     isolation: isolate;
-    contain: paint;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -263,4 +263,54 @@ html {
   animation: orbit-glow 13s linear infinite;
   transform-origin: center;
   will-change: transform;
+}
+
+/* 3D web-page assembly (hero centerpiece) */
+.assembly-stage {
+  perspective: 1200px;
+  perspective-origin: 50% 38%;
+}
+
+.assembly-scene {
+  transform-style: preserve-3d;
+  animation: scene-tilt 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.assembly-window,
+.assembly-body {
+  transform-style: preserve-3d;
+}
+
+.assembly-brick {
+  transform-style: preserve-3d;
+  animation: brick-assemble 8s ease-in-out infinite both;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@keyframes scene-tilt {
+  0%, 100% { transform: rotateX(13deg) rotateY(-18deg); }
+  50% { transform: rotateX(17deg) rotateY(-8deg); }
+}
+
+@keyframes brick-assemble {
+  0% { opacity: 0; transform: translate3d(var(--bx, -32px), 48px, -280px) rotateX(40deg) rotateY(6deg); }
+  16% { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
+  70% { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
+  86% { opacity: 0; transform: translate3d(0, -16px, 60px) rotateX(-12deg); }
+  100% { opacity: 0; transform: translate3d(var(--bx, -32px), 48px, -280px) rotateX(40deg) rotateY(6deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assembly-scene {
+    animation: none !important;
+    transform: rotateX(8deg) rotateY(-12deg) !important;
+  }
+  .assembly-brick {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

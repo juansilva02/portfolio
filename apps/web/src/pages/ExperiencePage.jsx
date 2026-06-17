@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ExperienceCard from '@/components/ExperienceCard.jsx';
+import { fadeUp, revealOnView } from '@/lib/motion';
 
 const ExperiencePage = () => {
   const experiences = [
@@ -112,10 +113,8 @@ const ExperiencePage = () => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              variants={fadeUp}
+              {...revealOnView}
               className="mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
             >
               <h3 className="text-2xl font-bold text-slate-100 mb-4">Resumen de carrera</h3>

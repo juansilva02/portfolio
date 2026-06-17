@@ -11,6 +11,8 @@ import ExperiencePage from './pages/ExperiencePage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 import EducationPage from './pages/EducationPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import ArticlesPage from './pages/ArticlesPage.jsx';
+import ArticleDetailPage from './pages/ArticleDetailPage.jsx';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -23,6 +25,8 @@ const AnimatedRoutes = () => {
         <Route path="/skills" element={<SkillsPage />} />
         <Route path="/experience" element={<ExperiencePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/articles/:slug" element={<ArticleDetailPage />} />
         <Route path="/education" element={<EducationPage />} />
         <Route path="/certifications" element={<Navigate to="/projects" replace />} />
         <Route path="/contact" element={<ContactPage />} />
@@ -30,9 +34,9 @@ const AnimatedRoutes = () => {
           <div className="min-h-screen bg-slate-900 flex items-center justify-center">
             <div className="text-center">
               <h1 className="text-6xl font-bold text-slate-100 mb-4">404</h1>
-              <p className="text-xl text-slate-300 mb-8">Page not found</p>
+              <p className="text-xl text-slate-300 mb-8">La pagina que buscas no existe.</p>
               <a href="/" className="bg-slate-300 text-slate-900 px-6 py-3 rounded-lg font-medium hover:bg-slate-200 transition-all duration-200 active:scale-95">
-                Back to Home
+                Volver al inicio
               </a>
             </div>
           </div>

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Clock, ArrowRight } from 'lucide-react';
 
-const ArticleCard = ({ title, category, readTime, date, excerpt, index = 0 }) => {
+const ArticleCard = ({ slug, title, category, readTime, date, excerpt, index = 0 }) => {
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -20,20 +21,23 @@ const ArticleCard = ({ title, category, readTime, date, excerpt, index = 0 }) =>
           <span>{readTime}</span>
         </div>
       </div>
-      
+
       <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-slate-300 transition-colors">
         {title}
       </h3>
-      
+
       <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
         {excerpt}
       </p>
-      
+
       <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-700/50">
         <span className="text-slate-500 text-xs">{date}</span>
-        <button className="flex items-center gap-1.5 text-sm font-medium text-slate-300 group-hover:text-slate-100 transition-colors">
+        <Link
+          to={`/articles/${slug}`}
+          className="flex items-center gap-1.5 text-sm font-medium text-slate-300 group-hover:text-slate-100 transition-colors"
+        >
           Leer mas <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </button>
+        </Link>
       </div>
     </motion.article>
   );

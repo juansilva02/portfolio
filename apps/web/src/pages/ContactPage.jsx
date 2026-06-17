@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send } from 'lucide-react';
+import { hoverLift } from '@/lib/motion';
+import { Mail, MapPin, MessageCircle, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -19,10 +21,86 @@ const initialFormState = {
   companyWebsite: '',
 };
 
+const servicePresets = {
+  'landing-48h': {
+    badge: 'Landing express',
+    headline: 'Pide tu landing page en 48 hs',
+    helper: 'Ideal si necesitas salir rapido con una oferta clara y una presencia profesional.',
+    subject: 'Quiero una landing page en 48 hs',
+    message: 'Necesito una landing page base para mi negocio. Quiero recibir alcance, tiempos y siguiente paso.',
+  },
+  'web-corporativa': {
+    badge: 'Web corporativa',
+    headline: 'Cuentame que necesita tu empresa',
+    helper: 'Para servicios, presentacion institucional y un canal comercial mas claro.',
+    subject: 'Quiero una web corporativa',
+    message: 'Busco una web corporativa para presentar servicios y generar consultas de forma profesional.',
+  },
+  'software-empresa': {
+    badge: 'Software empresarial',
+    headline: 'Revisemos tu sistema o panel interno',
+    helper: 'Pensado para procesos, operaciones, seguimiento y orden interno.',
+    subject: 'Quiero software para mi empresa',
+    message: 'Necesito una solucion de software para ordenar procesos, paneles o tareas internas.',
+  },
+  'saas-mvp': {
+    badge: 'SaaS / MVP',
+    headline: 'Validemos tu producto web',
+    helper: 'MVPs, plataformas y productos pensados para crecer con una base tecnica clara.',
+    subject: 'Quiero desarrollar un SaaS o MVP',
+    message: 'Quiero conversar sobre un SaaS o MVP web y definir un alcance inicial.',
+  },
+  'infra-local': {
+    badge: 'Infraestructura local',
+    headline: 'Hablemos de red y servidor local',
+    helper: 'Para empresas que necesitan almacenar bases de datos y operar con infraestructura propia.',
+    subject: 'Necesito una red local y servidor para bases de datos',
+    message: 'Necesito asesoramiento o implementacion de red local y servidor para almacenamiento de bases de datos.',
+  },
+  'consulta-general': {
+    badge: 'Consulta general',
+    headline: 'Cuentame que necesitas resolver',
+    helper: 'Si aun no tienes claro el formato, te ayudo a aterrizarlo rapido.',
+    subject: 'Quiero consultar por un proyecto',
+    message: 'Quiero conversar sobre una necesidad de mi negocio y recibir orientacion sobre la mejor solucion.',
+  },
+};
+
 const ContactPage = () => {
   const { toast } = useToast();
+  const location = useLocation();
   const [formData, setFormData] = useState(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const searchParams = new URLSearchParams(location.search);
+  const selectedService = searchParams.get('service');
+  const selectedPreset = servicePresets[selectedService] || servicePresets['consulta-general'];
+  const seoTitleByService = {
+    'landing-48h': 'Landing page en 48 hs | Contactar desarrollador web freelance en Argentina',
+    'web-corporativa': 'Web corporativa para empresas | Contacto zuzudev',
+    'software-empresa': 'Software para empresas | Contacto desarrollador freelance en Buenos Aires',
+    'saas-mvp': 'Desarrollo SaaS y MVP web | Contacto zuzudev',
+    'infra-local': 'Servidor local y bases de datos | Contacto zuzudev',
+    'consulta-general': 'Contactar desarrollador web freelance en Buenos Aires | zuzudev',
+  };
+  const seoDescriptionByService = {
+    'landing-48h': 'Pide una landing page en 48 hs desde 200 USD. Contacta a un desarrollador web freelance en Argentina con foco en conversion y negocio.',
+    'web-corporativa': 'Contacta a zuzudev para desarrollar una web corporativa clara, profesional y orientada a generar consultas para tu empresa.',
+    'software-empresa': 'Consulta por software para empresas, paneles internos y sistemas web desarrollados desde Buenos Aires con foco en procesos y resultados.',
+    'saas-mvp': 'Habla con zuzudev sobre desarrollo SaaS, MVPs y productos web escalables pensados para validar y crecer.',
+    'infra-local': 'Consulta por armado de red y servidor local para almacenamiento de bases de datos e infraestructura interna.',
+    'consulta-general': 'Contacta a zuzudev para desarrollo web freelance, React, automatizacion n8n, software para empresas o una landing page en Argentina.',
+  };
+  const seoTitle = seoTitleByService[selectedService] || seoTitleByService['consulta-general'];
+  const seoDescription = seoDescriptionByService[selectedService] || seoDescriptionByService['consulta-general'];
+
+  useEffect(() => {
+    setFormData((current) => ({
+      ...current,
+      subject: current.subject || selectedPreset.subject,
+      message: current.message || selectedPreset.message,
+    }));
+  }, [selectedPreset]);
 
   const handleChange = (e) => {
     setFormData((current) => ({
@@ -67,7 +145,11 @@ const ContactPage = () => {
           : 'Tu mensaje se guardo correctamente. Te respondere pronto.',
       });
 
-      setFormData(initialFormState);
+      setFormData({
+        ...initialFormState,
+        subject: selectedPreset.subject,
+        message: selectedPreset.message,
+      });
     } catch (error) {
       toast({
         title: 'No se pudo enviar',
@@ -87,11 +169,9 @@ const ContactPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Contacto | zuzudev</title>
-        <meta
-          name="description"
-          content="Contacta a zuzudev para proyectos de desarrollo web, UI y automatizacion. Ubicado en Buenos Aires, Argentina."
-        />
+        <title>{seoTitle}</title>
+        <meta name="description" content={seoDescription} />
+        <link rel="canonical" href="https://zuzudev.pro/contact" />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900 relative overflow-hidden">
@@ -110,6 +190,9 @@ const ContactPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
+              <span className="inline-flex items-center rounded-full border border-sky-300/25 bg-sky-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-100 mb-6">
+                {selectedPreset.badge}
+              </span>
               <motion.h1
                 initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -117,10 +200,10 @@ const ContactPage = () => {
                 className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance"
                 style={{ letterSpacing: '-0.02em' }}
               >
-                Pongamos tu proyecto en <span className="text-slate-400">marcha</span>
+                {selectedPreset.headline}
               </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Si tenes una idea, una marca o un negocio que necesita una mejor presencia digital, escribime y lo conversamos.
+                {selectedPreset.helper} Soy desarrollador web freelance en Buenos Aires y trabajo con comunicacion directa, foco real en negocio y tiempos concretos.
               </p>
             </motion.div>
 
@@ -131,7 +214,15 @@ const ContactPage = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="liquid-glass-blue rounded-[1.75rem] p-8"
               >
-                <h2 className="text-2xl font-bold text-slate-100 mb-6">Enviame un mensaje</h2>
+                <div className="flex items-center justify-between gap-4 mb-6">
+                  <h2 className="text-2xl font-bold text-slate-100">Enviame un mensaje</h2>
+                  <Link
+                    to="/projects"
+                    className="text-sm text-slate-300 hover:text-slate-100 transition-colors"
+                  >
+                    Ver servicios
+                  </Link>
+                </div>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <input
                     type="text"
@@ -216,7 +307,7 @@ const ContactPage = () => {
                     ) : (
                       <>
                         <Send className="w-4 h-4 mr-2" />
-                        Enviar mensaje
+                        Enviar consulta
                       </>
                     )}
                   </Button>
@@ -229,8 +320,23 @@ const ContactPage = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="space-y-8"
               >
-                <div className="liquid-glass-light rounded-[1.75rem] p-8">
+                <motion.div whileHover={hoverLift} className="liquid-glass-light rounded-[1.75rem] p-8">
                   <h2 className="text-2xl font-bold text-slate-100 mb-6">Informacion de contacto</h2>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <div className="rounded-[1.25rem] bg-slate-900/40 p-4 border border-slate-700/50">
+                      <div className="text-sm text-slate-400 mb-1">Oferta base</div>
+                      <div className="text-slate-100 font-semibold">200 USD</div>
+                    </div>
+                    <div className="rounded-[1.25rem] bg-slate-900/40 p-4 border border-slate-700/50">
+                      <div className="text-sm text-slate-400 mb-1">Entrega express</div>
+                      <div className="text-slate-100 font-semibold">48 hs</div>
+                    </div>
+                    <div className="rounded-[1.25rem] bg-slate-900/40 p-4 border border-slate-700/50">
+                      <div className="text-sm text-slate-400 mb-1">Canal</div>
+                      <div className="text-slate-100 font-semibold">Directo</div>
+                    </div>
+                  </div>
 
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
@@ -258,24 +364,40 @@ const ContactPage = () => {
                         <p className="text-slate-400 text-sm">Disponible para proyectos remotos y colaboraciones.</p>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                <div className="liquid-glass-blue rounded-[1.75rem] p-8">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-slate-700/50 rounded-xl flex items-center justify-center border border-slate-600/50">
+                        <MessageCircle className="w-6 h-6 text-slate-300" />
+                      </div>
+                      <div>
+                        <h3 className="text-slate-100 font-semibold mb-1">WhatsApp</h3>
+                        <a
+                          href="https://wa.me/541136952045?text=Hola%20Juan%2C%20quiero%20consultarte%20por%20un%20proyecto."
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-slate-300 hover:text-slate-100 transition-colors duration-200"
+                        >
+                          Hablar ahora
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div whileHover={hoverLift} className="liquid-glass-blue rounded-[1.75rem] p-8">
+                  <h2 className="text-2xl font-bold text-slate-100 mb-4">Servicios que estoy tomando</h2>
+                  <div className="space-y-3 text-slate-300">
+                    <p>Landing pages en 48 hs para ventas y captacion.</p>
+                    <p>Software para empresas, paneles y backoffice.</p>
+                    <p>SaaS, MVPs y productos web orientados a negocio.</p>
+                    <p>Armado de red y servidor local para almacenamiento de bases de datos.</p>
+                  </div>
+                </motion.div>
+
+                <motion.div whileHover={hoverLift} className="liquid-glass-light rounded-[1.75rem] p-8">
                   <h2 className="text-2xl font-bold text-slate-100 mb-6">Redes y canales</h2>
                   <SocialLinks />
-                </div>
-
-                <div className="liquid-glass-light rounded-[1.75rem] p-8">
-                  <h2 className="text-2xl font-bold text-slate-100 mb-4">Disponibilidad</h2>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-green-400 font-medium">Disponible para trabajar</span>
-                  </div>
-                  <p className="text-slate-300 leading-relaxed">
-                    Actualmente disponible para proyectos freelance, colaboraciones con equipos y desarrollo de soluciones web con foco en UI, performance y automatizacion.
-                  </p>
-                </div>
+                </motion.div>
               </motion.div>
             </div>
           </div>

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Github, Linkedin, MessageCircle, Mail } from 'lucide-react';
+import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
 
 const Footer = () => {
   const quickLinks = [
+    { name: 'Servicios', path: '/projects' },
+    { name: 'Articulos', path: '/articles' },
     { name: 'Sobre mi', path: '/about' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Experiencia', path: '/experience' },
-    { name: 'Proyectos', path: '/projects' },
     { name: 'Contacto', path: '/contact' },
   ];
 
@@ -21,18 +22,18 @@ const Footer = () => {
   return (
     <footer className="bg-slate-900 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
+        <motion.div variants={staggerContainer(0.08)} {...revealOnView} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <motion.div variants={fadeUp}>
             <span className="text-2xl font-bold text-slate-100">
               <span className="text-slate-400">zuzudev</span>
             </span>
             <p className="mt-4 text-slate-400 text-sm leading-relaxed max-w-prose">
-              Desarrollo web, UI y automatizacion para marcas, profesionales y negocios que quieren una presencia digital clara y moderna.
+              Landing pages en 48 hs, desarrollo de software para empresas, SaaS y armado de red de servidores local para bases de datos.
             </p>
-          </div>
+          </motion.div>
 
-          <div>
-            <span className="text-slate-100 font-semibold mb-4 block">Accesos rapidos</span>
+          <motion.div variants={fadeUp}>
+            <span className="text-slate-100 font-semibold mb-4 block">Navegacion</span>
             <nav className="flex flex-col gap-2">
               {quickLinks.map((link) => (
                 <Link
@@ -44,10 +45,10 @@ const Footer = () => {
                 </Link>
               ))}
             </nav>
-          </div>
+          </motion.div>
 
-          <div>
-            <span className="text-slate-100 font-semibold mb-4 block">Conecta conmigo</span>
+          <motion.div variants={fadeUp}>
+            <span className="text-slate-100 font-semibold mb-4 block">Contacto directo</span>
             <div className="flex items-center gap-3">
               {socials.map((social) => (
                 <a
@@ -62,22 +63,25 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-          </div>
-        </div>
+            <p className="mt-4 text-sm text-slate-400">
+              Buenos Aires, Argentina. Trabajo remoto y con respuesta directa.
+            </p>
+          </motion.div>
+        </motion.div>
 
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+        <motion.div variants={fadeUp} {...revealOnView} className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © 2026 Juan Silva (zuzudev). All rights reserved.
+            © 2026 Juan Silva | zuzudev
           </p>
           <div className="flex items-center gap-6 text-sm">
-            <Link to="/privacy" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
-              Politica de privacidad
-            </Link>
-            <Link to="/terms" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
-              Terminos de servicio
-            </Link>
+            <a href="mailto:juanbautistasilva02@gmail.com" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
+              juanbautistasilva02@gmail.com
+            </a>
+            <a href="https://wa.me/541136952045" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
+              WhatsApp
+            </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

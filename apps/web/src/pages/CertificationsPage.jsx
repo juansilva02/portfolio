@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import CertificationCard from '@/components/CertificationCard.jsx';
@@ -115,31 +116,29 @@ const CertificationsPage = () => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              variants={staggerContainer()}
+              {...revealOnView}
               className="mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
             >
-              <h3 className="text-2xl font-bold text-slate-100 mb-4">Diseño y desarrollo con enfoque de marca</h3>
-              <p className="text-slate-300 leading-relaxed max-w-prose mb-6">
+              <motion.h3 variants={fadeUp} className="text-2xl font-bold text-slate-100 mb-4">Diseño y desarrollo con enfoque de marca</motion.h3>
+              <motion.p variants={fadeUp} className="text-slate-300 leading-relaxed max-w-prose mb-6">
                 En zuzudev cada proyecto busca algo más que verse bien: comunicar con claridad, cargar rápido,
                 funcionar bien en distintos dispositivos y sostener una identidad visual coherente con la marca.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div>
+              </motion.p>
+              <motion.div variants={staggerContainer(0.08)} className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <motion.div variants={fadeUp}>
                   <div className="text-3xl font-bold text-slate-400 mb-2">7</div>
                   <div className="text-slate-300 text-sm">Sitios listos para mostrar</div>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div variants={fadeUp}>
                   <div className="text-3xl font-bold text-slate-400 mb-2">100%</div>
                   <div className="text-slate-300 text-sm">Enfoque en español y marca propia</div>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div variants={fadeUp}>
                   <div className="text-3xl font-bold text-slate-400 mb-2">UI + Dev</div>
                   <div className="text-slate-300 text-sm">Propuesta de valor de zuzudev</div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </main>

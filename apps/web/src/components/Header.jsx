@@ -22,11 +22,9 @@ const Header = () => {
   }, [location.pathname]);
 
   const navItems = [
+    { name: 'Servicios', path: '/projects' },
+    { name: 'Articulos', path: '/articles' },
     { name: 'Sobre mi', path: '/about' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Experiencia', path: '/experience' },
-    { name: 'Proyectos', path: '/projects' },
-    { name: 'Educacion', path: '/education' },
     { name: 'Contacto', path: '/contact' },
   ];
 
@@ -69,10 +67,10 @@ const Header = () => {
           </nav>
 
           <Link
-            to="/contact"
+            to="/contact?service=landing-48h"
             className="hidden lg:block liquid-glass-button-blue text-slate-50 px-6 py-2 rounded-xl font-medium transition-all duration-200 active:scale-95 hover:brightness-110"
           >
-            Hablemos
+            Cotizar ahora
           </Link>
 
           <button
@@ -109,10 +107,10 @@ const Header = () => {
                 </Link>
               ))}
               <Link
-                to="/contact"
+                to="/contact?service=landing-48h"
                 className="mt-2 liquid-glass-button-blue text-slate-50 px-4 py-3 rounded-xl font-medium text-center transition-all duration-200 active:scale-95 hover:brightness-110"
               >
-                Hablemos
+                Cotizar ahora
               </Link>
             </nav>
           </motion.div>

@@ -1,6 +1,8 @@
-# zuzudev portfolio
+# Portfolio zuzudev
 
-Portfolio personal de Juan Silva (`zuzudev`) construido como monorepo simple con una app web en React + Vite.
+Portfolio personal de Juan Silva (`zuzudev`), desarrollador web freelance en Argentina. Construido como un monorepo simple con una app web en React + Vite y un pequeño backend en Node para el formulario de contacto.
+
+Sitio en producción: **https://zuzudev.pro**
 
 ## Stack
 
@@ -9,7 +11,7 @@ Portfolio personal de Juan Silva (`zuzudev`) construido como monorepo simple con
 - Tailwind CSS
 - Framer Motion
 - React Router
-- Node.js para el endpoint local de contacto
+- Node.js (endpoint local de contacto + envío de email vía SMTP)
 
 ## Estructura
 
@@ -17,98 +19,87 @@ Portfolio personal de Juan Silva (`zuzudev`) construido como monorepo simple con
 portfolio/
   apps/
     web/
-      public/        # assets publicos
-      src/           # paginas, componentes y estilos
-      server/        # servidor local para contacto
-      data/          # almacenamiento JSON de mensajes
+      public/        # assets públicos, imágenes, sitemap, robots
+      src/
+        components/  # componentes reutilizables (UI, tarjetas, secciones)
+        pages/       # páginas (Home, Proyectos, Contacto, Artículos, etc.)
+        data/        # datos de contenido (artículos, etc.)
+        lib/         # utilidades compartidas (presets de animación)
+      server/        # servidor local para el formulario de contacto
 ```
 
 ## Scripts
 
-Desde la raiz del repo:
+Desde la raíz del repo:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Esto levanta:
+`npm run dev` levanta:
 
 - frontend Vite en `http://localhost:3000`
 - backend local de contacto en `http://localhost:3001`
 
+Si solo querés el frontend con recarga en caliente (HMR):
+
+```bash
+npm run dev --prefix apps/web
+```
+
 Otros scripts:
 
 ```bash
-npm run build
-npm run start
+npm run build     # build de producción
+npm run start     # sirve el build con el servidor Node
 ```
 
 En `apps/web`:
 
 ```bash
-npm run dev
-npm run server
-npm run build
+npm run dev       # solo Vite (frontend)
+npm run server    # solo backend de contacto
+npm run build     # build de producción
 ```
+
+## Animaciones y experiencia
+
+- Intro tipo terminal en el hero que escribe un comando y dispara la aparición escalonada de los elementos (una vez por sesión).
+- Animación 3D en CSS que muestra el "armado" de una página web en el hero.
+- Reveals al hacer scroll y micro-interacciones consistentes en todo el sitio mediante presets compartidos en `apps/web/src/lib/motion.js`.
+- Estética glass / liquid glass en tarjetas y secciones.
+- Respeta `prefers-reduced-motion` para accesibilidad.
+
+## Secciones principales
+
+- Home con propuesta de valor, servicios, proyectos destacados, stack y artículos.
+- Página de proyectos unificada con casos reales y servicios.
+- Sección de artículos / blog.
+- Página de contacto con formulario.
+- CTA flotante de contacto.
 
 ## Formulario de contacto
 
-La pagina de contacto envia los datos a:
+La página de contacto envía los datos a:
 
 ```text
 POST /api/contact
 ```
 
-El backend guarda cada envio en:
+El backend valida los campos, aplica un rate limit por IP y guarda cada envío en:
 
 ```text
 apps/web/data/contact-submissions.json
 ```
 
-Campos almacenados:
+Campos almacenados: `id`, `createdAt`, `name`, `email`, `subject`, `message`.
 
-- `id`
-- `createdAt`
-- `name`
-- `email`
-- `subject`
-- `message`
+> Nota: la carpeta `apps/web/data/` está ignorada por git (datos de runtime, no se versionan).
 
-## Estado actual del portfolio
+### Envío de email (opcional)
 
-El proyecto fue adaptado a la marca `zuzudev` y actualmente incluye:
-
-- contenido principal en espanol
-- pagina de proyectos unificada con sitios web
-- fondos animados sutiles
-- tarjetas glass/liquid glass en varias secciones
-- CTA flotante de contacto
-- seccion de skills con brillo por tecnologia
-- formulario de contacto persistido en JSON
-- envio opcional de emails via SMTP cuando hay variables de entorno configuradas
-
-## Notas
-
-- La ruta antigua `/certifications` redirige a `/projects`.
-- `npm run lint` existe, pero el repo no tiene una configuracion de ESLint activa en este estado.
-
-## Email del formulario
-
-El backend de contacto siempre guarda los mensajes en:
-
-```text
-apps/web/data/contact-submissions.json
-```
-
-Ademas puede reenviar cada submit por email si defines las variables de entorno de SMTP.
-Toma como referencia:
-
-```text
-apps/web/.env.example
-```
-
-Variables:
+El backend además puede reenviar cada mensaje por email si se definen variables de entorno SMTP. Tomá como referencia `apps/web/.env.example`:
 
 - `SMTP_HOST`
 - `SMTP_PORT`
@@ -117,3 +108,15 @@ Variables:
 - `SMTP_PASS`
 - `CONTACT_FROM_EMAIL`
 - `CONTACT_TO_EMAIL`
+
+## SEO
+
+El proyecto incluye `sitemap.xml`, `robots.txt`, metadatos por página (vía `react-helmet`) y URLs canónicas hacia `https://zuzudev.pro`.
+
+## Deploy
+
+El sitio se despliega en Vercel y se actualiza automáticamente con cada push a la rama `main`.
+
+## Notas
+
+- La ruta antigua `/certifications` redirige a `/projects`.

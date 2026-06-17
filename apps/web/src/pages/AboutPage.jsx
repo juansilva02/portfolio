@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { BriefcaseBusiness, Gauge, GraduationCap, Users } from 'lucide-react';
+import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 
@@ -53,11 +54,12 @@ const AboutPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Sobre mi | Juan Silva | zuzudev</title>
+        <title>Juan Silva | Desarrollador web freelance en Buenos Aires | zuzudev</title>
         <meta
           name="description"
-          content="Conoce a Juan Silva, fundador de zuzudev. Desarrollador full-stack en formacion, con experiencia real de negocio, criterio tecnico y enfoque profesional en soluciones web."
+          content="Conoce a Juan Silva, desarrollador web freelance en Buenos Aires. React, automatizacion, software para empresas y enfoque real en negocio."
         />
+        <link rel="canonical" href="https://zuzudev.pro/about" />
       </Helmet>
 
       <div className="min-h-screen bg-slate-900">
@@ -81,7 +83,7 @@ const AboutPage = () => {
                 Sobre <span className="text-slate-400">mi</span>
               </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Desarrollo con mentalidad de negocio, energia joven y una ejecucion enfocada en calidad, detalle y resultados serios.
+                Soy desarrollador web freelance en Buenos Aires. Trabajo con mentalidad de negocio, energia joven y una ejecucion enfocada en calidad, detalle y resultados serios.
               </p>
             </motion.div>
 
@@ -147,21 +149,13 @@ const AboutPage = () => {
               </motion.div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <h2 className="text-3xl font-bold text-slate-100 mb-8 text-center">Que me impulsa</h2>
+            <motion.div variants={staggerContainer(0.08)} {...revealOnView}>
+              <motion.h2 variants={fadeUp} className="text-3xl font-bold text-slate-100 mb-8 text-center">Que me impulsa</motion.h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {driveCards.map((card, index) => (
+                {driveCards.map((card) => (
                   <motion.div
                     key={card.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.1 * index }}
+                    variants={fadeUp}
                     className="glass-stable group relative overflow-hidden rounded-[1.35rem] border bg-slate-900/28 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                     style={{
                       borderColor: card.border,

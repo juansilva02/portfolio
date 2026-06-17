@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const techPalette = {
@@ -123,24 +124,24 @@ const TechStack = () => {
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          variants={fadeUp}
+          {...revealOnView}
           className="liquid-glass-blue rounded-[1.85rem] text-center mb-16 max-w-3xl mx-auto px-8 py-10"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Stack <span className="text-slate-400">tecnologico</span></h2>
           <p className="text-slate-300 max-w-2xl mx-auto">Herramientas y tecnologias que uso para construir productos web claros, rapidos y mantenibles.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          variants={staggerContainer(0.1)}
+          {...revealOnView}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           <TooltipProvider delayDuration={100}>
             {categories.map((category, idx) => (
               <motion.div
                 key={category.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+                variants={fadeUp}
                 className="liquid-glass-light rounded-[1.65rem] p-6"
               >
                 <h3 className="text-lg font-semibold text-slate-200 mb-6 pb-2 border-b border-slate-700 relative">
@@ -185,7 +186,7 @@ const TechStack = () => {
               </motion.div>
             ))}
           </TooltipProvider>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

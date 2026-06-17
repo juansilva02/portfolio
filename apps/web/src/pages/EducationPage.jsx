@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
+import { fadeUp, fadeRight, scaleIn, staggerContainer, revealOnView } from '@/lib/motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import EducationCard from '@/components/EducationCard.jsx';
@@ -83,21 +84,16 @@ const EducationPage = () => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              variants={staggerContainer(0.08)}
+              {...revealOnView}
               className="liquid-glass-light rounded-[1.75rem] p-8"
             >
-              <h2 className="text-2xl font-bold text-slate-100 mb-6">Logros academicos</h2>
+              <motion.h2 variants={fadeUp} className="text-2xl font-bold text-slate-100 mb-6">Logros academicos</motion.h2>
               <ul className="space-y-3">
                 {achievements.map((achievement, index) => (
                   <motion.li
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.1 * index }}
+                    variants={fadeRight}
                     className="flex items-start gap-3 text-slate-300"
                   >
                     <span className="text-slate-500 mt-1.5">•</span>
@@ -108,13 +104,11 @@ const EducationPage = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              variants={staggerContainer(0.08)}
+              {...revealOnView}
               className="mt-8 liquid-glass-blue rounded-[1.75rem] p-8"
             >
-              <h2 className="text-2xl font-bold text-slate-100 mb-6">Formacion relevante</h2>
+              <motion.h2 variants={fadeUp} className="text-2xl font-bold text-slate-100 mb-6">Formacion relevante</motion.h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
                   'Distributed Systems',
@@ -128,10 +122,7 @@ const EducationPage = () => {
                 ].map((course, index) => (
                   <motion.div
                     key={course}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.05 * index }}
+                    variants={scaleIn}
                     className="flex items-center gap-2 text-slate-300"
                   >
                     <div className="w-2 h-2 bg-slate-400 rounded-full" />
