@@ -23,7 +23,7 @@ const ArticlesPage = () => {
         <link rel="canonical" href="https://zuzudev.pro/articles" />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen">
         <Header />
 
         <main className="pt-24 pb-20">

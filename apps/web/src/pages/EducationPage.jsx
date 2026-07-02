@@ -44,7 +44,7 @@ const EducationPage = () => {
         <meta name="description" content="Formación académica de Juan Silva (zuzudev), con estudios en Ciencias de la Comunicación y desarrollo web full-stack." />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen">
         <Header />
         
         <main className="pt-24 pb-20">

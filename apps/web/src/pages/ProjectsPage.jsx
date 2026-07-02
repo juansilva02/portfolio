@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ProjectCard from '@/components/ProjectCard.jsx';
-import ParticleBackground from '@/components/ParticleBackground.jsx';
 
 const ProjectsPage = () => {
   const projects = [
@@ -111,8 +110,7 @@ const ProjectsPage = () => {
         <link rel="canonical" href="https://zuzudev.pro/projects" />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900 relative overflow-hidden">
-        <ParticleBackground />
+      <div className="min-h-screen relative overflow-hidden">
         <Header />
 
         <main className="pt-24 pb-20 relative z-10">

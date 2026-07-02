@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
-import ParticleBackground from '@/components/ParticleBackground.jsx';
 import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
 import { categorias, extras, calcularRango } from '@/data/cotizador.js';
 
@@ -63,8 +62,7 @@ const CotizarPage = () => {
         <link rel="canonical" href="https://zuzudev.pro/cotizar" />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900 relative overflow-hidden">
-        <ParticleBackground />
+      <div className="min-h-screen relative overflow-hidden">
         <Header />
 
         <main className="pt-24 pb-20 relative z-10">

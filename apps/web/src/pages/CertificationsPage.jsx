@@ -78,7 +78,7 @@ const CertificationsPage = () => {
         <meta name="description" content="Selección de sitios web creados por zuzudev, con foco en desarrollo de software, UI cuidada y experiencias digitales pensadas para marcas y negocios." />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen">
         <Header />
         
         <main className="pt-24 pb-20">

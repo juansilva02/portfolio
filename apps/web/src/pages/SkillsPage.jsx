@@ -67,7 +67,7 @@ const SkillsPage = () => {
         <meta name="description" content="Stack técnico y habilidades de Juan Silva en desarrollo web moderno, interfaces, automatización y soluciones orientadas a producto." />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen">
         <Header />
         
         <main className="pt-24 pb-20">

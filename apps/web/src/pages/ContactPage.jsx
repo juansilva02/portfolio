@@ -187,7 +187,7 @@ const ContactPage = () => {
         <link rel="canonical" href="https://zuzudev.pro/contact" />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900 relative overflow-hidden">
+      <div className="min-h-screen relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_16%,rgba(125,211,252,0.08),transparent_24%),radial-gradient(circle_at_84%_22%,rgba(226,232,240,0.06),transparent_20%),radial-gradient(circle_at_50%_84%,rgba(148,163,184,0.08),transparent_28%)]" />
           <div className="absolute -top-24 left-[10%] h-72 w-72 rounded-full bg-sky-300/8 blur-3xl animate-float" />

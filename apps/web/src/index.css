@@ -251,6 +251,33 @@ html {
   100% { transform: rotate(360deg); }
 }
 
+/* Fondo global: aurora que deriva lento */
+@keyframes aurora-a {
+  0%, 100% { transform: translate3d(-6%, -4%, 0) scale(1); }
+  50% { transform: translate3d(8%, 6%, 0) scale(1.15); }
+}
+@keyframes aurora-b {
+  0%, 100% { transform: translate3d(6%, 8%, 0) scale(1.1); }
+  50% { transform: translate3d(-8%, -6%, 0) scale(1); }
+}
+@keyframes aurora-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-10%, 4%, 0) scale(1.2); }
+}
+.aurora-a { animation: aurora-a 24s ease-in-out infinite; }
+.aurora-b { animation: aurora-b 30s ease-in-out infinite; }
+.aurora-c { animation: aurora-c 26s ease-in-out infinite; }
+
+/* Grilla estilo terminal con desvanecido radial hacia los bordes */
+.terminal-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 78%);
+}
+
 @keyframes title-shine {
   0%, 100% { transform: translateX(0) skewX(-18deg); opacity: 0; }
   18% { opacity: 0; }

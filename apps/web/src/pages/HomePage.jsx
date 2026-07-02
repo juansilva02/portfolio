@@ -12,7 +12,6 @@ import {
 import { motion, useReducedMotion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
-import ParticleBackground from '@/components/ParticleBackground.jsx';
 import ExpertiseHighlights from '@/components/ExpertiseHighlights.jsx';
 import KeyStatistics from '@/components/KeyStatistics.jsx';
 import TechStack from '@/components/TechStack.jsx';
@@ -93,12 +92,11 @@ const HomePage = () => {
         <link rel="canonical" href="https://zuzudev.pro/" />
       </Helmet>
 
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen">
         <Header />
 
         <main>
           <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-            <ParticleBackground />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
               <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">

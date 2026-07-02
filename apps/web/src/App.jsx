@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/sonner';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollProgress from './components/ScrollProgress.jsx';
 import SpotlightEffect from './components/SpotlightEffect.jsx';
+import SiteBackground from './components/SiteBackground.jsx';
 import FloatingContactButton from './components/FloatingContactButton.jsx';
 import HomePage from './pages/HomePage.jsx';
 
@@ -57,6 +58,7 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <Router>
+      <SiteBackground />
       <ScrollProgress />
       <SpotlightEffect />
       <ScrollToTop />
