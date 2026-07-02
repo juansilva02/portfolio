@@ -15,7 +15,7 @@ const Footer = () => {
   const socials = [
     { icon: Github, label: 'GitHub', href: 'https://github.com/juansilva02' },
     { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/juan-bautista-silva/' },
-    { icon: Mail, label: 'Email', href: 'mailto:juanbautistasilva02@gmail.com' },
+    { icon: Mail, label: 'Email', href: 'mailto:administracion@zuzudev.pro' },
     { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/541136952045' },
   ];
 
@@ -74,8 +74,8 @@ const Footer = () => {
             © 2026 Juan Silva | zuzudev
           </p>
           <div className="flex items-center gap-6 text-sm">
-            <a href="mailto:juanbautistasilva02@gmail.com" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
-              juanbautistasilva02@gmail.com
+            <a href="mailto:administracion@zuzudev.pro" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
+              administracion@zuzudev.pro
             </a>
             <a href="https://wa.me/541136952045" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
               WhatsApp

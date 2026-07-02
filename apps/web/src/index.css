@@ -265,6 +265,28 @@ html {
   will-change: transform;
 }
 
+/* Spotlight que sigue al cursor sobre las tarjetas glass (vars seteadas por SpotlightEffect.jsx) */
+.liquid-glass-light::before,
+.liquid-glass-blue::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    240px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(125, 211, 252, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.liquid-glass-light:hover::before,
+.liquid-glass-blue:hover::before {
+  opacity: 1;
+}
+
 /* 3D web-page assembly (hero centerpiece) */
 .assembly-stage {
   perspective: 1200px;

@@ -57,6 +57,13 @@ const servicePresets = {
     subject: 'Necesito una red local y servidor para bases de datos',
     message: 'Necesito asesoramiento o implementacion de red local y servidor para almacenamiento de bases de datos.',
   },
+  cotizacion: {
+    badge: 'Cotización',
+    headline: 'Recibí tu cotización exacta',
+    helper: 'Vi tu estimación del cotizador. Contame un poco más de tu negocio y te paso el presupuesto final.',
+    subject: 'Quiero una cotización exacta (usé el cotizador)',
+    message: 'Usé el cotizador de zuzudev.pro y quiero avanzar con una cotización exacta.',
+  },
   'consulta-general': {
     badge: 'Consulta general',
     headline: 'Cuentame que necesitas resolver',
@@ -74,7 +81,12 @@ const ContactPage = () => {
 
   const searchParams = new URLSearchParams(location.search);
   const selectedService = searchParams.get('service');
-  const selectedPreset = servicePresets[selectedService] || servicePresets['consulta-general'];
+  const detalleCotizacion = searchParams.get('detalle');
+  const basePreset = servicePresets[selectedService] || servicePresets['consulta-general'];
+  const selectedPreset =
+    selectedService === 'cotizacion' && detalleCotizacion
+      ? { ...basePreset, message: detalleCotizacion }
+      : basePreset;
   const seoTitleByService = {
     'landing-48h': 'Landing page en 48 hs | Contactar desarrollador web freelance en Argentina',
     'web-corporativa': 'Web corporativa para empresas | Contacto zuzudev',
@@ -100,7 +112,8 @@ const ContactPage = () => {
       subject: current.subject || selectedPreset.subject,
       message: current.message || selectedPreset.message,
     }));
-  }, [selectedPreset]);
+    // Depende de primitivas: selectedPreset se recrea por render cuando hay ?detalle=
+  }, [selectedPreset.subject, selectedPreset.message]);
 
   const handleChange = (e) => {
     setFormData((current) => ({
@@ -346,10 +359,10 @@ const ContactPage = () => {
                       <div>
                         <h3 className="text-slate-100 font-semibold mb-1">Correo</h3>
                         <a
-                          href="mailto:juanbautistasilva02@gmail.com"
+                          href="mailto:administracion@zuzudev.pro"
                           className="text-slate-300 hover:text-slate-100 transition-colors duration-200"
                         >
-                          juanbautistasilva02@gmail.com
+                          administracion@zuzudev.pro
                         </a>
                       </div>
                     </div>

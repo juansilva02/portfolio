@@ -53,6 +53,14 @@ const normalizeMessage = (value, maxLength) =>
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 const readJsonBody = (req) =>
   new Promise((resolve, reject) => {
     let data = '';
@@ -126,7 +134,7 @@ const getMailConfig = () => {
   const smtpPort = Number(process.env.SMTP_PORT || 587);
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const to = process.env.CONTACT_TO_EMAIL || 'juanbautistasilva02@gmail.com';
+  const to = process.env.CONTACT_TO_EMAIL || 'administracion@zuzudev.pro';
   const from = process.env.CONTACT_FROM_EMAIL || user;
 
   if (!host || !user || !pass || !from || !to) {
@@ -179,11 +187,11 @@ const sendContactEmail = async (submission) => {
   const html = `
     <div style="font-family: Arial, sans-serif; color: #0f172a; line-height: 1.6;">
       <h2>Nuevo mensaje desde el portfolio de zuzudev</h2>
-      <p><strong>Nombre:</strong> ${submission.name}</p>
-      <p><strong>Email:</strong> ${submission.email}</p>
-      <p><strong>Asunto:</strong> ${submission.subject || 'Sin asunto'}</p>
+      <p><strong>Nombre:</strong> ${escapeHtml(submission.name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(submission.email)}</p>
+      <p><strong>Asunto:</strong> ${escapeHtml(submission.subject || 'Sin asunto')}</p>
       <p><strong>Mensaje:</strong></p>
-      <p style="white-space: pre-wrap;">${submission.message}</p>
+      <p style="white-space: pre-wrap;">${escapeHtml(submission.message)}</p>
     </div>
   `;
 
@@ -264,19 +272,6 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 500, {
         ok: false,
         message: error.message || 'No se pudo guardar el mensaje.',
-      });
-    }
-  }
-
-  if (req.method === 'GET' && url.pathname === '/api/contact') {
-    try {
-      await ensureStorage();
-      const current = JSON.parse(await fs.readFile(submissionsFile, 'utf8'));
-      return sendJson(res, 200, current);
-    } catch {
-      return sendJson(res, 500, {
-        ok: false,
-        message: 'No se pudieron leer los mensajes.',
       });
     }
   }
