@@ -43,16 +43,17 @@ const SiteBackground = () => {
       {/* Base oscura */}
       <div className="absolute inset-0 bg-[#070b14]" />
 
-      {/* Aurora que deriva */}
-      <div className="absolute -top-1/4 -left-1/4 h-[70vh] w-[70vh] rounded-full bg-sky-500/[0.12] blur-[120px] aurora-a" />
-      <div className="absolute top-1/3 -right-1/4 h-[75vh] w-[75vh] rounded-full bg-cyan-400/[0.10] blur-[130px] aurora-b" />
-      <div className="absolute -bottom-1/4 left-1/3 h-[65vh] w-[65vh] rounded-full bg-indigo-500/[0.10] blur-[120px] aurora-c" />
+      {/* Aurora que deriva (blur reducido en mobile: blur(120px) sobre capas de
+          70vh satura la GPU de un celular y arruina el primer render) */}
+      <div className="absolute -top-1/4 -left-1/4 h-[70vh] w-[70vh] rounded-full bg-sky-500/[0.12] blur-[60px] md:blur-[120px] aurora-a" />
+      <div className="hidden md:block absolute top-1/3 -right-1/4 h-[75vh] w-[75vh] rounded-full bg-cyan-400/[0.10] blur-[130px] aurora-b" />
+      <div className="absolute -bottom-1/4 left-1/3 h-[65vh] w-[65vh] rounded-full bg-indigo-500/[0.10] blur-[60px] md:blur-[120px] aurora-c" />
 
       {/* Grilla terminal */}
       <div className="absolute inset-0 terminal-grid" />
 
-      {/* Red de hexágonos tintada de sky */}
-      <div className="absolute inset-0 opacity-[0.20]">
+      {/* Red de hexágonos tintada de sky (solo desktop: ~54 nodos SVG animados) */}
+      <div className="hidden md:block absolute inset-0 opacity-[0.20]">
         <svg viewBox="0 0 100 80" preserveAspectRatio="xMidYMid slice" className="w-full h-full animate-hex-drift">
           {links.map(([start, end], index) => (
             <line
@@ -80,7 +81,7 @@ const SiteBackground = () => {
       {particles.map((p) => (
         <div
           key={p.id}
-          className={`absolute rounded-full blur-sm ${p.sky ? 'bg-sky-300/40' : 'bg-slate-400/30'}`}
+          className={`absolute rounded-full blur-sm ${p.sky ? 'bg-sky-300/40' : 'bg-slate-400/30'} ${p.id >= 9 ? 'hidden md:block' : ''}`}
           style={{
             width: `${p.size}px`,
             height: `${p.size}px`,

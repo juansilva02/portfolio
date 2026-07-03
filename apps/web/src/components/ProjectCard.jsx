@@ -44,6 +44,8 @@ const ProjectCard = ({
             <img
               src={imageUrl}
               alt={`Vista previa de ${title}`}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
             />
           </div>

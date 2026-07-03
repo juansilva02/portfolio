@@ -10,7 +10,7 @@ const FeaturedWork = () => {
       title: 'Stutt Ingenieria',
       description: 'Sitio corporativo para una empresa de ingenieria enfocado en comunicar servicios, reforzar marca y generar consultas claras.',
       tech: ['Astro', 'TypeScript', 'Tailwind', 'Responsive UI'],
-      image: '/images/stutt-ingenieria.png',
+      image: '/images/stutt-ingenieria.webp',
       demoUrl: 'https://www.stuttingenieria.com/',
       repoUrl: 'https://github.com/juansilva02/stuttgart',
       demoLabel: 'Ver sitio real',
@@ -88,6 +88,8 @@ const FeaturedWork = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>

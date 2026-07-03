@@ -14,7 +14,7 @@ const ProjectsPage = () => {
       year: '2026',
       description: 'Sitio corporativo desarrollado para comunicar servicios, reforzar la presencia digital de la marca y ofrecer una experiencia clara tanto en desktop como en mobile.',
       techStack: ['Astro', 'TypeScript', 'Tailwind', 'Responsive UI'],
-      imageUrl: '/images/stutt-ingenieria.png',
+      imageUrl: '/images/stutt-ingenieria.webp',
       demoUrl: 'https://www.stuttingenieria.com/',
       repoUrl: 'https://github.com/juansilva02/stuttgart',
       demoLabel: 'Ver sitio real',
