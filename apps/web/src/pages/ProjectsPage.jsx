@@ -5,95 +5,9 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ProjectCard from '@/components/ProjectCard.jsx';
+import { projects } from '@/data/projects.js';
 
 const ProjectsPage = () => {
-  const projects = [
-    {
-      title: 'Stutt Ingenieria',
-      category: 'Caso real',
-      year: '2026',
-      description: 'Sitio corporativo desarrollado para comunicar servicios, reforzar la presencia digital de la marca y ofrecer una experiencia clara tanto en desktop como en mobile.',
-      techStack: ['Astro', 'TypeScript', 'Tailwind', 'Responsive UI'],
-      imageUrl: '/images/stutt-ingenieria.webp',
-      demoUrl: 'https://www.stuttingenieria.com/',
-      repoUrl: 'https://github.com/juansilva02/stuttgart',
-      demoLabel: 'Ver sitio real',
-      repoLabel: 'Repositorio',
-      featured: true,
-    },
-    {
-      title: 'MauroFranArt',
-      category: 'Marca personal',
-      year: '2026',
-      description: 'Portfolio comercial para un tatuador argentino orientado a presencia de marca, galeria de trabajos y consultas directas.',
-      techStack: ['Next.js 16', 'React 19', 'Tailwind 4', 'Framer Motion'],
-      imageUrl: '/images/maurofranart-web.webp',
-      demoUrl: 'https://maurofranart.zuzudev.pro/',
-      repoUrl: 'https://github.com/juansilva02/maurofranart-portfolio',
-      demoLabel: 'Ver sitio online',
-      repoLabel: 'Repositorio',
-    },
-    {
-      title: 'Growers And Friends',
-      category: 'Ecommerce',
-      year: '2026',
-      description: 'Tienda online moderna para growshop con carrito, checkout, blog basico y una experiencia pensada para conversion y comunidad.',
-      techStack: ['React 19', 'Vite 8', 'Tailwind', 'MercadoPago'],
-      imageUrl: '/images/growersandfriends.webp',
-      demoUrl: 'https://growersandgrowshop.zuzudev.pro/',
-      repoUrl: 'https://github.com/juansilva02/growersandgrowshop',
-      demoLabel: 'Ver demo',
-      repoLabel: 'Repositorio',
-    },
-    {
-      title: 'Los Eucaliptus Corralon',
-      category: 'Storefront comercial',
-      year: '2026',
-      description: 'Storefront publicitario y de venta para corralon, preparado para escalar a carrito, pedidos y backend de ordenes.',
-      techStack: ['React 19', 'Vite 8', 'CSS custom', 'Node.js'],
-      imageUrl: '/images/corralon-losecualiptus-web.webp',
-      repoUrl: 'https://github.com/juansilva02/web_loseucaliptos',
-      repoLabel: 'Ver repositorio',
-    },
-    {
-      title: 'MM Seguros',
-      category: 'Sitio institucional',
-      year: '2026',
-      description: 'Sitio institucional multi pagina para empresa de seguros, con rutas comerciales, secciones de cotizacion y estructura preparada para escalar contenidos.',
-      techStack: ['Astro 6', 'Tailwind 4', 'TypeScript', 'Multi-page'],
-      imageUrl: '/images/mmseguros-web.webp',
-      repoUrl: 'https://github.com/juansilva02/mmseguros',
-      repoLabel: 'Ver repositorio',
-    },
-    {
-      title: 'Landing page express',
-      category: 'Oferta directa',
-      year: '48 hs',
-      description: 'Landing page base desde 200 USD para negocios que necesitan salir rapido con una propuesta clara, responsive y orientada a consultas.',
-      techStack: ['200 USD', 'SEO base', 'Responsive', 'CTA directa'],
-      demoUrl: '/contact?service=landing-48h',
-      demoLabel: 'Pedir esta landing',
-    },
-    {
-      title: 'Software interno y paneles',
-      category: 'Servicio',
-      year: 'Empresas',
-      description: 'Desarrollo de sistemas internos, dashboards y flujos de gestion para ordenar procesos, operaciones y seguimiento.',
-      techStack: ['React', 'Node.js', 'APIs', 'Base de datos'],
-      demoUrl: '/contact?service=software-empresa',
-      demoLabel: 'Quiero este servicio',
-    },
-    {
-      title: 'Servidor local y red de datos',
-      category: 'Infraestructura',
-      year: 'On-premise',
-      description: 'Armado de red de servidores local para almacenamiento de bases de datos y operacion interna con acceso controlado.',
-      techStack: ['Servidor local', 'Red', 'Base de datos', 'Acceso interno'],
-      demoUrl: '/contact?service=infra-local',
-      demoLabel: 'Consultar infraestructura',
-    },
-  ];
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -161,10 +75,10 @@ const ProjectsPage = () => {
                   key={project.title}
                   title={project.title}
                   description={project.description}
-                  techStack={project.techStack}
+                  techStack={project.tech}
                   demoUrl={project.demoUrl}
                   repoUrl={project.repoUrl}
-                  imageUrl={project.imageUrl}
+                  imageUrl={project.image}
                   category={project.category}
                   year={project.year}
                   demoLabel={project.demoLabel}

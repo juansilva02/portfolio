@@ -19,6 +19,7 @@ const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
 const ArticlesPage = lazy(() => import('./pages/ArticlesPage.jsx'));
 const ArticleDetailPage = lazy(() => import('./pages/ArticleDetailPage.jsx'));
 const CotizarPage = lazy(() => import('./pages/CotizarPage.jsx'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -38,17 +39,7 @@ const AnimatedRoutes = () => {
           <Route path="/education" element={<EducationPage />} />
           <Route path="/certifications" element={<Navigate to="/projects" replace />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={
-            <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-              <div className="text-center">
-                <h1 className="text-6xl font-bold text-slate-100 mb-4">404</h1>
-                <p className="text-xl text-slate-300 mb-8">La pagina que buscas no existe.</p>
-                <a href="/" className="bg-slate-300 text-slate-900 px-6 py-3 rounded-lg font-medium hover:bg-slate-200 transition-all duration-200 active:scale-95">
-                  Volver al inicio
-                </a>
-              </div>
-            </div>
-          } />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </AnimatePresence>

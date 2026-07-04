@@ -3,57 +3,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { fadeUp, fadeLeft, fadeRight, staggerContainer, revealOnView, hoverLift } from '@/lib/motion';
+import { featuredProjects as projects } from '@/data/projects.js';
 
 const FeaturedWork = () => {
-  const projects = [
-    {
-      title: 'Stutt Ingenieria',
-      description: 'Sitio corporativo para una empresa de ingenieria enfocado en comunicar servicios, reforzar marca y generar consultas claras.',
-      tech: ['Astro', 'TypeScript', 'Tailwind', 'Responsive UI'],
-      image: '/images/stutt-ingenieria.webp',
-      demoUrl: 'https://www.stuttingenieria.com/',
-      repoUrl: 'https://github.com/juansilva02/stuttgart',
-      demoLabel: 'Ver sitio real',
-      repoLabel: 'Ver codigo',
-    },
-    {
-      title: 'MauroFranArt',
-      description: 'Portfolio comercial para un tatuador argentino con enfoque en identidad visual, autoridad y conversion a consultas.',
-      tech: ['Next.js 16', 'React 19', 'Tailwind 4', 'Framer Motion'],
-      image: '/images/maurofranart-web.webp',
-      demoUrl: 'https://maurofranart.zuzudev.pro/',
-      repoUrl: 'https://github.com/juansilva02/maurofranart-portfolio',
-      demoLabel: 'Ver sitio online',
-      repoLabel: 'Repositorio',
-    },
-    {
-      title: 'Growers And Friends',
-      description: 'Tienda online para growshop con carrito, checkout, blog basico y CTA directos a WhatsApp y MercadoPago.',
-      tech: ['React 19', 'Vite 8', 'Tailwind', 'MercadoPago'],
-      image: '/images/growersandfriends.webp',
-      demoUrl: 'https://growersandgrowshop.zuzudev.pro/',
-      repoUrl: 'https://github.com/juansilva02/growersandgrowshop',
-      demoLabel: 'Ver demo',
-      repoLabel: 'Repositorio',
-    },
-    {
-      title: 'Los Eucaliptus Corralon',
-      description: 'Storefront comercial y de venta para corralon, preparado para crecer hacia pedidos, carrito y backend de ordenes.',
-      tech: ['React 19', 'Vite 8', 'CSS custom', 'Node.js'],
-      image: '/images/corralon-losecualiptus-web.webp',
-      repoUrl: 'https://github.com/juansilva02/web_loseucaliptos',
-      repoLabel: 'Ver repositorio',
-    },
-    {
-      title: 'MM Seguros',
-      description: 'Sitio institucional multi página para empresa de seguros, con rutas comerciales, secciones de cotización y estructura preparada para escalar contenidos.',
-      tech: ['Astro 6', 'Tailwind 4', 'TypeScript', 'Multi-page'],
-      image: '/images/mmseguros-web.webp',
-      repoUrl: 'https://github.com/juansilva02/mmseguros',
-      repoLabel: 'Ver repositorio',
-    },
-  ];
-
   return (
     <section className="py-20 bg-slate-900/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
