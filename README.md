@@ -72,8 +72,24 @@ Página `/cotizar` ([CotizarPage.jsx](apps/web/src/pages/CotizarPage.jsx), datos
 - **Fondo global** (`SiteBackground`, montado 1 vez en `App.jsx`): base oscura + aurora sky/cyan/indigo que deriva + grilla terminal + red de hexágonos + partículas. Las páginas tienen fondo transparente para que se vea.
 - Spotlight que sigue el cursor sobre las tarjetas glass (`SpotlightEffect` + CSS `::before`).
 - Barra de progreso de scroll (`ScrollProgress`).
+- Página 404 con estética terminal (`NotFoundPage`) que muestra la ruta pedida.
 - Easter egg de consola para devs (en `main.jsx`).
 - Respeta `prefers-reduced-motion`.
+
+## SEO y compartido en redes
+
+- **Open Graph + Twitter Cards** en `index.html` (estáticos: los scrapers de WhatsApp/Facebook no ejecutan JS) con imagen `public/og-image.png` (1200×630, estética terminal).
+- **JSON-LD** `ProfessionalService` para Google (servicios, área, oferta).
+- `sitemap.xml` completo (incluye `/cotizar`) + `robots.txt`.
+- Cada página define `title`/`description`/`canonical` propios vía `react-helmet`.
+
+## Rendimiento (mobile)
+
+- Fuente DM Sans cargada desde el HTML con `preconnect` (no `@import` bloqueante).
+- Fondo global aligerado en mobile: menos blur, hexágonos y 2/3 de las partículas solo en desktop.
+- Imágenes de proyectos en webp, con `loading="lazy"` + `decoding="async"`.
+- Bundle partido en chunks (`react` / `framer-motion` / app) para descarga paralela y mejor cache entre deploys.
+- Fuente única de proyectos en `src/data/projects.js` (consumida por la home y `/projects`).
 
 ## Seguridad
 
@@ -90,7 +106,9 @@ Vercel (proyecto `portfolio-web`), autodeploy desde `main`.
 - [ ] **Vercel → Settings → Environment Variables**: cargar SMTP_* y `CONTACT_TO_EMAIL` (o `N8N_WEBHOOK_URL`). Sin esto el formulario en producción devuelve error.
 - [ ] **Vercel → Settings → General → Root Directory**: confirmar que sea `apps/web`. Si fuera la raíz del repo, mover `api/` y `vercel.json` a la raíz.
 - [ ] Armar el flujo de n8n para las consultas (notificación + registro + agenda según horarios).
-- [ ] (Opcional) Unificar la lista de proyectos duplicada entre `FeaturedWork.jsx` y `ProjectsPage.jsx` en una sola fuente `src/data/projects.js`.
+- [ ] **Testimonios reales de clientes** (Stutt, MauroFranArt, etc.): falta el texto de cada cliente para armar la sección de prueba social.
+- [ ] (Opcional) Analytics (Vercel Analytics o Plausible) para medir tráfico y conversión del cotizador.
+- [x] ~~Unificar la lista de proyectos duplicada en `src/data/projects.js`~~ (hecho).
 
 ## Notas
 
