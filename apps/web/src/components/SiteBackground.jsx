@@ -39,7 +39,7 @@ const SiteBackground = () => {
   }));
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div className="site-bg-layer -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
       {/* Base oscura */}
       <div className="absolute inset-0 bg-[#070b14]" />
 

@@ -266,6 +266,23 @@ html {
 .aurora-b { animation: aurora-b 30s ease-in-out infinite; }
 .aurora-c { animation: aurora-c 26s ease-in-out infinite; }
 
+/* Capa del fondo global. Se promueve a su propia capa GPU desde el arranque
+   (evita el microparpadeo único cuando el navegador la promovería recién al
+   primer scroll) y usa 100lvh en vez de 100vh para que NO se re-rasterice
+   cuando la barra de URL del navegador móvil se oculta al scrollear. */
+.site-bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(100vh + 64px);   /* fallback navegadores sin lvh */
+  height: calc(100lvh + 64px);  /* estable ante la barra de URL + overscan */
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 /* Grilla estilo terminal con desvanecido radial hacia los bordes */
 .terminal-grid {
   background-image:
