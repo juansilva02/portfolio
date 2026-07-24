@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
+import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 import ArticleCard from '@/components/ArticleCard.jsx';
 import { articles } from '@/data/articles.js';
@@ -34,8 +35,8 @@ const ArticlesPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h1 className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance">
-                Articulos sobre <span className="text-slate-400">web, React y automatizacion</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
+                <ShinyText text="Articulos sobre web, React y automatizacion" color="#94a3b8" speed={2.8} delay={1} />
               </h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Contenido orientado a clientes y equipos que buscan un desarrollador web freelance en Argentina, automatizacion con n8n o productos web mejor pensados.

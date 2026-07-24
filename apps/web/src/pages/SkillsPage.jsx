@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { fadeUp, revealOnView } from '@/lib/motion';
 import Header from '@/components/Header.jsx';
+import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 import SkillCard from '@/components/SkillCard.jsx';
 
@@ -82,10 +83,10 @@ const SkillsPage = () => {
                 initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance"
                 style={{ letterSpacing: '-0.02em' }}
               >
-                Stack y <span className="text-slate-400">skills</span>
+                <ShinyText text="Stack y skills" color="#94a3b8" speed={2.8} delay={1} />
               </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Una vista clara de las tecnologías con las que construyo productos web, interfaces y automatizaciones.

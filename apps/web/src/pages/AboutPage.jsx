@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { BriefcaseBusiness, Gauge, GraduationCap, Users } from 'lucide-react';
 import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
 import Header from '@/components/Header.jsx';
+import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 
 const driveCards = [
@@ -80,7 +81,7 @@ const AboutPage = () => {
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance"
                 style={{ letterSpacing: '-0.02em' }}
               >
-                Sobre <span className="text-slate-400">mi</span>
+                <ShinyText text="Sobre mi" color="#94a3b8" speed={2.8} delay={1} />
               </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Soy desarrollador web freelance en Buenos Aires. Trabajo con mentalidad de negocio, energia joven y una ejecucion enfocada en calidad, detalle y resultados serios.

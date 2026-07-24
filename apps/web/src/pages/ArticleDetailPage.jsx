@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
+import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 import { articlesBySlug } from '@/data/articles.js';
 import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
@@ -52,7 +53,9 @@ const ArticleDetailPage = () => {
                 <span className="text-sm text-slate-400">{article.readTime}</span>
                 <span className="text-sm text-slate-400">{article.date}</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-100 mb-5 text-balance">{article.title}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-5 text-balance">
+                <ShinyText text={article.title} color="#94a3b8" speed={2.8} delay={1} />
+              </h1>
               <p className="text-xl text-slate-300 leading-relaxed">{article.excerpt}</p>
             </motion.header>
 

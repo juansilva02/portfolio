@@ -3,14 +3,11 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
-  Building2,
-  Database,
-  LayoutTemplate,
   MessageCircle,
-  Server,
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
+import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 import ExpertiseHighlights from '@/components/ExpertiseHighlights.jsx';
 import KeyStatistics from '@/components/KeyStatistics.jsx';
@@ -41,29 +38,6 @@ const heroCard = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] } },
 };
-
-const serviceOffers = [
-  {
-    icon: LayoutTemplate,
-    title: 'Landing page express',
-    summary: 'Desde 200 USD, entregada en 48 hs, orientada a captar consultas rapido.',
-  },
-  {
-    icon: Building2,
-    title: 'Software para empresas',
-    summary: 'Sistemas internos, paneles y flujos que ordenan operaciones y ventas.',
-  },
-  {
-    icon: Database,
-    title: 'SaaS y productos web',
-    summary: 'MVPs, dashboards y soluciones listas para crecer con tu negocio.',
-  },
-  {
-    icon: Server,
-    title: 'Infraestructura local',
-    summary: 'Armado de red y servidores locales para almacenamiento de bases de datos.',
-  },
-];
 
 const HomePage = () => {
   const reduce = useReducedMotion();
@@ -124,9 +98,11 @@ const HomePage = () => {
                       className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-100 leading-tight text-balance"
                       style={{ letterSpacing: '-0.02em' }}
                     >
-                      Landing Page en <span className="text-slate-400">48 hs</span>.
-                      <br />
-                      Software serio para <span className="text-slate-400">empresas y comercios</span>.
+                      <ShinyText color="#94a3b8" speed={2.8} delay={1}>
+                        Landing Page en 48 hs.
+                        <br />
+                        Software serio para empresas y comercios.
+                      </ShinyText>
                     </h1>
 
                     <p className="text-xl text-slate-300 max-w-3xl leading-relaxed">
@@ -166,15 +142,15 @@ const HomePage = () => {
                   <motion.div variants={statRow} className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <motion.div variants={heroItem} className="liquid-glass-light rounded-[1.25rem] p-4">
                       <div className="text-sm text-slate-400 mb-1">Oferta inicial</div>
-                      <div className="text-slate-100 font-semibold">200 USD la landing base</div>
+                      <div className="text-slate-100 font-semibold">200 USD Landingpage</div>
                     </motion.div>
                     <motion.div variants={heroItem} className="liquid-glass-light rounded-[1.25rem] p-4">
                       <div className="text-sm text-slate-400 mb-1">Entrega</div>
-                      <div className="text-slate-100 font-semibold">48 hs para salir a vender</div>
+                      <div className="text-slate-100 font-semibold">48 hs habiles</div>
                     </motion.div>
                     <motion.div variants={heroItem} className="liquid-glass-light rounded-[1.25rem] p-4">
                       <div className="text-sm text-slate-400 mb-1">Forma de trabajo</div>
-                      <div className="text-slate-100 font-semibold">Directo conmigo</div>
+                      <div className="text-slate-100 font-semibold">Directa con el desarrolador</div>
                     </motion.div>
                   </motion.div>
                 </motion.div>
@@ -187,27 +163,6 @@ const HomePage = () => {
                 >
                   <WebPageAssembly3D />
                 </motion.div>
-              </div>
-            </div>
-          </section>
-
-          <section className="py-12">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                {serviceOffers.map((offer, index) => (
-                  <motion.div
-                    key={offer.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.08 }}
-                    className="liquid-glass-light rounded-[1.5rem] p-5"
-                  >
-                    <offer.icon className="w-6 h-6 text-slate-200 mb-4" />
-                    <h3 className="text-lg font-semibold text-slate-100 mb-2">{offer.title}</h3>
-                    <p className="text-sm leading-relaxed text-slate-300">{offer.summary}</p>
-                  </motion.div>
-                ))}
               </div>
             </div>
           </section>
@@ -225,7 +180,7 @@ const HomePage = () => {
                   viewport={{ once: true }}
                 >
                   <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
-                    Articulos para <span className="text-slate-400">atraer trafico y educar clientes</span>
+                    Articulos para <span className="text-slate-400">atraer clientes</span>
                   </h2>
                   <p className="text-slate-300 max-w-2xl">
                     Contenido sobre desarrollo web freelance, React, automatizacion n8n y criterios de conversion aplicado a negocios reales.

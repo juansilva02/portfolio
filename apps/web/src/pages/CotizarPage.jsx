@@ -15,6 +15,7 @@ import {
   Workflow,
 } from 'lucide-react';
 import Header from '@/components/Header.jsx';
+import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
 import { categorias, extras, calcularRango } from '@/data/cotizador.js';
@@ -78,10 +79,10 @@ const CotizarPage = () => {
                 Cotizador online
               </span>
               <h1
-                className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-5 text-balance"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-balance"
                 style={{ letterSpacing: '-0.02em' }}
               >
-                Cotizá tu proyecto <span className="text-slate-400">en 30 segundos</span>
+                <ShinyText text="Cotizá tu proyecto en 30 segundos" color="#94a3b8" speed={2.8} delay={1} />
               </h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Elegí el tipo de proyecto, el nivel de complejidad y los extras. El estimador te da un rango

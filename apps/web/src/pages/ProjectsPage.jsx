@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
+import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 import ProjectCard from '@/components/ProjectCard.jsx';
 import { projects } from '@/data/projects.js';
@@ -39,10 +40,10 @@ const ProjectsPage = () => {
                 initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance"
                 style={{ letterSpacing: '-0.02em' }}
               >
-                Proyectos reales y <span className="text-slate-400">servicios</span>
+                <ShinyText text="Proyectos reales y servicios" color="#94a3b8" speed={2.8} delay={1} />
               </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Este portfolio reune proyectos reales de desarrollo web freelance en Argentina: sitios institucionales, ecommerce, portfolios comerciales y soluciones pensadas para negocio con React, Astro y arquitectura moderna.

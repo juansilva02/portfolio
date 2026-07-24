@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ShinyText from '@/components/ShinyText.jsx';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -41,7 +42,13 @@ const Header = () => {
             to="/"
             className="text-2xl font-bold text-slate-100 hover:text-slate-300 transition-colors duration-200"
           >
-            <span className="text-slate-400 brand-reflect">{'{zuzudev}'}</span>
+            <ShinyText
+              text="{zuzudev}"
+              color="#64748b"
+              shineColor="#ffffff"
+              speed={2.4}
+              delay={1.5}
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">

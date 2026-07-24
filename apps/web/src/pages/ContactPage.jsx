@@ -6,6 +6,7 @@ import { hoverLift } from '@/lib/motion';
 import { Mail, MapPin, MessageCircle, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header.jsx';
+import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 import SocialLinks from '@/components/SocialLinks.jsx';
 import { Button } from '@/components/ui/button';
@@ -210,10 +211,10 @@ const ContactPage = () => {
                 initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="page-title-shine text-4xl md:text-5xl lg:text-6xl font-bold text-slate-100 mb-6 text-balance"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance"
                 style={{ letterSpacing: '-0.02em' }}
               >
-                {selectedPreset.headline}
+                <ShinyText text={selectedPreset.headline} color="#94a3b8" speed={2.8} delay={1} />
               </motion.h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 {selectedPreset.helper} Soy desarrollador web freelance en Buenos Aires y trabajo con comunicacion directa, foco real en negocio y tiempos concretos.
