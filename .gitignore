@@ -5,6 +5,9 @@ dist
 .env.local
 apps/web/dist
 apps/web/node_modules
+playwright-report/
+test-results/
+blob-report/
 
 # Herramientas de IA / asistentes (no versionar)
 .claude/
