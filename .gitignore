@@ -16,6 +16,7 @@ blob-report/
 .windsurf/
 CLAUDE.md
 **/.claude/
+.codebase-memory/
 
 # Almacenamiento de runtime del formulario de contacto
 apps/web/data/
