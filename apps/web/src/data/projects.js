@@ -4,6 +4,31 @@
 
 export const projects = [
   {
+    title: 'Avellaneda Oro',
+    category: 'Joyería',
+    year: '2026',
+    description:
+      'Tienda online de joyas en oro 18K, con catálogo de productos, cotización actualizada y atención directa por WhatsApp.',
+    tech: ['Catálogo', 'Oro 18K', 'WhatsApp', 'Responsive'],
+    image: '/images/avellaneda-oro.webp',
+    demoUrl: 'https://avellanedaoro.com/',
+    demoLabel: 'Ver sitio online',
+    featured: true,
+    showInFeatured: true,
+  },
+    {
+    title: 'Los Eucaliptus Corralon',
+    category: 'Storefront comercial',
+    year: '2026',
+    description:
+      'Storefront publicitario y de venta para corralon, preparado para escalar a carrito, pedidos y backend de ordenes.',
+    tech: ['React 19', 'Vite 8', 'CSS custom', 'Node.js'],
+    image: '/images/corralon-losecualiptus-web.webp',
+    demoUrl: 'https://www.corralonloseucaliptus.com',
+    demoLabel: 'Ver sitio real',
+    showInFeatured: true,
+  },
+  {
     title: 'Stutt Ingenieria',
     category: 'Caso real',
     year: '2026',
@@ -12,9 +37,7 @@ export const projects = [
     tech: ['Astro', 'TypeScript', 'Tailwind', 'Responsive UI'],
     image: '/images/stutt-ingenieria.webp',
     demoUrl: 'https://www.stuttingenieria.com/',
-    repoUrl: 'https://github.com/juansilva02/stuttgart',
     demoLabel: 'Ver sitio real',
-    repoLabel: 'Repositorio',
     featured: true,
     showInFeatured: true,
   },
@@ -28,7 +51,7 @@ export const projects = [
     image: '/images/maurofranart-web.webp',
     demoUrl: 'https://maurofranart.zuzudev.pro/',
     repoUrl: 'https://github.com/juansilva02/maurofranart-portfolio',
-    demoLabel: 'Ver sitio online',
+    demoLabel: 'Ver Demo',
     repoLabel: 'Repositorio',
     showInFeatured: true,
   },
@@ -47,18 +70,6 @@ export const projects = [
     showInFeatured: true,
   },
   {
-    title: 'Los Eucaliptus Corralon',
-    category: 'Storefront comercial',
-    year: '2026',
-    description:
-      'Storefront publicitario y de venta para corralon, preparado para escalar a carrito, pedidos y backend de ordenes.',
-    tech: ['React 19', 'Vite 8', 'CSS custom', 'Node.js'],
-    image: '/images/corralon-losecualiptus-web.webp',
-    repoUrl: 'https://github.com/juansilva02/web_loseucaliptos',
-    repoLabel: 'Ver repositorio',
-    showInFeatured: true,
-  },
-  {
     title: 'MM Seguros',
     category: 'Sitio institucional',
     year: '2026',
@@ -66,8 +77,10 @@ export const projects = [
       'Sitio institucional multi pagina para empresa de seguros, con rutas comerciales, secciones de cotizacion y estructura preparada para escalar contenidos.',
     tech: ['Astro 6', 'Tailwind 4', 'TypeScript', 'Multi-page'],
     image: '/images/mmseguros-web.webp',
+    demoUrl: 'https://mmseguros.zuzudev.pro/',
     repoUrl: 'https://github.com/juansilva02/mmseguros',
-    repoLabel: 'Ver repositorio',
+    demoLabel: 'Ver demo',
+    repoLabel: 'Repositorio',
     showInFeatured: true,
   },
   {
@@ -105,5 +118,5 @@ export const projects = [
   },
 ];
 
-// Solo los que se muestran en la home (los 5 casos reales con imagen).
+//
 export const featuredProjects = projects.filter((p) => p.showInFeatured);

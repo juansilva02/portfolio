@@ -99,8 +99,6 @@ const HomePage = () => {
                       style={{ letterSpacing: '-0.02em' }}
                     >
                       <ShinyText color="#94a3b8" speed={2.8} delay={1}>
-                        Landing Page en 48 hs.
-                        <br />
                         Software serio para empresas y comercios.
                       </ShinyText>
                     </h1>
