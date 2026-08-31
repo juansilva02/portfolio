@@ -36,7 +36,7 @@ const ArticleCard = ({ slug, title, category, readTime, date, excerpt, index = 0
           to={`/articles/${slug}`}
           className="flex items-center gap-1.5 text-sm font-medium text-slate-300 group-hover:text-slate-100 transition-colors"
         >
-          Leer mas <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          Leé el artículo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
     </motion.article>

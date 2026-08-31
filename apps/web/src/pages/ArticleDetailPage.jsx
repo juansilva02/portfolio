@@ -36,7 +36,7 @@ const ArticleDetailPage = () => {
           <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-8">
               <Link to="/articles" className="text-sm text-slate-400 hover:text-slate-200 transition-colors">
-                Volver a articulos
+                Volver a mis artículos
               </Link>
             </div>
 
@@ -82,7 +82,7 @@ const ArticleDetailPage = () => {
               </div>
 
               <motion.div variants={fadeUp} className="mt-12 pt-8 border-t border-slate-700/50">
-                <h3 className="text-xl font-semibold text-slate-100 mb-4">Palabras clave trabajadas</h3>
+                <h3 className="text-xl font-semibold text-slate-100 mb-4">Las palabras clave que trabajo</h3>
                 <div className="flex flex-wrap gap-2">
                   {article.keywords.map((keyword) => (
                     <span

@@ -1,114 +1,114 @@
 export const articles = [
   {
     slug: 'diseno-web-que-convierte-clientes',
-    title: 'Como diseno sitios web que convierten mejor',
-    seoTitle: 'Diseno web que convierte clientes | Desarrollador web freelance en Argentina',
+    title: 'Cómo diseño sitios web que convierten mejor',
+    seoTitle: 'Diseño web que convierte clientes | Desarrollador web freelance en Argentina',
     metaDescription:
-      'Guia practica de zuzudev sobre diseno web que convierte: estructura, mensajes, CTA y criterios para vender mejor desde una web en Argentina.',
+      'Te cuento cómo trabajo el diseño web para convertir visitas en consultas: estructura, mensajes, CTA y criterios que aplico en proyectos de Argentina.',
     category: 'UI',
     readTime: '6 min',
     date: '2026-06-01',
     excerpt:
-      'Una mirada practica al equilibrio entre estructura, claridad visual y llamados a la accion pensados para marcas y negocios.',
-    keywords: ['disenador web freelance argentina', 'landing page que convierte', 'desarrollador web buenos aires'],
+      'Te muestro cómo equilibro estructura, claridad visual y llamados a la acción para que tu web ayude a generar confianza y consultas.',
+    keywords: ['diseñador web freelance argentina', 'landing page que convierte', 'desarrollador web buenos aires'],
     intro:
-      'Cuando una empresa invierte en una web, no compra solo diseno. Compra una herramienta para generar confianza, explicar su propuesta y convertir visitas en consultas o ventas.',
+      'Cuando trabajo en una web, no pienso solo en el diseño. Busco crear una herramienta que te ayude a generar confianza, explicar tu propuesta y convertir visitas en consultas o ventas.',
     sections: [
       {
-        heading: 'La primera tarea de una web no es verse linda',
+        heading: 'Empiezo por el objetivo de tu web',
         paragraphs: [
-          'La primera tarea es dejar claro que problema resuelve el negocio, para quien trabaja y cual es el siguiente paso. Si ese mensaje no se entiende en los primeros segundos, la web pierde fuerza comercial.',
-          'Por eso en zuzudev trabajo cada home con una logica simple: propuesta clara, autoridad, servicios ordenados y una llamada a la accion visible.',
+          'Antes de pensar en colores o animaciones, busco dejar claro qué problema resolvés, para quién trabajás y cuál es el siguiente paso que querés que tome tu visitante.',
+          'Cuando desarrollo tu home, ordeno el contenido con una lógica simple: propuesta clara, autoridad, servicios bien presentados y una llamada a la acción visible.',
         ],
       },
       {
-        heading: 'Que reviso cuando quiero mejorar conversion',
+        heading: 'Reviso lo que puede mejorar tu conversion',
         paragraphs: [
-          'Reviso el titulo principal, la jerarquia de secciones, la cantidad de friccion para contactar y la claridad del beneficio. Muchas webs fallan no por tecnologia sino por comunicar de forma ambigua.',
-          'Tambien ajusto mobile first. En la practica, una gran parte del trafico llega desde celular. Si la experiencia mobile es floja, la conversion cae aunque el escritorio se vea bien.',
+          'Reviso tu título principal, la jerarquía de secciones, la cantidad de fricción para contactarte y la claridad de tu beneficio. Muchas webs fallan no por la tecnología, sino por comunicar de forma ambigua.',
+          'También ajusto la experiencia mobile first. Si gran parte de tu tráfico llega desde el celular, necesito que tu web funcione bien en esa pantalla para que no pierdas oportunidades.',
         ],
       },
       {
-        heading: 'Que espera un cliente real',
+        heading: 'Pienso en lo que busca tu cliente',
         paragraphs: [
-          'Un cliente no busca una web experimental. Busca una pagina que explique, ordene y ayude a vender. Eso vale para una landing express, una web institucional o un portfolio comercial.',
-          'Por eso el trabajo de un desarrollador web freelance en Argentina tiene que mezclar UI, criterio de negocio y ejecucion rapida.',
+          'Cuando desarrollo tu web, pienso en la persona que va a contratarte. Esa persona necesita encontrar una página que explique, ordene y ayude a vender, ya sea una landing express, una web institucional o un portfolio comercial.',
+          'Por eso combino mi trabajo como desarrollador web freelance en Argentina con criterio de negocio y una ejecución rápida.',
         ],
       },
     ],
   },
   {
     slug: 'automatizacion-real-para-pymes-con-n8n',
-    title: 'Automatizaciones reales para equipos pequenos',
+    title: 'Cómo creo automatizaciones reales para equipos pequeños',
     seoTitle: 'Automatizacion n8n para PyMEs en Argentina | zuzudev',
     metaDescription:
-      'Como aplicar automatizacion con n8n en PyMEs argentinas: formularios, ventas, seguimiento y tareas repetitivas que conviene resolver con flujos simples.',
+      'Te explico cómo aplico automatización con n8n en PyMEs argentinas para resolver formularios, ventas, seguimiento y tareas repetitivas con flujos simples.',
     category: 'Automatizacion',
     readTime: '7 min',
     date: '2026-06-01',
     excerpt:
-      'Ideas concretas para ahorrar tiempo con flujos automatizados en procesos comerciales, operativos y de contenido.',
+      'Te comparto ideas concretas que uso para ahorrar tiempo en procesos comerciales, operativos y de contenido.',
     keywords: ['automatizacion n8n argentina', 'automatizacion para pymes', 'n8n freelance argentina'],
     intro:
-      'La automatizacion bien aplicada no reemplaza criterio humano. Lo que hace es sacar del medio tareas repetitivas que consumen tiempo y generan errores.',
+      'Cuando automatizo un proceso, no busco reemplazar tu criterio humano. Busco sacar del medio las tareas repetitivas que te consumen tiempo y pueden generar errores.',
     sections: [
       {
-        heading: 'Donde conviene empezar',
+        heading: 'Empiezo por donde mas tiempo perdes',
         paragraphs: [
-          'En una PyME casi siempre conviene empezar por el punto donde se pierde tiempo todos los dias: formularios, consultas, seguimiento comercial, carga de datos o reportes.',
-          'No hace falta arrancar con una arquitectura compleja. Un flujo simple con n8n puede conectar formulario, email, WhatsApp, CRM o una base de datos y resolver mucho.',
+          'Cuando trabajo con una PyME, primero busco el punto donde perdés tiempo todos los días: formularios, consultas, seguimiento comercial, carga de datos o reportes.',
+          'No necesito arrancar con una arquitectura compleja. Puedo conectar tu formulario, email, WhatsApp, CRM o base de datos con un flujo simple de n8n y resolver mucho.',
         ],
       },
       {
-        heading: 'Ejemplos concretos que si tienen impacto',
+        heading: 'Creo automatizaciones con impacto real',
         paragraphs: [
-          'Crear leads desde formularios, mandar alertas al equipo comercial, registrar pedidos, generar respuestas automaticas o mover informacion entre sistemas son casos con retorno rapido.',
-          'Cuando esa automatizacion se conecta con una web bien pensada, la empresa mejora atencion, orden y velocidad al mismo tiempo.',
+          'Puedo crear leads desde tus formularios, enviar alertas a tu equipo comercial, registrar pedidos, generar respuestas automáticas o mover información entre sistemas.',
+          'Cuando conecto esa automatización con una web bien pensada, te ayudo a mejorar la atención, el orden y la velocidad de tu negocio al mismo tiempo.',
         ],
       },
       {
-        heading: 'Por que esto importa para un negocio argentino',
+        heading: 'Adapto la automatizacion a tu negocio',
         paragraphs: [
-          'Porque los equipos chicos no pueden darse el lujo de perder horas en tareas manuales. Una automatizacion real para PyMEs en Argentina tiene que ser simple, mantenible y pensada para la operacion local.',
-          'Ese es el enfoque que uso cuando combino desarrollo web con automatizacion n8n: menos friccion y mas capacidad operativa.',
+          'Cuando trabajo con equipos pequeños, busco que no pierdan horas en tareas manuales. Por eso desarrollo automatizaciones simples, mantenibles y pensadas para tu operación local.',
+          'Ese es el enfoque que uso cuando combino desarrollo web con automatización n8n: reduzco tu fricción operativa y te doy más capacidad para hacer crecer el negocio.',
         ],
       },
     ],
   },
   {
     slug: 'desarrollo-web-performance-y-marca',
-    title: 'Desarrollo web con foco en marca y performance',
+    title: 'Desarrollo web con foco en marca y rendimiento',
     seoTitle: 'Programador React freelance en Buenos Aires | Performance y marca',
     metaDescription:
-      'Que implica desarrollar una web rapida, mantenible y alineada a marca. Enfoque de zuzudev como programador React freelance en Buenos Aires.',
+      'Te muestro cómo desarrollo una web rápida, mantenible y alineada a tu marca desde mi enfoque como programador React freelance en Buenos Aires.',
     category: 'Desarrollo',
     readTime: '5 min',
     date: '2026-06-01',
     excerpt:
-      'Buenas practicas para construir experiencias web rapidas, mantenibles y alineadas con la identidad visual de cada proyecto.',
+      'Te cuento cómo construyo experiencias web rápidas, mantenibles y alineadas con la identidad visual de cada proyecto.',
     keywords: ['programador react freelance buenos aires', 'desarrollo web performance argentina', 'react freelance argentina'],
     intro:
-      'Una web lenta o inconsistente no solo afecta experiencia de usuario. Tambien afecta credibilidad, conversion y crecimiento del proyecto.',
+      'Cuando desarrollo tu web, busco que sea rápida, consistente y fiel a tu marca. Una experiencia lenta o desordenada puede afectar tu credibilidad, conversión y crecimiento.',
     sections: [
       {
-        heading: 'Performance no es un lujo tecnico',
+        heading: 'Trabajo la performance como parte del negocio',
         paragraphs: [
-          'Es parte de la experiencia comercial. Si una web tarda, rebota. Si rebota, consulta menos gente. Por eso performance y negocio estan mucho mas cerca de lo que parece.',
-          'En cada proyecto busco una base liviana, rutas claras, imagenes optimizadas y componentes que no carguen mas de lo necesario.',
+          'Para mí, el rendimiento es parte de tu experiencia comercial. Si tu web tarda, podés perder visitas y consultas. Por eso busco una base liviana, rutas claras, imágenes optimizadas y componentes que no carguen más de lo necesario.',
+          'Cuando reviso tu proyecto, priorizo las mejoras que pueden hacer que tu sitio responda mejor y que tus visitantes lleguen más rápido a la información importante.',
         ],
       },
       {
-        heading: 'La marca tambien vive en la interfaz',
+        heading: 'Hago que tu marca tambien se sienta en la interfaz',
         paragraphs: [
-          'No alcanza con usar el logo. La marca se siente en tono, ritmo visual, espaciado, contraste, decisiones de navegacion y forma de presentar servicios.',
-          'Cuando una web respeta esa identidad, transmite un nivel mas profesional y coherente.',
+          'No me alcanza con colocar tu logo. Trabajo el tono, el ritmo visual, el espaciado, el contraste, la navegación y la forma de presentar tus servicios para que la interfaz exprese tu identidad.',
+          'Cuando alineo esos elementos, te ayudo a transmitir una imagen más profesional y coherente en cada pantalla.',
         ],
       },
       {
-        heading: 'Por que React y herramientas modernas ayudan',
+        heading: 'Uso React para construir una base que puedas sostener',
         paragraphs: [
-          'Trabajar como programador React freelance en Buenos Aires hoy implica pensar componentes reutilizables, escalabilidad y velocidad de iteracion sin perder calidad.',
-          'Ese equilibrio entre performance, mantenimiento y expresion de marca es el que hace que una web no sea solo correcta, sino util para el negocio.',
+          'Como programador React freelance en Buenos Aires, creo componentes reutilizables que me permiten iterar rápido y mantener la calidad de tu proyecto.',
+          'Busco ese equilibrio entre rendimiento, mantenimiento y expresión de marca para que tu web no sea solo correcta, sino realmente útil para tu negocio.',
         ],
       },
     ],

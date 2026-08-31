@@ -16,10 +16,10 @@ const ArticlesPage = () => {
       transition={{ duration: 0.4 }}
     >
       <Helmet>
-        <title>Articulos sobre desarrollo web, React y automatizacion | zuzudev</title>
+        <title>Mis artículos sobre desarrollo web, React y automatización | zuzudev</title>
         <meta
           name="description"
-          content="Articulos de zuzudev sobre desarrollo web freelance en Argentina, programacion React, automatizacion n8n y sitios que convierten mejor."
+          content="Te comparto mis ideas sobre desarrollo web freelance en Argentina, programación React, automatización n8n y sitios que convierten mejor."
         />
         <link rel="canonical" href="https://zuzudev.pro/articles" />
       </Helmet>
@@ -36,10 +36,10 @@ const ArticlesPage = () => {
               className="text-center mb-16"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
-                <ShinyText text="Articulos sobre web, React y automatizacion" color="#94a3b8" speed={2.8} delay={1} />
+                <ShinyText text="Te comparto mis artículos sobre web, React y automatización" color="#94a3b8" speed={2.8} delay={1} />
               </h1>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Contenido orientado a clientes y equipos que buscan un desarrollador web freelance en Argentina, automatizacion con n8n o productos web mejor pensados.
+                Escribo sobre lo que hago para ayudarte a mejorar tu web, automatizar tus procesos y construir productos digitales mejor pensados.
               </p>
             </motion.div>
 
