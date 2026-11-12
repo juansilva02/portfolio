@@ -1,0 +1,11 @@
+**/node_modules
+**/dist
+.git
+.agents
+.taste-skill
+**/.env
+**/.env.*
+**/certs
+apps/web/data
+test-results*
+playwright-report

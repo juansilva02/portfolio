@@ -1,0 +1,58 @@
+name: zd-demo-production
+services:
+  broker:
+    build: ${ERP_ROOT:?Set ERP_ROOT}/deploy/auth-broker
+    restart: unless-stopped
+    mem_limit: 256m
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    environment:
+      BROKER_ORIGIN: https://demo.zuzudev.pro
+      BROKER_PATH: /auth
+      BROKER_INSTANCES: '{}'
+      BROKER_PROVIDERS: '{}'
+      GOOGLE_CLIENT_FILE: /run/secrets/google.json
+      ENABLE_DEMO_SIGNUP: '1'
+      DEMO_PORTAL_ORIGIN: https://demo.zuzudev.pro
+      DEMO_ORIGIN_TEMPLATE: https://{subdomain}.demo.zuzudev.pro
+    volumes:
+      - control-data:/data
+      - ${GOOGLE_OAUTH_FILE:?Set GOOGLE_OAUTH_FILE}:/run/secrets/google.json:ro
+    networks: [control]
+  proxy:
+    build:
+      context: ..
+      dockerfile: demo-production/Portal.Dockerfile
+    container_name: zd-demo-production-proxy
+    restart: unless-stopped
+    mem_limit: 128m
+    ports: [127.0.0.1:9444:443]
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certs:/certs:ro
+    networks: [control]
+    depends_on: [broker]
+  worker:
+    profiles: [provisioning]
+    build:
+      context: ../demo-local
+      dockerfile: Worker.Dockerfile
+    restart: unless-stopped
+    mem_limit: 256m
+    environment:
+      BROKER_DB: /data/auth.sqlite
+      API_IMAGE: ${API_IMAGE:?Set API_IMAGE}
+      WEB_IMAGE: ${WEB_IMAGE:?Set WEB_IMAGE}
+      MAX_DEMOS: ${MAX_DEMOS:-2}
+      DEMO_PROJECT_PREFIX: zd-prod-demo-
+      DEMO_PROXY_CONTAINER: zd-demo-production-proxy
+      DEMO_CA_VOLUME: zd-demo-production-ca
+    volumes:
+      - control-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks: [control]
+    depends_on: [broker]
+volumes:
+  control-data:
+networks:
+  control:

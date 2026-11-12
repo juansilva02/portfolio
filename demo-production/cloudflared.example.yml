@@ -1,0 +1,17 @@
+# Reference for a locally managed connector. For the existing remotely managed
+# Windows service, configure equivalent published application routes in Cloudflare.
+# Preserve the original HTTP Host: never force all requests to demo.zuzudev.pro.
+ingress:
+  - hostname: demo.zuzudev.pro
+    service: https://127.0.0.1:9444
+    originRequest:
+      originServerName: demo.zuzudev.pro
+      caPool: F:/Proyectos/portfolio/portfolio/demo-production/certs/ca.crt
+      noTLSVerify: false
+  - hostname: '*.demo.zuzudev.pro'
+    service: https://127.0.0.1:9444
+    originRequest:
+      originServerName: demo.zuzudev.pro
+      caPool: F:/Proyectos/portfolio/portfolio/demo-production/certs/ca.crt
+      noTLSVerify: false
+  - service: http_status:404

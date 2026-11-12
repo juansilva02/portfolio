@@ -1,0 +1,71 @@
+services:
+  db:
+    image: postgres:17.11-alpine
+    restart: unless-stopped
+    mem_limit: 384m
+    cpus: 1
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks: [tenant]
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U demo -d demo]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  api:
+    image: ${API_IMAGE}
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 1
+    depends_on:
+      db: {condition: service_healthy}
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      TRUST_PROXY: '1'
+      DATABASE_URL: postgresql://demo:${DB_PASSWORD}@db:5432/demo
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      DEMO_INSTANCE_ID: ${DEMO_ID}
+      DEMO_GOOGLE_SUBJECT: ${GOOGLE_SUBJECT}
+      DEMO_OWNER_NAME: ${OWNER_NAME}
+      DEMO_READY_AT: ${READY_AT}
+      WEB_ORIGIN: ${INSTANCE_ORIGIN}
+      AUTH_BROKER_ORIGIN: https://auth-proxy/auth
+      AUTH_INSTANCE_ID: ${DEMO_ID}
+      AUTH_INSTANCE_SECRET: ${INSTANCE_SECRET}
+      NODE_EXTRA_CA_CERTS: /certs/local.crt
+      UPLOAD_DIR: /app/apps/api/uploads
+      PRIVATE_RECEIPT_DIR: /app/apps/api/private-receipts
+    volumes:
+      - uploads:/app/apps/api/uploads
+      - receipts:/app/apps/api/private-receipts
+      - local-ca:/certs:ro
+    networks:
+      tenant:
+        aliases:
+          - demo-${DEMO_ID}-api
+  web:
+    image: ${WEB_IMAGE}
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 1
+    networks:
+      tenant:
+        aliases:
+          - demo-${DEMO_ID}-web
+networks:
+  tenant:
+    name: ${DEMO_PROJECT_PREFIX:-zd-demo-}${DEMO_ID}
+volumes:
+  database:
+  uploads:
+  receipts:
+  local-ca:
+    external: true
+    name: ${DEMO_CA_VOLUME:-zd-demo-local-ca}
