@@ -4,7 +4,7 @@ Portfolio personal de Juan Silva (`zuzudev`), desarrollador web freelance en Arg
 
 La home presenta el sistema de gestión comercial con una preview de Ventas, Stock y Caja y el CTA **Solicitá tu demo**. El ensayo local integra Google y crea un entorno exclusivo por empresa mediante Docker.
 
-Documentación actualizada el **12 de noviembre de 2026**. La puesta en producción del aprovisionamiento requiere completar la migración del VPS, DNS y HTTPS.
+Documentación actualizada el **12 de noviembre de 2026**. La puesta en producción del aprovisionamiento usa Docker local con Cloudflare Tunnel y requiere completar DNS, certificados y validación pública.
 
 Sitio en producción: **https://zuzudev.pro**
 
@@ -112,7 +112,7 @@ Vercel (proyecto `portfolio-web`), autodeploy desde `main`.
 
 ## Pendientes / próximos pasos
 
-- [ ] Publicar el circuito de creación de demos en el VPS y configurar DNS y TLS wildcard para `*.demo.zuzudev.pro`.
+- [ ] Publicar el circuito de creación de demos mediante Docker local y Cloudflare Tunnel y configurar DNS y TLS wildcard para `*.demo.zuzudev.pro`.
 - [ ] Definir capacidad productiva, respaldos y política de eliminación de datos al finalizar las demos.
 - [ ] Implementar invitaciones de empleados a la misma empresa y vincular sus identidades a usuarios de esa base.
 - [ ] Conectar la automatización de campañas y la baja de novedades al consentimiento registrado.
@@ -177,3 +177,8 @@ El ensayo con Google creó una empresa y permitió al propietario ingresar al ER
 ## Entrada HTTPS en Docker para producción
 
 La configuración y el estado de publicación mediante Cloudflare Tunnel están documentados en [demo-production/README.md](demo-production/README.md). Nginx sirve la web compilada en el puerto local 9444 con TLS, rechaza dominios desconocidos y resuelve cada empresa contra el registro de demos vigentes. El origen está levantado para validación local; la publicación, los certificados públicos y el acceso real con Google en producción siguen pendientes.
+
+
+### Refuerzo de las demos del 13 de noviembre de 2026
+
+La plantilla separa las redes de aplicación y PostgreSQL, usa redes internas con gateway aislado y una cuenta de base restringida para la API. Las migraciones se ejecutan como una tarea temporal administrativa. Las guías de demos documentan la actualización explícita de empresas existentes, sus respaldos y las pruebas de aislamiento. La publicación por Cloudflare y el login real entre dos empresas siguen pendientes.

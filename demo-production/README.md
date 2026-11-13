@@ -64,3 +64,24 @@ El certificado generado vence a los 90 días. Antes de vencer, preparar un nuevo
 `check_gateway.py` comprueba contra el Nginx real el certificado con su CA, portal, configuración de demos, encabezados y rechazo de empresa inexistente, endpoint interno, Host y nombre TLS desconocidos. `--local` verifica el entorno de ensayo. No desactiva la validación TLS ni modifica DNS.
 
 Validado el 12 de noviembre de 2026: build del portal dentro de Docker, `nginx -t` y comprobaciones de ambos gateways. Las pruebas públicas del túnel y los proveedores siguen pendientes.
+
+
+## Refuerzo del aislamiento — 13 de noviembre de 2026
+
+Cada empresa conserva tres contenedores permanentes. Ahora tiene dos redes internas con modo de gateway `isolated`: `-edge` conecta frontend, API y Nginx; `-data` conecta exclusivamente API y PostgreSQL. Nginx no se conecta a la red de datos. El frontend y la API no tienen ruta de salida externa y se ejecutan con todas las capacidades Linux descartadas. El proxy sigue conectado a su red de control para llegar al broker y atender el túnel. Esto limita los contenedores de la demo; no constituye aislamiento frente a un administrador del host o un Docker comprometido.
+
+La API utiliza `demo_app`, con una contraseña distinta de la administrativa, y permisos de conexión, uso de esquema y lectura/escritura de datos. No es superusuario, no crea bases ni roles, no modifica el esquema y no accede a `_prisma_migrations`. La contraseña de ejecución se deriva con HMAC del secreto exclusivo de esa base y se entrega únicamente como URL de conexión de la API. La API puede modificar los datos de su empresa, por lo que una API comprometida sigue siendo un riesgo para esa empresa.
+
+Las migraciones pasan a una tarea temporal `migrate`, ejecutada por el worker con las credenciales administrativas. Esa tarea se elimina al terminar. La API arranca directamente, sin ejecutar migraciones. Cada actualización que cambie el esquema debe ejecutar nuevamente la tarea de mantenimiento y aplicar los permisos correspondientes; reiniciar la API no migra la base.
+
+El cambio de plantilla se aplica a nuevas demos. Para una empresa existente hay una operación administrativa explícita, desde el contenedor worker actualizado:
+
+```powershell
+docker exec zd-demo-local-worker-1 python worker.py --harden-existing IDENTIFICADOR_DE_32_HEXADECIMALES
+```
+
+La operación detiene API y frontend, guarda un `pg_dump -Fc` privado en `/data/backups` del volumen de control, prepara redes y permisos y vuelve a arrancar los servicios. No ejecuta seed ni bootstrap y conserva los volúmenes, `ready_at` y `expires`. Al retirar una red antigua reinicia el proxy compartido para renovar el mapeo de su puerto en Docker Desktop; realizar esta operación durante una ventana de mantenimiento, porque puede interrumpir brevemente las demás demos. Si falla, hay que revisar la instancia y restaurar el respaldo cuando corresponda antes de reabrirla. Los respaldos contienen datos de clientes y requieren acceso restringido y política de retención.
+
+Las pruebas de integración crean dos empresas descartables, comprueban permisos SQL, inaccesibilidad de PostgreSQL desde frontend y proxy, conexiones salientes de muestra, credenciales y sesiones cruzadas, archivos y persistencia tras reinicio. Las sondas de red son pruebas concretas, no un barrido completo de la LAN. La red `isolated` evita asignar una dirección al bridge, además de impedir rutas externas; requiere un Docker Engine compatible. Referencia: [modos de gateway de Docker](https://docs.docker.com/engine/network/port-publishing/#gateway-modes).
+
+Verificado en Docker Desktop el 13 de noviembre: dos demos descartables aprobaron permisos, datos y sesiones cruzadas, archivos y persistencia. Se actualizó la demo existente con respaldo previo; conservó los 4 clientes, 8 productos, usuario, fecha de disponibilidad y vencimiento. Respondieron el login, la salud de la API y la consulta de proveedores a través del broker HTTPS. El puerto HTTPS del host fue accesible desde una red Docker común y rechazado desde la API y frontend aislados. Las pruebas públicas de Cloudflare y el nuevo ingreso real con Google siguen pendientes.

@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - database:/var/lib/postgresql/data
-    networks: [tenant]
+    networks: [database]
     healthcheck:
       test: [CMD-SHELL, pg_isready -U demo -d demo]
       interval: 3s
@@ -21,13 +21,16 @@ services:
     restart: unless-stopped
     mem_limit: 512m
     cpus: 1
+    command: [node, dist/src/main.js]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
     depends_on:
       db: {condition: service_healthy}
     environment:
       NODE_ENV: production
       PORT: 4000
       TRUST_PROXY: '1'
-      DATABASE_URL: postgresql://demo:${DB_PASSWORD}@db:5432/demo
+      DATABASE_URL: postgresql://demo_app:${APP_DB_PASSWORD}@db:5432/demo
       JWT_SECRET: ${JWT_SECRET}
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
@@ -47,6 +50,7 @@ services:
       - receipts:/app/apps/api/private-receipts
       - local-ca:/certs:ro
     networks:
+      database:
       tenant:
         aliases:
           - demo-${DEMO_ID}-api
@@ -55,13 +59,34 @@ services:
     restart: unless-stopped
     mem_limit: 512m
     cpus: 1
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
     networks:
       tenant:
         aliases:
           - demo-${DEMO_ID}-web
+  migrate:
+    profiles: [maintenance]
+    image: ${API_IMAGE}
+    command: [node, node_modules/prisma/build/index.js, migrate, deploy]
+    mem_limit: 512m
+    cpus: 1
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      DATABASE_URL: postgresql://demo:${DB_PASSWORD}@db:5432/demo
+    networks: [database]
 networks:
   tenant:
-    name: ${DEMO_PROJECT_PREFIX:-zd-demo-}${DEMO_ID}
+    name: ${DEMO_PROJECT_PREFIX:-zd-demo-}${DEMO_ID}-edge
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.gateway_mode_ipv4: isolated
+  database:
+    name: ${DEMO_PROJECT_PREFIX:-zd-demo-}${DEMO_ID}-data
+    internal: true
+    driver_opts:
+      com.docker.network.bridge.gateway_mode_ipv4: isolated
 volumes:
   database:
   uploads:

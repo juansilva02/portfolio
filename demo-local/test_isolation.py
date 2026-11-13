@@ -63,7 +63,7 @@ def api(demo, method, path, token=None, body=None):
     headers = {"Host": demo["host"]}
     if token:
         headers["Cookie"] = "zuzudev_demo_session="+token
-    return requests.request(method, "https://127.0.0.1:8443/api/v1"+path, headers=headers,
+    return requests.request(method, "https://localhost:8443/api/v1"+path, headers=headers,
                             json=body, verify=CERT, timeout=(3, 10))
 
 
@@ -78,7 +78,7 @@ def upload_avatar(demo, token):
         return struct.pack(">I", len(data))+name+data+struct.pack(">I", zlib.crc32(name+data))
     image = (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", 2, 2, 8, 2, 0, 0, 0))
              + chunk(b"IDAT", zlib.compress(b"\0"+b"\xff\0\0"*2+b"\0"+b"\xff\0\0"*2)) + chunk(b"IEND", b""))
-    response = requests.post("https://127.0.0.1:8443/api/v1/auth/avatar",
+    response = requests.post("https://localhost:8443/api/v1/auth/avatar",
                              headers={"Host": demo["host"],
                                       "Cookie": "zuzudev_demo_session="+token},
                              files={"file": ("test.png", image, "image/png")}, verify=CERT, timeout=10)
@@ -90,7 +90,7 @@ def asset(demo, path, token=None):
     headers = {"Host": demo["host"]}
     if token:
         headers["Cookie"] = "zuzudev_demo_session="+token
-    return requests.get("https://127.0.0.1:8443"+path, headers=headers, verify=CERT, timeout=10)
+    return requests.get("https://localhost:8443"+path, headers=headers, verify=CERT, timeout=10)
 
 
 def destroy(demo):
@@ -100,11 +100,48 @@ def destroy(demo):
     containers = result.stdout.split()
     if containers:
         subprocess.run(["docker", "rm", "-f", *containers], capture_output=True, check=True)
-    subprocess.run(["docker", "network", "disconnect", project, "zd-demo-local-proxy"], capture_output=True)
-    subprocess.run(["docker", "network", "rm", project], capture_output=True)
+    for network in (project, project+"-edge", project+"-data"):
+        subprocess.run(["docker", "network", "disconnect", network, "zd-demo-local-proxy"], capture_output=True)
+        subprocess.run(["docker", "network", "rm", network], capture_output=True)
     for suffix in ("database", "uploads", "receipts"):
         subprocess.run(["docker", "volume", "rm", project+"_"+suffix], capture_output=True, check=True)
     query("DELETE FROM demos WHERE id=? AND subject=?", [demo["id"], "local-isolation-"+demo["id"]])
+
+
+def blocked(container, host, port):
+    script = """const s=require('net').connect({host:%s,port:%d});
+s.setTimeout(2000);s.on('connect',()=>{s.destroy();process.exit(1)});
+s.on('error',()=>process.exit(0));s.on('timeout',()=>{s.destroy();process.exit(0)});""" % (json.dumps(host), port)
+    subprocess.run(['docker','exec',container,'node','-e',script], check=True)
+
+
+def security(demo):
+    project = 'zd-demo-'+demo['id']
+    inspection = json.loads(subprocess.check_output(['docker','inspect',project+'-db-1']))[0]
+    assert not inspection['HostConfig']['PortBindings'], 'PostgreSQL port published'
+    db_ip = inspection['NetworkSettings']['Networks'][project+'-data']['IPAddress']
+    blocked(project+'-web-1', db_ip, 5432)
+    blocked(project+'-web-1', 'db', 5432)
+    # A multihomed proxy must not have the database network attached.
+    proxy = json.loads(subprocess.check_output(['docker','inspect','zd-demo-local-proxy']))[0]
+    assert project+'-data' not in proxy['NetworkSettings']['Networks']
+    result = subprocess.run(['docker','exec','zd-demo-local-proxy','nc','-z','-w','2',db_ip,'5432'], capture_output=True)
+    assert result.returncode != 0, 'Proxy can reach PostgreSQL'
+    script = """const {PrismaClient}=require('@prisma/client');const p=new PrismaClient();
+(async()=>{try{
+const r=await p.$queryRawUnsafe("SELECT current_user AS name, rolsuper,rolcreatedb,rolcreaterole,rolreplication,rolbypassrls FROM pg_roles WHERE rolname=current_user");
+if(r[0].name!=='demo_app'||Object.entries(r[0]).some(([k,v])=>k!=='name'&&v))throw Error('Runtime database role is privileged');
+for(const q of ['SELECT * FROM public._prisma_migrations','CREATE TABLE public.runtime_privilege_probe(id int)']){
+let denied=false;try{await p.$queryRawUnsafe(q)}catch{denied=true}if(!denied)throw Error('Administrative SQL accepted');
+}
+}finally{await p.$disconnect()}})().catch(e=>{console.error(e.message);process.exit(1)});"""
+    subprocess.run(['docker','exec',project+'-api-1','node','-e',script],check=True)
+    for service in ('api', 'web'):
+        route_check = "const r=require('fs').readFileSync('/proc/net/route','utf8');if(r.trim().split('\\n').slice(1).some(l=>l.trim().split(/\\s+/)[1]==='00000000'))process.exit(1)"
+        subprocess.run(['docker','exec',project+'-'+service+'-1','node','-e',route_check],check=True)
+        for host, port in [('1.1.1.1',443),('host.docker.internal',9444),('192.168.1.1',80)]:
+            blocked(project+'-'+service+'-1', host, port)
+    print('Runtime role restricted; database separated; sampled Internet, host and LAN connections denied', flush=True)
 
 
 def main():
@@ -112,6 +149,8 @@ def main():
     print("Waiting for two disposable isolated companies", flush=True)
     wait_ready(a)
     wait_ready(b)
+    security(a)
+    security(b)
     token_a, token_b = login(a), login(b)
     subprocess.run(["docker", "exec", "zd-demo-"+a["id"]+"-api-1", "node", "-e",
                     "process.exit(require('fs').existsSync('/certs/local.key')?1:0)"], check=True)
@@ -132,10 +171,9 @@ def main():
     print("Uploaded files isolated and authenticated", flush=True)
     script = "fetch('http://demo-"+b["id"]+"-api:4000/api/v1/health',{signal:AbortSignal.timeout(3000)}).then(()=>process.exit(1)).catch(()=>process.exit(0))"
     subprocess.run(["docker", "exec", "zd-demo-"+a["id"]+"-api-1", "node", "-e", script], check=True)
-    target = subprocess.run(["docker", "inspect", "--format", "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}",
-                             "zd-demo-"+b["id"]+"-api-1"], capture_output=True, text=True, check=True).stdout.strip()
-    direct = "fetch('http://"+target+":4000/api/v1/health',{signal:AbortSignal.timeout(3000)}).then(()=>process.exit(1)).catch(()=>process.exit(0))"
-    subprocess.run(["docker", "exec", "zd-demo-"+a["id"]+"-api-1", "node", "-e", direct], check=True)
+    target = json.loads(subprocess.check_output(['docker','inspect','zd-demo-'+b['id']+'-api-1']))[0]
+    for entry in target['NetworkSettings']['Networks'].values():
+        blocked('zd-demo-'+a['id']+'-api-1', entry['IPAddress'], 4000)
     subprocess.run(["docker", "restart", "zd-demo-"+a["id"]+"-db-1", "zd-demo-"+a["id"]+"-api-1"],
                    capture_output=True, check=True)
     for _ in range(60):
