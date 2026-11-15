@@ -182,3 +182,9 @@ La configuración y el estado de publicación mediante Cloudflare Tunnel están 
 ### Refuerzo de las demos del 13 de noviembre de 2026
 
 La plantilla separa las redes de aplicación y PostgreSQL, usa redes internas con gateway aislado y una cuenta de base restringida para la API. Las migraciones se ejecutan como una tarea temporal administrativa. Las guías de demos documentan la actualización explícita de empresas existentes, sus respaldos y las pruebas de aislamiento. La publicación por Cloudflare y el login real entre dos empresas siguen pendientes.
+## Levantar el portfolio con Docker
+
+Desde la raíz, ejecutá `docker compose up -d --build --wait` y abrí [el portfolio local](http://localhost:3000). El contenedor sirve la web compilada y el formulario de contacto. Las consultas se guardan en un volumen persistente. Para enviarlas también por correo, configurá las variables SMTP del proyecto antes de arrancar. Podés detener el servicio con `docker compose down`.
+
+El alta automática con Google se prueba desde el portal HTTPS de [demo-local](demo-local/README.md). Al entrar directamente por el puerto 3000, el formulario registra una solicitud de contacto.
+

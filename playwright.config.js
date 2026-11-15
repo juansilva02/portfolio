@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 const desktopViewport = { width: 1440, height: 900 };
 const mobileViewport = { width: 390, height: 844 };
+const port = Number(process.env.PLAYWRIGHT_PORT || 4173);
 
 export default defineConfig({
   testDir: './tests',
@@ -15,14 +16,16 @@ export default defineConfig({
   ],
   outputDir: 'test-results',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: `http://127.0.0.1:${port}`,
+    channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'off',
   },
-  webServer: {
-    command: 'npm run build --prefix apps/web && npm run preview --prefix apps/web -- --port 4173',
-    url: 'http://127.0.0.1:4173',
+  webServer: process.env.PLAYWRIGHT_OFFLINE === '1' ? undefined : {
+    command: `node ../../node_modules/vite/bin/vite.js build && node ../../node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port ${port} --strictPort`,
+    cwd: './apps/web',
+    url: `http://127.0.0.1:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },

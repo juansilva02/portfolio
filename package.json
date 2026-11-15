@@ -9,7 +9,7 @@
 		"lint": "concurrently --raw \"npm run lint --prefix apps/web\"",
 		"test:e2e": "playwright test",
 		"test:perf": "playwright test tests/performance.spec.js",
-		"test:perf:enforce": "PERF_ENFORCE=1 playwright test tests/performance.spec.js"
+		"test:perf:enforce": "node scripts/test-perf.mjs"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.61.1",

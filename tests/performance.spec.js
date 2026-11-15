@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures.js';
 
-const criticalRoutes = ['/', '/projects', '/about', '/experience', '/contact'];
+const criticalRoutes = ['/', '/projects', '/about', '/experience', '/skills', '/demo', '/contact'];
 const enforceBudgets = process.env.PERF_ENFORCE === '1';
 
 const budgets = {
@@ -116,19 +116,39 @@ test.describe('@performance controlled scroll', () => {
   }
 });
 
-test('@performance repeated navigation does not accumulate animations', async ({ page }, testInfo) => {
+test('@performance home settles without perpetual decorative animations', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1500);
+  const infiniteAnimations = await page.evaluate(() =>
+    document.getAnimations().filter((animation) =>
+      animation.playState === 'running' && animation.effect.getTiming().iterations === Infinity,
+    ).length,
+  );
+  expect(infiniteAnimations).toBe(0);
+});
+
+test('@performance repeated navigation does not accumulate perpetual animations', async ({ page }, testInfo) => {
   const counts = [];
   await page.goto('/', { waitUntil: 'networkidle' });
 
   for (let cycle = 0; cycle < 3; cycle += 1) {
     for (const route of criticalRoutes) {
-      await page.goto(route, { waitUntil: 'networkidle' });
+      await page.evaluate((pathname) => {
+        window.history.pushState({}, '', pathname);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }, route);
+      await expect(page).toHaveURL(new RegExp(`${route}$`));
+      await expect(page.locator('main')).toBeVisible();
       await page.waitForTimeout(300);
       counts.push({
         cycle,
         route,
         running: await page.evaluate(
-          () => document.getAnimations().filter((animation) => animation.playState === 'running').length,
+          // Entrance animations vary with route transitions and viewport timing.
+          // Only perpetual animations can demonstrate persistent accumulation.
+          () => document.getAnimations().filter((animation) =>
+            animation.playState === 'running' && animation.effect.getTiming().iterations === Infinity,
+          ).length,
         ),
       });
     }
