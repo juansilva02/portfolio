@@ -7,6 +7,7 @@ import Footer from '@/components/Footer.jsx';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { prepareDemoRequest } from '../../lib/demo-request.js';
+import DemoPreparation, { DemoCredentials } from '@/components/DemoPreparation';
 
 export default function DemoPage({ contactOnly = false } = {}) {
   const [status, setStatus] = useState('idle');
@@ -127,6 +128,8 @@ export default function DemoPage({ contactOnly = false } = {}) {
         <section aria-label="Solicitud de demo" className="has-glass-surface liquid-glass-light rounded-3xl p-6 sm:p-8"><GlassSurfaceLayer />
           {demo ? <div role="status" className="space-y-4">
             <h2 className="text-2xl font-semibold">{demo.status === 'ready' ? 'Tu demo está lista' : demo.status === 'expired' ? 'Tu demo venció' : demo.status === 'failed' ? 'No pudimos preparar tu demo' : 'Estamos preparando tu empresa'}</h2>
+            {['pending', 'provisioning'].includes(demo.status) && <DemoPreparation status={demo.status} />}
+            {demo.status === 'ready' && <DemoCredentials username={demo.username} />}
             <p className="leading-relaxed text-slate-300">{demo.status === 'ready' ? 'Ingresá con la misma cuenta de Google. Tus cambios se guardan en la base de tu empresa.' : demo.status === 'expired' ? 'Contactanos si querés continuar usando el sistema.' : demo.status === 'failed' ? 'Contactanos para revisar la activación de tu empresa.' : 'Estamos creando tu base y cargando los datos de ejemplo. Podés volver a esta página para consultar el estado.'}</p>
             {demo.status === 'ready' && <a href={demo.url} className="inline-flex min-h-12 items-center rounded-xl bg-sky-200 px-6 font-semibold text-slate-950">Entrar a mi demo<ArrowRight className="ml-2 size-4" /></a>}
           </div> : status === 'success' ? <div role="status" className="space-y-4">

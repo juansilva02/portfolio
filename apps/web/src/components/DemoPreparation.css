@@ -1,0 +1,10 @@
+.demo-spinner { animation: demo-spin 1.8s linear infinite; }
+.demo-pulse { animation: demo-pulse 1.6s ease-in-out infinite; }
+.demo-shimmer { background: linear-gradient(100deg,#7dd3fc80 25%,#e0f2fe 50%,#7dd3fc80 75%); background-size: 250% 100%; background-clip: text; -webkit-background-clip: text; color: transparent; animation: demo-shimmer 2s linear infinite; }
+@keyframes demo-spin { to { transform: rotate(360deg); } }
+@keyframes demo-pulse { 50% { opacity: .35; } }
+@keyframes demo-shimmer { from { background-position: 125% 0; } to { background-position: -125% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .demo-spinner, .demo-pulse, .demo-shimmer { animation: none; }
+  .demo-shimmer { background: none; color: #bae6fd; }
+}
