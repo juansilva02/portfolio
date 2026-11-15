@@ -15,7 +15,7 @@ export default function DemoPreparation({ status }) {
   return <div className="space-y-5">
     <div className="flex items-center gap-3 text-sky-200" role="status">
       <Loader2 className="demo-spinner size-5 shrink-0" aria-hidden="true" />
-      <span className="demo-shimmer">{active < 0 ? 'Esperando el inicio de tu demo' : stages[active]}</span>
+      <span className="demo-shimmer">{active < 0 ? 'Tu demo está en cola' : stages[active]}</span>
     </div>
     <p className="text-sm tabular-nums text-slate-400">Tiempo en esta pantalla · {Math.floor(elapsed / 60)} min {elapsed % 60} s</p>
     <ol className="space-y-4" aria-label="Etapas estimadas">
@@ -25,6 +25,7 @@ export default function DemoPreparation({ status }) {
       </li>)}
     </ol>
     <p className="text-xs leading-relaxed text-slate-400">Las etapas son orientativas. Confirmaremos el acceso cuando termine la preparación del servidor.</p>
+    {status === 'pending' && <p className="text-sm leading-relaxed text-slate-300">La preparación todavía no comenzó. Puede haber otras altas en curso o haberse alcanzado el límite de demos activas. Tu solicitud está guardada.</p>}
   </div>;
 }
 
