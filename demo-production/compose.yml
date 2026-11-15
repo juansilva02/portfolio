@@ -45,7 +45,7 @@ services:
       BROKER_DB: /data/auth.sqlite
       API_IMAGE: ${API_IMAGE:?Set API_IMAGE}
       WEB_IMAGE: ${WEB_IMAGE:-}
-      MAX_DEMOS: ${MAX_DEMOS:-2}
+      MAX_DEMOS: ${MAX_DEMOS:-15}
       DEMO_PROJECT_PREFIX: zd-prod-demo-
       DEMO_PROXY_CONTAINER: zd-demo-production-proxy
       DEMO_CA_VOLUME: zd-demo-production-ca
