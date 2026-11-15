@@ -29,24 +29,9 @@ export default function DemoPreparation({ status }) {
 }
 
 export function DemoCredentials({ username }) {
-  const [password, setPassword] = useState(null);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState('');
   return <div className="space-y-3 rounded-xl border border-slate-600 bg-slate-950/40 p-4">
-    <p className="text-sm text-slate-400">Usuario</p><p className="break-all font-medium">{username}</p>
-    {password && <><p className="text-sm text-slate-400">Contraseña inicial</p><code className="block break-all text-sm">{password}</code></>}
-    <button type="button" disabled={busy} className="min-h-11 text-sm text-sky-200 underline" onClick={async () => {
-      if (password) { setPassword(null); return; }
-      setBusy(true);
-      setError('');
-      try {
-        const response = await fetch('/api/demo/credentials', { method: 'POST', cache: 'no-store' });
-        if (!response.ok) throw new Error();
-        setPassword((await response.json()).password);
-      } catch { setError('No pudimos mostrar el acceso. Volvé a intentarlo.'); }
-      finally { setBusy(false); }
-    }}>{busy ? 'Consultando…' : password ? 'Ocultar contraseña' : 'Mostrar contraseña inicial'}</button>
-    {error && <p role="alert" className="text-sm text-red-300">{error}</p>}
-    <p className="text-xs text-slate-400">Si ya elegiste otra contraseña, ingresá con la nueva.</p>
+    <p className="text-sm text-slate-400">Tu usuario</p>
+    <p className="break-all font-medium">{username}</p>
+    <p className="text-sm text-slate-300">Al entrar por primera vez podrás elegir tu contraseña.</p>
   </div>;
 }
