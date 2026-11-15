@@ -1,0 +1,55 @@
+name: zd-vercel-pilot
+services:
+  broker:
+    build: ${ERP_ROOT:?Set ERP_ROOT}/deploy/auth-broker
+    environment:
+      BROKER_ORIGIN: https://demo.zuzudev.pro
+      BROKER_PATH: /auth
+      BROKER_INSTANCES: '{}'
+      BROKER_PROVIDERS: '{}'
+      ENABLE_DEMO_SIGNUP: '1'
+      DEMO_PORTAL_ORIGIN: https://demo.zuzudev.pro
+      DEMO_ORIGIN_TEMPLATE: https://{subdomain}.demo.zuzudev.pro
+      DEMO_FRONTEND_MODE: vercel
+      DEMO_GATEWAY_SECRET: ${DEMO_GATEWAY_SECRET:?Set private pilot secret}
+    volumes: [control:/data]
+  proxy:
+    image: nginx:1.28-alpine
+    container_name: zd-vercel-pilot-proxy
+    ports: [127.0.0.1:19444:443]
+    volumes:
+      - ../../demo-production/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ../../demo-production/certs:/certs:ro
+    depends_on: [broker]
+  worker:
+    build:
+      context: ..
+      dockerfile: Worker.Dockerfile
+    environment:
+      API_IMAGE: zd-demo-local-api:dev
+      WEB_IMAGE: zd-demo-local-web:dev
+      DEMO_PROJECT_PREFIX: zd-pilot-
+      DEMO_PROXY_CONTAINER: zd-vercel-pilot-proxy
+      DEMO_CA_VOLUME: zd-demo-production-ca
+    volumes:
+      - control:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+  retry-check:
+    profiles: [checks]
+    build:
+      context: ..
+      dockerfile: Worker.Dockerfile
+    command: [python, -u, /worker/retry_check.py]
+    network_mode: none
+    environment:
+      BROKER_DB: /tmp/retry.sqlite
+      API_IMAGE: zd-demo-local-api:dev
+      DEMO_PROJECT_PREFIX: zd-retry-
+      DEMO_PROXY_CONTAINER: zd-vercel-pilot-proxy
+      DEMO_CA_VOLUME: zd-demo-production-ca
+    volumes:
+      - control:/registry:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./retry_check.py:/worker/retry_check.py:ro
+volumes:
+  control:

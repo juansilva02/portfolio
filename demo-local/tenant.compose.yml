@@ -1,5 +1,10 @@
 services:
   db:
+    container_name: ${DEMO_CONTAINER_PREFIX}-db
+    labels:
+      pro.zuzudev.demo.company: ${DEMO_COMPANY}
+      pro.zuzudev.demo.number: ${DEMO_NUMBER}
+      pro.zuzudev.demo.id: ${DEMO_ID}
     image: postgres:17.11-alpine
     restart: unless-stopped
     mem_limit: 384m
@@ -17,6 +22,11 @@ services:
       timeout: 3s
       retries: 30
   api:
+    container_name: ${DEMO_CONTAINER_PREFIX}-api
+    labels:
+      pro.zuzudev.demo.company: ${DEMO_COMPANY}
+      pro.zuzudev.demo.number: ${DEMO_NUMBER}
+      pro.zuzudev.demo.id: ${DEMO_ID}
     image: ${API_IMAGE}
     restart: unless-stopped
     mem_limit: 512m
@@ -55,7 +65,13 @@ services:
         aliases:
           - demo-${DEMO_ID}-api
   web:
-    image: ${WEB_IMAGE}
+    container_name: ${DEMO_CONTAINER_PREFIX}-web
+    labels:
+      pro.zuzudev.demo.company: ${DEMO_COMPANY}
+      pro.zuzudev.demo.number: ${DEMO_NUMBER}
+      pro.zuzudev.demo.id: ${DEMO_ID}
+    profiles: [legacy-frontend]
+    image: ${WEB_IMAGE:-zuzudev-frontend-unconfigured:disabled}
     restart: unless-stopped
     mem_limit: 512m
     cpus: 1

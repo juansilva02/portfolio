@@ -12,6 +12,8 @@ services:
       BROKER_INSTANCES: '{}'
       BROKER_PROVIDERS: '{}'
       GOOGLE_CLIENT_FILE: /run/secrets/google.json
+      DEMO_GATEWAY_SECRET: ${DEMO_GATEWAY_SECRET:-}
+      DEMO_FRONTEND_MODE: ${DEMO_FRONTEND_MODE:-docker}
       ENABLE_DEMO_SIGNUP: '1'
       DEMO_PORTAL_ORIGIN: https://demo.zuzudev.pro
       DEMO_ORIGIN_TEMPLATE: https://{subdomain}.demo.zuzudev.pro
@@ -42,11 +44,12 @@ services:
     environment:
       BROKER_DB: /data/auth.sqlite
       API_IMAGE: ${API_IMAGE:?Set API_IMAGE}
-      WEB_IMAGE: ${WEB_IMAGE:?Set WEB_IMAGE}
+      WEB_IMAGE: ${WEB_IMAGE:-}
       MAX_DEMOS: ${MAX_DEMOS:-2}
       DEMO_PROJECT_PREFIX: zd-prod-demo-
       DEMO_PROXY_CONTAINER: zd-demo-production-proxy
       DEMO_CA_VOLUME: zd-demo-production-ca
+      DEMO_REQUIRE_PUBLIC_HTTPS: '1'
     volumes:
       - control-data:/data
       - /var/run/docker.sock:/var/run/docker.sock

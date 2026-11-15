@@ -9,6 +9,7 @@ services:
       BROKER_INSTANCES: '{}'
       BROKER_PROVIDERS: '{}'
       GOOGLE_CLIENT_FILE: /run/secrets/google.json
+      DEMO_FRONTEND_MODE: ${DEMO_FRONTEND_MODE:-docker}
       ENABLE_DEMO_SIGNUP: '1'
       DEMO_PORTAL_ORIGIN: https://localhost:8443
       DEMO_ORIGIN_TEMPLATE: https://{subdomain}.demo.localhost:8443
