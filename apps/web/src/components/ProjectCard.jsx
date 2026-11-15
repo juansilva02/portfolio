@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -25,12 +26,12 @@ const ProjectCard = ({
     <motion.div
       variants={fadeUp}
       {...revealOnView}
-      className={`glass-stable group relative rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
+      className={`has-glass-surface glass-stable group relative rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
         featured 
           ? 'liquid-glass-blue glow-slate md:col-span-2 md:row-span-2' 
           : 'liquid-glass-light'
       }`}
-    >
+    ><GlassSurfaceLayer />
       {featured && (
         <div className="absolute top-4 right-4 bg-slate-700/50 backdrop-blur-sm px-3 py-1 rounded-full border border-slate-600/50">
           <span className="text-xs font-medium text-slate-300">Destacado</span>

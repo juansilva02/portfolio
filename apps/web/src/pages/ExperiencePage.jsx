@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
@@ -116,8 +117,8 @@ const ExperiencePage = () => {
             <motion.div
               variants={fadeUp}
               {...revealOnView}
-              className="mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
-            >
+              className="has-glass-surface mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
+            ><GlassSurfaceLayer />
               <h3 className="text-2xl font-bold text-slate-100 mb-4">Resumen de carrera</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 <div>

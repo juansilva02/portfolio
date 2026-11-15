@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
@@ -126,8 +127,8 @@ const TechStack = () => {
         <motion.div
           variants={fadeUp}
           {...revealOnView}
-          className="liquid-glass-blue rounded-[1.85rem] text-center mb-16 max-w-3xl mx-auto px-8 py-10"
-        >
+          className="has-glass-surface liquid-glass-blue rounded-[1.85rem] text-center mb-16 max-w-3xl mx-auto px-8 py-10"
+        ><GlassSurfaceLayer />
           <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Stack <span className="text-slate-400">tecnologico</span></h2>
           <p className="text-slate-300 max-w-2xl mx-auto">Herramientas y tecnologias que uso para construir productos web claros, rapidos y mantenibles.</p>
         </motion.div>
@@ -142,8 +143,8 @@ const TechStack = () => {
               <motion.div
                 key={category.title}
                 variants={fadeUp}
-                className="liquid-glass-light rounded-[1.65rem] p-6"
-              >
+                className="has-glass-surface liquid-glass-light rounded-[1.65rem] p-6"
+              ><GlassSurfaceLayer />
                 <h3 className="text-lg font-semibold text-slate-200 mb-6 pb-2 border-b border-slate-700 relative">
                   {category.title}
                   <motion.div 

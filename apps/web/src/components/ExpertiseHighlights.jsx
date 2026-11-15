@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, Database, LayoutTemplate, Server, Settings2, Workflow } from 'lucide-react';
@@ -43,8 +44,8 @@ const ExpertiseHighlights = () => {
         <motion.div
           variants={fadeUp}
           {...revealOnView}
-          className="liquid-glass-light rounded-[1.85rem] text-center mb-16 max-w-3xl mx-auto px-8 py-10"
-        >
+          className="has-glass-surface liquid-glass-light rounded-[1.85rem] text-center mb-16 max-w-3xl mx-auto px-8 py-10"
+        ><GlassSurfaceLayer />
           <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
             Servicios para <span className="text-slate-400">vender y operar mejor</span>
           </h2>
@@ -63,8 +64,8 @@ const ExpertiseHighlights = () => {
               key={item.title}
               variants={fadeUp}
               whileHover={hoverLift}
-              className="group liquid-glass-light rounded-[1.4rem] p-6 transition-all duration-300 hover:shadow-lg"
-            >
+              className="has-glass-surface group liquid-glass-light rounded-[1.4rem] p-6 transition-all duration-300 hover:shadow-lg"
+            ><GlassSurfaceLayer />
               <div className="w-12 h-12 bg-slate-700/50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <item.icon className="w-6 h-6 text-slate-300 group-hover:text-slate-100 transition-colors" />
               </div>

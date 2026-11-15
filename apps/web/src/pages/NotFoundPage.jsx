@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
@@ -23,7 +24,7 @@ const NotFoundPage = () => {
       </Helmet>
 
       <div className="w-full max-w-2xl">
-        <div className="liquid-glass-blue rounded-2xl overflow-hidden border border-slate-700/60">
+        <div className="has-glass-surface liquid-glass-blue rounded-2xl overflow-hidden border border-slate-700/60"><GlassSurfaceLayer />
           {/* Barra de la ventana */}
           <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-700/60 bg-slate-900/40">
             <span className="w-3 h-3 rounded-full bg-red-500/80" />

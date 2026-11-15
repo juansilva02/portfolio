@@ -88,13 +88,9 @@ html {
       inset 0 1px 0 rgba(255,255,255,0.12),
       inset 0 -1px 0 rgba(255,255,255,0.03),
       0 22px 42px -32px rgba(125, 211, 252, 0.3);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     isolation: isolate;
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   }
 
   .liquid-glass-light {
@@ -107,13 +103,9 @@ html {
       inset 0 1px 0 rgba(255,255,255,0.12),
       inset 0 -1px 0 rgba(255,255,255,0.03),
       0 22px 42px -32px rgba(226, 232, 240, 0.22);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     isolation: isolate;
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   }
 
   .liquid-glass-button-blue {
@@ -126,22 +118,13 @@ html {
       inset 0 1px 0 rgba(255,255,255,0.18),
       inset 0 -1px 0 rgba(255,255,255,0.04),
       0 16px 30px -22px rgba(56, 189, 248, 0.44);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     isolation: isolate;
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   }
 
   .glass-stable {
     isolation: isolate;
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    will-change: transform, opacity;
   }
 
 }
@@ -181,11 +164,11 @@ html {
 }
 
 .animate-float {
-  animation: float 8s ease-in-out infinite;
+  animation: none;
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
+  animation: none;
 }
 
 .animate-hex-drift {
@@ -205,9 +188,15 @@ html {
 }
 
 .skill-sheen {
-  animation: skill-sheen 6.5s ease-in-out infinite;
-  opacity: 0.62;
-  will-change: transform, opacity;
+  animation: none;
+  opacity: 0;
+
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .glass-stable:hover > .skill-sheen {
+    animation: skill-sheen 1.2s ease-out both;
+  }
 }
 
 @keyframes orbit-glow {
@@ -247,6 +236,22 @@ html {
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+.site-bg-colors {
+  background:
+    radial-gradient(ellipse at 10% 10%, rgba(14, 165, 233, 0.12), transparent 55%),
+    radial-gradient(ellipse at 90% 55%, rgba(34, 211, 238, 0.10), transparent 55%),
+    radial-gradient(ellipse at 35% 100%, rgba(99, 102, 241, 0.10), transparent 55%),
+    #070b14;
+}
+
+/* Decorative panels cover large areas. SVG displacement as a backdrop filter
+   repeatedly rasterizes the page during scroll in Chromium. Keep the glass
+   tint and rims, using a small native blur instead of the distortion graph. */
+.glass-panel-layer .glass-surface--svg {
+  -webkit-backdrop-filter: blur(6px) saturate(1.1);
+  backdrop-filter: blur(6px) saturate(1.1);
 }
 
 /* Grilla estilo terminal con desvanecido radial hacia los bordes */
@@ -307,7 +312,7 @@ html {
 .assembly-brick {
   transform-style: preserve-3d;
   animation: brick-assemble 8s ease-in-out infinite both;
-  will-change: transform, opacity;
+
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }

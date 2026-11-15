@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
@@ -87,8 +88,8 @@ const EducationPage = () => {
             <motion.div
               variants={staggerContainer(0.08)}
               {...revealOnView}
-              className="liquid-glass-light rounded-[1.75rem] p-8"
-            >
+              className="has-glass-surface liquid-glass-light rounded-[1.75rem] p-8"
+            ><GlassSurfaceLayer />
               <motion.h2 variants={fadeUp} className="text-2xl font-bold text-slate-100 mb-6">Logros academicos</motion.h2>
               <ul className="space-y-3">
                 {achievements.map((achievement, index) => (
@@ -107,8 +108,8 @@ const EducationPage = () => {
             <motion.div
               variants={staggerContainer(0.08)}
               {...revealOnView}
-              className="mt-8 liquid-glass-blue rounded-[1.75rem] p-8"
-            >
+              className="has-glass-surface mt-8 liquid-glass-blue rounded-[1.75rem] p-8"
+            ><GlassSurfaceLayer />
               <motion.h2 variants={fadeUp} className="text-2xl font-bold text-slate-100 mb-6">Formacion relevante</motion.h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[

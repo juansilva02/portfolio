@@ -1,3 +1,4 @@
+import { prepareDemoRequest } from "../lib/demo-request.js";
 import crypto from 'node:crypto';
 import http from 'node:http';
 import { promises as fs } from 'node:fs';
@@ -231,6 +232,8 @@ const server = http.createServer(async (req, res) => {
         });
       }
 
+      const demo = prepareDemoRequest(body);
+      if (demo.error) return sendJson(res, 400, { ok: false, message: demo.error });
       const submission = {
         id: crypto.randomUUID(),
         createdAt: new Date().toISOString(),
@@ -238,6 +241,7 @@ const server = http.createServer(async (req, res) => {
         email: normalizeText(body.email, 160).toLowerCase(),
         subject: normalizeText(body.subject, 180),
         message: normalizeMessage(body.message, 4000),
+        ...demo.fields,
       };
 
       if (!submission.name || !submission.email || !submission.message) {

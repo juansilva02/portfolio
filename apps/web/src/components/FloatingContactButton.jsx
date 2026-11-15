@@ -6,7 +6,7 @@ import { MessageCircleMore } from 'lucide-react';
 const FloatingContactButton = () => {
   const location = useLocation();
 
-  if (location.pathname === '/contact') {
+  if (['/', '/demo', '/contact'].includes(location.pathname)) {
     return null;
   }
 

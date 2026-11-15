@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin } from 'lucide-react';
@@ -39,14 +40,14 @@ const ExperienceCard = ({ company, role, duration, location, achievements, index
       <div className={`absolute left-0 top-6 w-3 h-3 ${palette.dot} rounded-full ring-4 ${palette.ring} -translate-x-[5px]`} />
 
       <div
-        className="glass-stable group relative ml-8 overflow-hidden rounded-[1.65rem] border bg-slate-900/28 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+        className="has-glass-surface glass-stable group relative ml-8 overflow-hidden rounded-[1.65rem] border bg-slate-900/28 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
         style={{
           borderColor: palette.border,
           boxShadow: featured
             ? `inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(255,255,255,0.02), 0 24px 44px -30px ${palette.glow}`
             : `inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02), 0 18px 34px -30px ${palette.glow}`,
         }}
-      >
+      ><GlassSurfaceLayer />
         <div
           className="pointer-events-none absolute inset-0 opacity-80"
           style={{

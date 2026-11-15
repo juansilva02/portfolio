@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 
 // Pure CSS 3D "web page being assembled" scene. The browser frame sits on a
@@ -64,7 +65,7 @@ const WebPageAssembly3D = () => {
             {/* cards row */}
             <div className="assembly-brick grid grid-cols-3 gap-2 pt-1" style={brickStyle(4, '-30px')}>
               {[0, 1, 2].map((i) => (
-                <div key={i} className="liquid-glass-light space-y-1.5 rounded-lg p-2">
+                <div key={i} className="has-glass-surface liquid-glass-light space-y-1.5 rounded-lg p-2"><GlassSurfaceLayer />
                   <span className="block h-3.5 w-3.5 rounded-md bg-sky-400/60" />
                   <Bar w="90%" h={5} />
                   <Bar w="70%" h={5} />

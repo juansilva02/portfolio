@@ -19,6 +19,7 @@ const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
 const ArticlesPage = lazy(() => import('./pages/ArticlesPage.jsx'));
 const ArticleDetailPage = lazy(() => import('./pages/ArticleDetailPage.jsx'));
 const CotizarPage = lazy(() => import('./pages/CotizarPage.jsx'));
+const DemoPage = lazy(() => import('./pages/DemoPage.jsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
 
 const AnimatedRoutes = () => {
@@ -33,6 +34,7 @@ const AnimatedRoutes = () => {
           <Route path="/skills" element={<SkillsPage />} />
           <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/demo" element={<DemoPage />} />
           <Route path="/cotizar" element={<CotizarPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />

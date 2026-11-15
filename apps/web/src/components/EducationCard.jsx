@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar } from 'lucide-react';
@@ -9,8 +10,8 @@ const EducationCard = ({ institution, degree, field, graduationDate, gpa, index 
       variants={fadeUp}
       {...revealOnView}
       transition={{ delay: index * 0.1 }}
-      className="liquid-glass-blue rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-    >
+      className="has-glass-surface liquid-glass-blue rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+    ><GlassSurfaceLayer />
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 w-12 h-12 bg-slate-700/50 rounded-xl flex items-center justify-center border border-slate-600/50">
           <GraduationCap className="w-6 h-6 text-slate-300" />

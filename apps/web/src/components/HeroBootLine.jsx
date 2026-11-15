@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -48,9 +49,9 @@ const HeroBootLine = ({ onComplete, skip = false }) => {
 
   return (
     <div
-      className="inline-flex items-center gap-2.5 liquid-glass-blue rounded-xl px-3.5 py-2 font-mono text-xs sm:text-sm shadow-lg shadow-slate-950/30 max-w-fit"
+      className="has-glass-surface inline-flex items-center gap-2.5 liquid-glass-blue rounded-xl px-3.5 py-2 font-mono text-xs sm:text-sm shadow-lg shadow-slate-950/30 max-w-fit"
       aria-hidden="true"
-    >
+    ><GlassSurfaceLayer />
       <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
       <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
       <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />

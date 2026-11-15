@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
@@ -119,8 +120,8 @@ const CertificationsPage = () => {
             <motion.div
               variants={staggerContainer()}
               {...revealOnView}
-              className="mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
-            >
+              className="has-glass-surface mt-16 liquid-glass-blue rounded-[1.75rem] p-8"
+            ><GlassSurfaceLayer />
               <motion.h3 variants={fadeUp} className="text-2xl font-bold text-slate-100 mb-4">Diseño y desarrollo con enfoque de marca</motion.h3>
               <motion.p variants={fadeUp} className="text-slate-300 leading-relaxed max-w-prose mb-6">
                 En zuzudev cada proyecto busca algo más que verse bien: comunicar con claridad, cargar rápido,

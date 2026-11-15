@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
@@ -32,8 +33,8 @@ const FeaturedWork = () => {
               key={project.title}
               variants={fadeUp}
               whileHover={hoverLift}
-              className="group liquid-glass-light rounded-[1.65rem] overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col"
-            >
+              className="has-glass-surface group liquid-glass-light rounded-[1.65rem] overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col"
+            ><GlassSurfaceLayer />
               {project.image && (
                 <div className="relative h-48 overflow-hidden">
                   <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-transparent transition-colors duration-500 z-10" />

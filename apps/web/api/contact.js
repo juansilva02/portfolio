@@ -1,3 +1,4 @@
+import { prepareDemoRequest } from "../lib/demo-request.js";
 // Función serverless de Vercel para el formulario de contacto.
 // En producción Vercel solo sirve el build estático: este archivo es el backend real.
 // Variables de entorno (configurar en Vercel → Settings → Environment Variables):
@@ -53,12 +54,16 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, message: 'Mensaje recibido.' });
   }
 
+  const demo = prepareDemoRequest(body);
+  if (demo.error) return res.status(400).json({ ok: false, message: demo.error });
+
   const envio = {
     createdAt: new Date().toISOString(),
     name: normalizar(body.name, 120),
     email: normalizar(body.email, 160).toLowerCase(),
     subject: normalizar(body.subject, 180),
     message: normalizarMensaje(body.message, 4000),
+    ...demo.fields,
   };
 
   if (!envio.name || !envio.email || !envio.message) {

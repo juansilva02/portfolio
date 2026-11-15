@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -10,8 +11,8 @@ const ArticleCard = ({ slug, title, category, readTime, date, excerpt, index = 0
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group liquid-glass-light rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col h-full"
-    >
+      className="has-glass-surface group liquid-glass-light rounded-[1.65rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col h-full"
+    ><GlassSurfaceLayer />
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs font-medium text-slate-300 bg-slate-700/50 px-2.5 py-1 rounded-full border border-slate-600/50">
           {category}

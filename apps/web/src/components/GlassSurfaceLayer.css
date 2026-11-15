@@ -1,0 +1,24 @@
+.has-glass-surface {
+  position: relative;
+  isolation: isolate;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.glass-panel-layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  color-scheme: dark;
+}
+
+.glass-panel-layer .glass-surface__content {
+  padding: 0;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-panel-layer { display: none; }
+  .has-glass-surface { background-color: #111a28; }
+}

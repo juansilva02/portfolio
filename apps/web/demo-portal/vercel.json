@@ -1,0 +1,10 @@
+{
+  "framework": null,
+  "rewrites": [
+    { "source": "/api/demo/:path*", "destination": "https://auth-demos.zuzudev.pro/api/demo/:path*" },
+    { "source": "/auth/:path*", "destination": "https://auth-demos.zuzudev.pro/auth/:path*" },
+    { "source": "/demo/d-:slug/d-:id", "destination": "https://auth-demos.zuzudev.pro/demo/d-:slug/d-:id" },
+    { "source": "/api/contact", "destination": "https://zuzudev.pro/api/contact" },
+    { "source": "/demo", "destination": "/index.html" }
+  ]
+}

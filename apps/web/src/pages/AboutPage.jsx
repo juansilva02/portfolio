@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
@@ -93,7 +94,7 @@ const AboutPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="glass-stable relative overflow-hidden space-y-6 rounded-[2rem] border p-8 backdrop-blur-xl"
+                className="has-glass-surface glass-stable relative overflow-hidden space-y-6 rounded-[2rem] border p-8 backdrop-blur-xl"
                 style={{
                   borderColor: 'rgba(125, 211, 252, 0.3)',
                   background:
@@ -101,7 +102,7 @@ const AboutPage = () => {
                   boxShadow:
                     'inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(255,255,255,0.03), 0 24px 50px -34px rgba(56,189,248,0.35)',
                 }}
-              >
+              ><GlassSurfaceLayer />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(191,219,254,0.22),transparent_26%),linear-gradient(145deg,rgba(255,255,255,0.08),transparent_40%,rgba(255,255,255,0.03)_100%)]" />
                 <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-white/20" />
                 <div className="pointer-events-none absolute inset-0 orbit-glow opacity-75">
@@ -123,7 +124,7 @@ const AboutPage = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="glass-stable relative overflow-hidden space-y-6 rounded-[2rem] border p-8 backdrop-blur-xl"
+                className="has-glass-surface glass-stable relative overflow-hidden space-y-6 rounded-[2rem] border p-8 backdrop-blur-xl"
                 style={{
                   borderColor: 'rgba(226, 232, 240, 0.28)',
                   background:
@@ -131,7 +132,7 @@ const AboutPage = () => {
                   boxShadow:
                     'inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(255,255,255,0.03), 0 24px 50px -34px rgba(226,232,240,0.28)',
                 }}
-              >
+              ><GlassSurfaceLayer />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(226,232,240,0.18),transparent_24%),linear-gradient(145deg,rgba(255,255,255,0.08),transparent_38%,rgba(255,255,255,0.03)_100%)]" />
                 <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-white/20" />
                 <div className="pointer-events-none absolute inset-0 orbit-glow opacity-70" style={{ animationDuration: '15s' }}>
@@ -157,12 +158,12 @@ const AboutPage = () => {
                   <motion.div
                     key={card.title}
                     variants={fadeUp}
-                    className="glass-stable group relative overflow-hidden rounded-[1.35rem] border bg-slate-900/28 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    className="has-glass-surface glass-stable group relative overflow-hidden rounded-[1.35rem] border bg-slate-900/28 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                     style={{
                       borderColor: card.border,
                       boxShadow: `inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02), 0 18px 38px -28px ${card.glow}`,
                     }}
-                  >
+                  ><GlassSurfaceLayer />
                     <div
                       className="pointer-events-none absolute inset-0 opacity-70"
                       style={{

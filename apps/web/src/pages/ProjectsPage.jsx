@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
@@ -56,15 +57,15 @@ const ProjectsPage = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-4"
             >
-              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
+              <div className="has-glass-surface liquid-glass-blue rounded-[1.5rem] p-5"><GlassSurfaceLayer />
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">GitHub</div>
                 <div className="text-slate-100 font-semibold">Repos publicos convertidos en casos de portfolio</div>
               </div>
-              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
+              <div className="has-glass-surface liquid-glass-blue rounded-[1.5rem] p-5"><GlassSurfaceLayer />
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Tipos de proyecto</div>
                 <div className="text-slate-100 font-semibold">Institucionales, ecommerce, portfolios y SaaS</div>
               </div>
-              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
+              <div className="has-glass-surface liquid-glass-blue rounded-[1.5rem] p-5"><GlassSurfaceLayer />
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Objetivo</div>
                 <div className="text-slate-100 font-semibold">Mostrar prueba real y abrir nuevas oportunidades</div>
               </div>

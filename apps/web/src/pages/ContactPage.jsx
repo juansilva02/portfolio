@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
@@ -226,8 +227,8 @@ const ContactPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="liquid-glass-blue rounded-[1.75rem] p-8"
-              >
+                className="has-glass-surface liquid-glass-blue rounded-[1.75rem] p-8"
+              ><GlassSurfaceLayer />
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <h2 className="text-2xl font-bold text-slate-100">Enviame un mensaje</h2>
                   <Link
@@ -334,7 +335,7 @@ const ContactPage = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="space-y-8"
               >
-                <motion.div whileHover={hoverLift} className="liquid-glass-light rounded-[1.75rem] p-8">
+                <motion.div whileHover={hoverLift} className="has-glass-surface liquid-glass-light rounded-[1.75rem] p-8"><GlassSurfaceLayer />
                   <h2 className="text-2xl font-bold text-slate-100 mb-6">Informacion de contacto</h2>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
@@ -398,7 +399,7 @@ const ContactPage = () => {
                   </div>
                 </motion.div>
 
-                <motion.div whileHover={hoverLift} className="liquid-glass-blue rounded-[1.75rem] p-8">
+                <motion.div whileHover={hoverLift} className="has-glass-surface liquid-glass-blue rounded-[1.75rem] p-8"><GlassSurfaceLayer />
                   <h2 className="text-2xl font-bold text-slate-100 mb-4">Servicios que estoy tomando</h2>
                   <div className="space-y-3 text-slate-300">
                     <p>Landing pages en 48 hs para ventas y captacion.</p>
@@ -408,7 +409,7 @@ const ContactPage = () => {
                   </div>
                 </motion.div>
 
-                <motion.div whileHover={hoverLift} className="liquid-glass-light rounded-[1.75rem] p-8">
+                <motion.div whileHover={hoverLift} className="has-glass-surface liquid-glass-light rounded-[1.75rem] p-8"><GlassSurfaceLayer />
                   <h2 className="text-2xl font-bold text-slate-100 mb-6">Redes y canales</h2>
                   <SocialLinks />
                 </motion.div>

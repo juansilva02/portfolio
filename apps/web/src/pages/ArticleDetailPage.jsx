@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, Navigate, useParams } from 'react-router-dom';
@@ -62,8 +63,8 @@ const ArticleDetailPage = () => {
             <motion.div
               variants={staggerContainer()}
               {...revealOnView}
-              className="liquid-glass-light rounded-[2rem] p-8 md:p-10"
-            >
+              className="has-glass-surface liquid-glass-light rounded-[2rem] p-8 md:p-10"
+            ><GlassSurfaceLayer />
               <motion.p variants={fadeUp} className="text-lg text-slate-200 leading-relaxed mb-8">{article.intro}</motion.p>
 
               <div className="space-y-10">

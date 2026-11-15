@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -11,8 +12,8 @@ const NewsletterCTA = () => {
         <motion.div
           variants={staggerContainer()}
           {...revealOnView}
-          className="liquid-glass-blue rounded-[2rem] p-8 md:p-12 text-center"
-        >
+          className="has-glass-surface liquid-glass-blue rounded-[2rem] p-8 md:p-12 text-center"
+        ><GlassSurfaceLayer />
           <motion.span variants={fadeUp} className="inline-flex items-center rounded-full border border-slate-600/50 bg-slate-900/50 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
             Oferta directa
           </motion.span>

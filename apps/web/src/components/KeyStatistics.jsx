@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, Clock3, DollarSign, MessageCircle } from 'lucide-react';
@@ -24,8 +25,8 @@ const KeyStatistics = () => {
               key={stat.label}
               variants={fadeUp}
               whileHover={hoverLift}
-              className="liquid-glass-light flex flex-col items-center text-center p-6 rounded-[1.65rem] transition-colors relative overflow-hidden group"
-            >
+              className="has-glass-surface liquid-glass-light flex flex-col items-center text-center p-6 rounded-[1.65rem] transition-colors relative overflow-hidden group"
+            ><GlassSurfaceLayer />
               <div className="absolute inset-0 bg-gradient-to-b from-slate-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <stat.icon className="w-8 h-8 text-slate-400 mb-4 group-hover:text-slate-300 transition-colors animate-pulse-glow" />
               <h3 className="text-3xl font-bold text-slate-100 mb-2 text-balance">{stat.displayValue}</h3>

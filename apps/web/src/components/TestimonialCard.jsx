@@ -1,3 +1,4 @@
+import GlassSurfaceLayer from '@/components/GlassSurfaceLayer';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
@@ -9,8 +10,8 @@ const TestimonialCard = ({ quote, author, title, company }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="liquid-glass-light rounded-[1.75rem] p-8 relative h-full flex flex-col"
-    >
+      className="has-glass-surface liquid-glass-light rounded-[1.75rem] p-8 relative h-full flex flex-col"
+    ><GlassSurfaceLayer />
       <Quote className="absolute top-6 right-6 w-10 h-10 text-slate-600/30 rotate-180" />
       <div className="flex-grow mb-6">
         <p className="text-slate-300 leading-relaxed italic relative z-10">
