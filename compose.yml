@@ -1,0 +1,30 @@
+name: zuzudev-portfolio
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: demo-production/Portal.Dockerfile
+      target: portfolio
+    ports:
+      - "127.0.0.1:${PORTFOLIO_PORT:-3000}:3001"
+    environment:
+      - SMTP_HOST
+      - SMTP_PORT
+      - SMTP_USER
+      - SMTP_PASS
+      - SMTP_SECURE
+      - CONTACT_TO_EMAIL
+      - CONTACT_FROM_EMAIL
+    volumes:
+      - consultas:/app/apps/web/data
+    init: true
+    restart: unless-stopped
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3001/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      start_period: 5s
+      timeout: 5s
+volumes:
+  consultas:
