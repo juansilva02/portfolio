@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-// Pure CSS 3D "web page being assembled" scene. The browser frame sits on a
-// slowly tilting preserve-3d plane; each content brick flies in from depth,
-// settles, holds, then clears and rebuilds — an endless "armado de pagina".
-// Decorative only (aria-hidden); animation handled in index.css.
+// Assemble once on the first viewport entry, then leave the scene at rest.
 
 const Bar = ({ w, h = 8, className = 'bg-slate-300/20' }) => (
   <span className={`block rounded-full ${className}`} style={{ width: w, height: h }} />
 );
 
 const brickStyle = (index, bx) => ({
-  animationDelay: `${index * 0.18}s`,
+  animationDelay: `${index * 0.08}s`,
   '--bx': bx,
 });
 
 const WebPageAssembly3D = () => {
+  const stage = useRef(null);
+  const [entered, setEntered] = useState(false);
+  useEffect(() => {
+    if (!stage.current || !('IntersectionObserver' in window)) return undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      setEntered(true);
+      observer.disconnect();
+    }, { threshold: 0.15 });
+    observer.observe(stage.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="assembly-stage relative mx-auto w-full max-w-[440px] py-6" aria-hidden="true">
+    <div ref={stage} className={`assembly-stage relative mx-auto w-full max-w-[440px] py-6${entered ? ' assembly-entered' : ''}`} aria-hidden="true">
       <div className="assembly-scene">
         <div className="assembly-window overflow-hidden rounded-2xl border border-sky-300/20 bg-gradient-to-b from-slate-900/90 to-slate-950/95 shadow-[0_40px_80px_-40px_rgba(56,189,248,0.45)]">
           {/* browser chrome */}

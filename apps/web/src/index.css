@@ -323,17 +323,22 @@ html {
   animation: none;
 }
 
-@keyframes scene-tilt {
-  0%, 100% { transform: rotateX(13deg) rotateY(-18deg); }
-  50% { transform: rotateX(17deg) rotateY(-8deg); }
+.assembly-entered .assembly-scene {
+  animation: scene-enter 0.65s ease-out backwards;
 }
 
-@keyframes brick-assemble {
+.assembly-entered .assembly-brick {
+  animation: brick-enter 0.55s ease-out backwards;
+}
+
+@keyframes scene-enter {
+  from { opacity: 0; transform: translateY(20px) rotateX(20deg) rotateY(-24deg); }
+  to { opacity: 1; transform: rotateX(13deg) rotateY(-18deg); }
+}
+
+@keyframes brick-enter {
   0% { opacity: 0; transform: translate3d(var(--bx, -32px), 48px, -280px) rotateX(40deg) rotateY(6deg); }
-  16% { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
-  70% { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
-  86% { opacity: 0; transform: translate3d(0, -16px, 60px) rotateX(-12deg); }
-  100% { opacity: 0; transform: translate3d(var(--bx, -32px), 48px, -280px) rotateX(40deg) rotateY(6deg); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
