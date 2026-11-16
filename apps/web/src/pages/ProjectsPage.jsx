@@ -6,6 +6,7 @@ import Header from '@/components/Header.jsx';
 import ShinyText from '@/components/ShinyText.jsx';
 import Footer from '@/components/Footer.jsx';
 import ProjectCard from '@/components/ProjectCard.jsx';
+import ServicesBento from '@/components/ServicesBento.jsx';
 import { projects } from '@/data/projects.js';
 
 const ProjectsPage = () => {
@@ -50,28 +51,11 @@ const ProjectsPage = () => {
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-4"
-            >
-              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
-                <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">GitHub</div>
-                <div className="text-slate-100 font-semibold">Repos publicos convertidos en casos de portfolio</div>
-              </div>
-              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
-                <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Tipos de proyecto</div>
-                <div className="text-slate-100 font-semibold">Institucionales, ecommerce, portfolios y SaaS</div>
-              </div>
-              <div className="liquid-glass-blue rounded-[1.5rem] p-5">
-                <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">Objetivo</div>
-                <div className="text-slate-100 font-semibold">Mostrar prueba real y abrir nuevas oportunidades</div>
-              </div>
-            </motion.div>
+            <ServicesBento />
 
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-6">Proyectos reales</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-              {projects.map((project, index) => (
+              {projects.filter(project => project.image).map((project, index) => (
                 <ProjectCard
                   key={project.title}
                   title={project.title}
