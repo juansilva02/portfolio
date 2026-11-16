@@ -44,7 +44,7 @@ const FeaturedWork = () => {
           </motion.div>
           <motion.div variants={fadeLeft}>
             <Link to="/projects" className="group flex min-h-11 items-center gap-2 text-slate-300 hover:text-slate-100 transition-colors">
-              Ver todos los proyectos<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Conocé el ERP<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </motion.div>

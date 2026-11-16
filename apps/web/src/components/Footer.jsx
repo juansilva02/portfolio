@@ -6,7 +6,7 @@ import { fadeUp, staggerContainer, revealOnView } from '@/lib/motion';
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'Servicios', path: '/projects' },
+    { name: 'ERP zuzudev', path: '/projects' },
     { name: 'Articulos', path: '/articles' },
     { name: 'Sobre mi', path: '/about' },
     { name: 'Contacto', path: '/contact' },
