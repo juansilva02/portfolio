@@ -1,4 +1,7 @@
 import React, { lazy, Suspense } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { fadeUp, revealOnView } from '@/lib/motion';
+import AnimatedPageHeading from '@/components/AnimatedPageHeading';
 import { Helmet } from 'react-helmet';
 import { ArrowRight, ArrowUpRight, ShoppingBag, Package, Wallet, Users, Truck, Check } from 'lucide-react';
 import Header from '@/components/Header.jsx';
@@ -15,7 +18,7 @@ function SalesPreview() {
   return <div className="erp-sales-preview">
     <div className="erp-preview-top"><span>Ventas de hoy</span><span className="erp-example">Vista de ejemplo</span></div>
     <strong className="erp-preview-total">$ 284.500</strong>
-    <div className="erp-preview-chart">{[28, 42, 36, 61, 49, 78, 66, 92, 81, 100].map((height, index) => <span key={index} style={{ height: `${height}%` }} />)}</div>
+    <div className="erp-preview-chart">{[28, 42, 36, 61, 49, 78, 66, 92, 81, 100].map((height, index) => <span key={index} style={{ height: `${height}%`, animationDelay: `${index * 60}ms` }} />)}</div>
     <div className="erp-preview-row"><span>Venta #1042</span><strong>$ 124.500</strong><span className="erp-paid">Registrada</span></div>
     <div className="erp-preview-row"><span>Venta #1041</span><strong>$ 96.000</strong><span className="erp-paid">Registrada</span></div>
     <div className="erp-preview-row"><span>Venta #1040</span><strong>$ 64.000</strong><span className="erp-paid">Registrada</span></div>
@@ -31,6 +34,8 @@ const features = [
 ];
 
 export default function ProjectsPage() {
+  const reduced = useReducedMotion();
+  const reveal = reduced ? { initial: false } : { variants: fadeUp, ...revealOnView };
   return <>
     <Helmet>
       <title>ERP zuzudev | Ventas, stock y caja para tu negocio</title>
@@ -40,21 +45,21 @@ export default function ProjectsPage() {
     <Header />
     <main className="erp-page">
       <section className="erp-hero" aria-labelledby="erp-title">
-        <div className="erp-ascii" aria-hidden="true"><Suspense fallback={null}><GradientASCII colors={colors} shape="horizon" characters=" =+xX0S8#@" cellSize={20} density={0.65} glyphOpacity={0.35} gradientOpacity={0.45} glow={0.12} depthOfField={0} softness={0.65} speed={0} flow={0} flicker={0} grain={0} mouseInteraction={false} clickEffect="none" intro={false} dpr={1} /></Suspense></div>
+        <div className="erp-ascii" aria-hidden="true"><Suspense fallback={null}><GradientASCII colors={colors} shape="horizon" characters=" =+xX0S8#@" cellSize={20} density={0.65} glyphOpacity={0.35} gradientOpacity={0.45} glow={0} depthOfField={0} softness={0.65} speed={0.2} flow={0.18} flicker={0.025} grain={0} mouseInteraction={false} clickEffect="none" intro={false} dpr={0.8} /></Suspense></div>
         <div className="erp-hero-scrim" />
         <div className="erp-wrap erp-hero-content">
           <p className="erp-eyebrow"><span className="erp-brand-mark">z</span> ZUZUDEV ERP / GESTIÓN COMERCIAL</p>
-          <h1 id="erp-title">Ventas, stock y caja.<br /><span>Todo en su lugar.</span></h1>
+          <AnimatedPageHeading id="erp-title">Ventas, stock y caja.<br /><span>Todo en su lugar.</span></AnimatedPageHeading>
           <p className="erp-hero-copy">La información de tu negocio, en un mismo sistema. Desde tu computadora o tu celular.</p>
           <div className="erp-hero-actions"><Button asChild className="liquid-glass-button-blue min-h-12 rounded-xl px-7 text-slate-50"><a href={demoUrl}>Probalo Gratis<ArrowRight aria-hidden="true" /></a></Button><a className="erp-secondary-link" href="#funciones">Explorá el sistema <ArrowRight size={16} /></a></div>
           <p className="erp-trial"><Check size={15} /> Demo privada · 20 días desde la activación</p>
         </div>
       </section>
       <section id="funciones" className="erp-wrap erp-functions" aria-labelledby="erp-functions-title">
-        <div className="erp-section-heading"><div><p className="erp-eyebrow">DE LA OPERACIÓN A LA INFORMACIÓN</p><h2 id="erp-functions-title">Lo que pasa en tu negocio,<br /><span>lo encontrás acá.</span></h2></div><p>Explorá ventas, inventario y caja con datos de ejemplo. Después, probalo en tu propia demo.</p></div>
-        <MagicBento items={features} columns={4} rowHeight={200} gap={15} radius={19} glowColor="#7dd3fc" enableBorderGlow enableSpotlight spotlightRadius={280} clickEffect enableStars particleCount={41} enableTilt enableMagnetism textAutoHide={false} intro={false} className="erp-bento" style={{ '--mb-surface': 'linear-gradient(155deg, #142133, #0b1421)', '--mb-ink': '#f1f5f9', '--mb-muted': '#a5b4c8', '--mb-faint': '#94a3b8', '--mb-shadow': 'none' }} />
+        <motion.div {...reveal} className="erp-section-heading"><div><p className="erp-eyebrow">DE LA OPERACIÓN A LA INFORMACIÓN</p><h2 id="erp-functions-title">Lo que pasa en tu negocio,<br /><span>lo encontrás acá.</span></h2></div><p>Explorá ventas, inventario y caja con datos de ejemplo. Después, probalo en tu propia demo.</p></motion.div>
+        <MagicBento items={features} columns={4} rowHeight={200} gap={15} radius={19} glowColor="#7dd3fc" enableBorderGlow enableSpotlight spotlightRadius={280} clickEffect enableStars particleCount={41} enableTilt enableMagnetism textAutoHide={false} intro revealEachCard className="erp-bento" style={{ '--mb-surface': 'linear-gradient(155deg, #142133, #0b1421)', '--mb-ink': '#f1f5f9', '--mb-muted': '#a5b4c8', '--mb-faint': '#94a3b8', '--mb-shadow': 'none' }} />
       </section>
-      <section className="erp-wrap erp-closing" aria-labelledby="erp-closing-title"><div><p className="erp-eyebrow">EMPEZÁ A EXPLORAR</p><h2 id="erp-closing-title">Tu negocio, tu espacio de prueba.</h2><p>Un entorno privado con datos de ejemplo para recorrer, editar y conocer el sistema.</p></div><Button asChild className="liquid-glass-button-blue min-h-12 rounded-xl px-7 text-slate-50"><a href={demoUrl}>Crear mi demo<ArrowUpRight aria-hidden="true" /></a></Button></section>
+      <motion.section {...reveal} className="erp-wrap erp-closing" aria-labelledby="erp-closing-title"><div><p className="erp-eyebrow">EMPEZÁ A EXPLORAR</p><h2 id="erp-closing-title">Tu negocio, tu espacio de prueba.</h2><p>Un entorno privado con datos de ejemplo para recorrer, editar y conocer el sistema.</p></div><Button asChild className="liquid-glass-button-blue min-h-12 rounded-xl px-7 text-slate-50"><a href={demoUrl}>Crear mi demo<ArrowUpRight aria-hidden="true" /></a></Button></motion.section>
     </main>
     <Footer />
   </>;

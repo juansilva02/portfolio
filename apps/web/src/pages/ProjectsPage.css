@@ -27,6 +27,9 @@
 .erp-preview-total { display: block; font-size: 30px; margin-top: 10px; font-weight: 500; letter-spacing: -.03em; }
 .erp-preview-chart { height: 66px; display: flex; align-items: end; gap: 7px; margin-block: 15px; border-bottom: 1px solid #233449; }
 .erp-preview-chart span { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(0deg,#16405d,#7dd3fc); }
+.magic-bento__cell[data-state='in'] .erp-preview-chart span { transform-origin: bottom; animation: erp-bar-enter .75s ease-out backwards; }
+@keyframes erp-bar-enter { from { transform: scaleY(.12); opacity: .2; } to { transform: scaleY(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .magic-bento__cell[data-state='in'] .erp-preview-chart span { animation: none; } }
 .erp-preview-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 10px; color: #a5b4c8; }
 .erp-preview-row strong { color: #e2e8f0; font-weight: 400; }
 .erp-paid { color: #81b6b2; font-size: 9px; }

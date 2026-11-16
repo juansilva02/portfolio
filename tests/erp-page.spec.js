@@ -15,7 +15,7 @@ test('ERP replaces the projects catalog and its demo links work', async ({ page 
   await testInfo.attach('erp-page.png', { body: await page.screenshot({ fullPage: true }), contentType: 'image/png' });
 });
 
-test('ASCII background stops drawing after its static render', async ({ page }) => {
+test('ASCII background animates only while visible', async ({ page }) => {
   await page.addInitScript(() => {
     window.asciiDraws = 0;
     const draw = WebGL2RenderingContext.prototype.drawArrays;
@@ -26,5 +26,33 @@ test('ASCII background stops drawing after its static render', async ({ page }) 
   const before = await page.evaluate(() => window.asciiDraws);
   expect(before).toBeGreaterThan(0);
   await page.waitForTimeout(600);
-  expect(await page.evaluate(() => window.asciiDraws)).toBe(before);
+  expect(await page.evaluate(() => window.asciiDraws)).toBeGreaterThan(before);
+  await page.locator('.erp-closing').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  const stopped = await page.evaluate(() => window.asciiDraws);
+  await page.waitForTimeout(600);
+  expect(await page.evaluate(() => window.asciiDraws)).toBe(stopped);
+});
+
+
+test('ERP cards appear as they are discovered and remain visible', async ({ page }) => {
+  await page.goto('/projects', { waitUntil: 'networkidle' });
+  const cells = page.locator('.magic-bento__cell');
+  await expect(cells.last()).not.toHaveAttribute('data-state', 'in');
+  for (const cell of await cells.all()) {
+    await cell.scrollIntoViewIfNeeded();
+    await expect(cell).toHaveAttribute('data-state', 'in');
+    await expect(cell).toHaveCSS('opacity', '1');
+  }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  for (const cell of await cells.all()) await expect(cell).toHaveAttribute('data-state', 'in');
+});
+
+test('ERP and quote headings respect reduced motion', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const path of ['/projects', '/cotizar']) {
+    await page.goto(path, { waitUntil: 'networkidle' });
+    await expect(page.locator('h1')).toHaveCSS('opacity', '1');
+    await expect(page.locator('h1')).toHaveCSS('filter', 'blur(0px)');
+  }
 });

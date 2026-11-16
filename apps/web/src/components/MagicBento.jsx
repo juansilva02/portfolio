@@ -485,6 +485,7 @@ const MagicBento = ({
   enableMagnetism = false,
   clickEffect = true,
   intro = true,
+  revealEachCard = false,
   disableAnimations = false,
   onItemClick,
   className = '',
@@ -922,7 +923,21 @@ const MagicBento = ({
     };
 
     let gate = null;
-    if (playIntro && typeof IntersectionObserver !== 'undefined') {
+    if (playIntro && revealEachCard && typeof IntersectionObserver !== 'undefined') {
+      gate = new IntersectionObserver((entries, observer) => {
+        let order = 0;
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entered = true;
+          entry.target.style.setProperty('--mb-delay', `${order++ * STAGGER}ms`);
+          entry.target.dataset.state = 'in';
+          observer.unobserve(entry.target);
+        });
+        dirty = true;
+        wake();
+      }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+      cellRefs.current.forEach(cell => { if (cell && cell.dataset.state !== 'in') gate.observe(cell); });
+    } else if (playIntro && typeof IntersectionObserver !== 'undefined') {
       gate = new IntersectionObserver(
         (entries, observer) => {
           if (!entries.some(entry => entry.isIntersecting)) return;
@@ -967,7 +982,7 @@ const MagicBento = ({
     engineRef.current = {
       sync: () => {
         cellRefs.current.forEach(cell => {
-          if (!cell || (!entered && playIntro)) return;
+          if (!cell || (!entered && playIntro) || (playIntro && revealEachCard && cell.dataset.state !== 'in')) return;
           if (cell.dataset.state !== 'in') {
             cell.style.setProperty('--mb-delay', '0ms');
             cell.dataset.state = 'in';

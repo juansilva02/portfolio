@@ -544,6 +544,7 @@ const GradientASCII = ({
     let introClock = settingsRef.current.intro && !reduce ? 0 : 1;
     let frameSeed = 0;
     let grainClock = 0;
+    let lastDraw = 0;
     let raf = 0;
     let last = 0;
     let visible = true;
@@ -756,7 +757,13 @@ const GradientASCII = ({
         ready = true;
       }
       const s = settingsRef.current;
-      const dt = last ? clamp((now - last) / 1000, 0.001, 0.05) : 1 / 60;
+      // Quiet background motion does not need the display's full frame rate.
+      if (!reduce && now - lastDraw < 1000 / 18) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
+      lastDraw = now;
+      const dt = last ? clamp((now - last) / 1000, 0.001, 0.1) : 1 / 60;
       last = now;
       if (!reduce) {
         time += dt * s.speed * 0.5;
