@@ -1,0 +1,13 @@
+.demo-page {
+  background-color: #0d0d0d;
+  background-image: var(--demo-background);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 820px auto;
+}
+
+@media (min-width: 1024px) {
+  .demo-page {
+    background-size: 100% auto;
+  }
+}

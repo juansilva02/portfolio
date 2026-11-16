@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/button';
 import { prepareDemoRequest } from '../../lib/demo-request.js';
 import DemoPreparation, { DemoCredentials } from '@/components/DemoPreparation';
 import DemoPhoneInput from '@/components/DemoPhoneInput';
+import demoBackground from '@/assets/demo-erp-background.webp';
+import './DemoPage.css';
 
 const industries = [
   'Almacén, kiosco y supermercado',
@@ -138,7 +140,7 @@ export default function DemoPage({ contactOnly = false } = {}) {
       <link rel="canonical" href={contactOnly ? 'https://demo.zuzudev.pro/' : 'https://zuzudev.pro/demo'} />
     </Helmet>
     <Header />
-    <main className="min-h-screen px-5 pb-24 pt-32 text-slate-100">
+    <main className="demo-page min-h-screen px-5 pb-64 pt-32 text-slate-100 lg:pb-24" style={{ '--demo-background': `url("${demoBackground}")` }}>
       <div className="mx-auto grid max-w-5xl grid-cols-1 items-start gap-10 lg:grid-cols-2">
         <div className="min-w-0">
           <p className="mb-4 text-sm font-medium text-sky-300">ERP para empresas y comercios</p>
