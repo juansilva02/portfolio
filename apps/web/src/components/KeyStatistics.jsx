@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Clock3, DollarSign, MessageCircle } from 'lucide-react';
+import { ArrowRight, Building2, Clock3, DollarSign, MessageCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { fadeUp, staggerContainer, revealOnView, hoverLift } from '@/lib/motion';
 
 const KeyStatistics = () => {
@@ -8,7 +9,7 @@ const KeyStatistics = () => {
     { icon: Clock3, displayValue: '48 hs', label: 'Entrega objetivo para una landing express publicada' },
     { icon: DollarSign, displayValue: '200 USD', label: 'Base de entrada para una landing clara y profesional' },
     { icon: MessageCircle, displayValue: 'Directo', label: 'Trato conmigo, sin intermediarios ni vueltas innecesarias' },
-    { icon: Building2, displayValue: 'Empresas + SaaS', label: 'Soluciones para negocio, software interno y producto web' },
+    { icon: Building2, displayValue: 'Empresas + SaaS', label: 'Soluciones para negocio, software interno y producto web', demo: true },
   ];
 
   return (
@@ -26,10 +27,13 @@ const KeyStatistics = () => {
               whileHover={hoverLift}
               className="liquid-glass-light flex flex-col items-center text-center p-6 rounded-[1.65rem] transition-colors relative overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-slate-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <stat.icon className="w-8 h-8 text-slate-400 mb-4 group-hover:text-slate-300 transition-colors animate-pulse-glow" />
               <h3 className="text-3xl font-bold text-slate-100 mb-2 text-balance">{stat.displayValue}</h3>
               <p className="text-slate-400 font-medium text-sm leading-relaxed">{stat.label}</p>
+              {stat.demo && <Button asChild className="liquid-glass-button-blue relative mt-5 min-h-12 w-full rounded-xl px-5 text-slate-50 hover:brightness-110 active:scale-95">
+                <a href="https://demo.zuzudev.pro/">Probalo Gratis<ArrowRight aria-hidden="true" /></a>
+              </Button>}
             </motion.div>
           ))}
         </motion.div>

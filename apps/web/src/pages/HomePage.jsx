@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import {
@@ -41,6 +41,14 @@ const heroCard = {
 
 const HomePage = () => {
   const reduce = useReducedMotion();
+  const [showTerminal, setShowTerminal] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches);
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 768px)');
+    const update = () => setShowTerminal(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
   const seen = typeof window !== 'undefined' && sessionStorage.getItem('zuzudev_intro') === 'seen';
   const skipIntro = Boolean(reduce || seen);
 
@@ -78,14 +86,14 @@ const HomePage = () => {
                   animate="show"
                   className="space-y-8"
                 >
-                  <motion.div
+                  {showTerminal && <motion.div
                     initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="min-h-[48px]"
                   >
                     <HeroBootLine skip={skipIntro} onComplete={handleBoot} />
-                  </motion.div>
+                  </motion.div>}
 
                   <motion.div variants={heroItem} className="space-y-5">
                     <span className="inline-flex items-center gap-2 rounded-full border border-sky-300/25 bg-sky-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-100">
