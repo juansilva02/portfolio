@@ -181,19 +181,19 @@ html {
 }
 
 .animate-float {
-  animation: float 8s ease-in-out infinite;
+  animation: none;
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
+  animation: none;
 }
 
 .animate-hex-drift {
-  animation: hex-drift 22s ease-in-out infinite;
+  animation: none;
 }
 
 .animate-network-pulse {
-  animation: network-pulse 7s ease-in-out infinite;
+  animation: none;
 }
 
 @keyframes skill-sheen {
@@ -205,9 +205,13 @@ html {
 }
 
 .skill-sheen {
-  animation: skill-sheen 6.5s ease-in-out infinite;
-  opacity: 0.62;
-  will-change: transform, opacity;
+  opacity: 0;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .group:hover .skill-sheen {
+    animation: skill-sheen 1.2s ease-out both;
+  }
 }
 
 @keyframes orbit-glow {
@@ -259,10 +263,16 @@ html {
   mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 78%);
 }
 
+.site-bg-colors {
+  background:
+    radial-gradient(ellipse at 10% 10%, rgba(14, 165, 233, 0.12), transparent 55%),
+    radial-gradient(ellipse at 90% 55%, rgba(34, 211, 238, 0.10), transparent 55%),
+    radial-gradient(ellipse at 35% 100%, rgba(99, 102, 241, 0.10), transparent 55%),
+    #070b14;
+}
+
 .orbit-glow {
-  animation: orbit-glow 13s linear infinite;
   transform-origin: center;
-  will-change: transform;
 }
 
 /* Spotlight que sigue al cursor sobre las tarjetas glass (vars seteadas por SpotlightEffect.jsx) */
@@ -295,8 +305,7 @@ html {
 
 .assembly-scene {
   transform-style: preserve-3d;
-  animation: scene-tilt 16s ease-in-out infinite;
-  will-change: transform;
+  transform: rotateX(13deg) rotateY(-18deg);
 }
 
 .assembly-window,
@@ -306,10 +315,12 @@ html {
 
 .assembly-brick {
   transform-style: preserve-3d;
-  animation: brick-assemble 8s ease-in-out infinite both;
-  will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+.assembly-stage .animate-pulse {
+  animation: none;
 }
 
 @keyframes scene-tilt {

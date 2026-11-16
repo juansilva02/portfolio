@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import {
@@ -43,16 +43,14 @@ const HomePage = () => {
   const reduce = useReducedMotion();
   const seen = typeof window !== 'undefined' && sessionStorage.getItem('zuzudev_intro') === 'seen';
   const skipIntro = Boolean(reduce || seen);
-  const [booted, setBooted] = useState(skipIntro);
 
   const handleBoot = () => {
-    setBooted(true);
     try { sessionStorage.setItem('zuzudev_intro', 'seen'); } catch (e) { /* noop */ }
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={false}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
@@ -76,12 +74,12 @@ const HomePage = () => {
               <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
                 <motion.div
                   variants={heroLeft}
-                  initial={booted ? false : 'hidden'}
-                  animate={booted ? 'show' : 'hidden'}
+                  initial={false}
+                  animate="show"
                   className="space-y-8"
                 >
                   <motion.div
-                    initial={booted ? false : { opacity: 0, y: 16 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="min-h-[48px]"
@@ -155,8 +153,8 @@ const HomePage = () => {
 
                 <motion.div
                   variants={heroCard}
-                  initial={booted ? false : 'hidden'}
-                  animate={booted ? 'show' : 'hidden'}
+                  initial={false}
+                  animate="show"
                   className="relative"
                 >
                   <WebPageAssembly3D />
